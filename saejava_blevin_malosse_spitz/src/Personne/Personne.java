@@ -15,41 +15,45 @@ public abstract class Personne {
     private int absNonJustif =0;
     private String nom;
     private String prenom;
-    private static int cpt = 0;
-    private static Personne registre [];
+    public static int cpt = 0;
     
-    //Constructeur qui utilise la verif des setters
+    /**Constructeur qui utilise les setters avec Nom et Prenom comme argument*/
     public Personne (String Nom, String Prenom){
-        if (Nom != null && (!Nom.equals(""))){
             setNom(Nom);
             setPrenom(Prenom);
             this.numPersonne = cpt++;
-        }
     }
-    //Get
+    /**Constructeur par defaut qui utilise les setters et aucun argument*/
+    public Personne (){
+            this.nom = "inconnu";
+            this.prenom = "inconnu";    
+            this.numPersonne = cpt++;
+    }
+    //getter
+    
     public String getNom(){ return this.nom;}
     public String getPrenom(){ return this.prenom;}
     public int getAbsJustif(){ return this.absJustif;}
     public int getAbsNonJustif(){ return this.absNonJustif;}
     public int getNumPersonne(){ return this.numPersonne;}
     
-    //Set
-    public void setNom(String Nom){
-        if (Nom != null && (!Nom.equals("")))
-            this.nom = Nom;
-        else 
-            this.nom = "nomInconnu";
-    }
-    public void setPrenom(String Prenom){
-        if (Prenom != null && (!Prenom.equals("")))
-            this.prenom = Prenom;
+    /**Fonction qui verifie si la chaine de caractère transmise en argument n'est pas null ni vide*/
+    public String verifVide(String aVerifier){
+        if(aVerifier == null && (!aVerifier.equals("")))
+            return aVerifier;
         else
-            this.prenom = "prenomInconnu";
+            return "inconnu";
     }
+    //setter
+    public void setNom(String Nom){ this.nom = verifVide(Nom);}
+    public void setPrenom(String Prenom){this.prenom = verifVide(Prenom);}
+    
     /** addAbsNonJustif ajoute la valeurs transmise en paramètre au nombre d'absences déjà enregistrées*/
     public void addAbsNonJustif(int Nombre){this.absNonJustif+=Nombre;}
+    
     /** addAbsJustif transforme le nombre d'absence injustifiée, transmise en paramètre, en absence justifiée*/
     public void addAbsJustif (int Nombre){
+        
         if (absNonJustif>=Nombre)
             this.absJustif-=Nombre;
         else
@@ -62,4 +66,3 @@ public abstract class Personne {
         return this.nom.equals(p.nom) && this.prenom.equals(p.prenom) && this.numPersonne == p.numPersonne;
     }
 }
-

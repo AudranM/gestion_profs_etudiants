@@ -9,7 +9,9 @@ package Personne;
  * @author audranmalosse
  */
 public class Test {
+    private static Personne[]registre;
+    
     public static void main (String [] args){
-        
+        registre[0] = new Etudiant ("Malosse", "Audran");
     }
 }
