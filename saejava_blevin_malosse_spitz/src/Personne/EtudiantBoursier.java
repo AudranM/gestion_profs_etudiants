@@ -8,6 +8,24 @@ package Personne;
  *
  * @author audranmalosse
  */
-public class EtudiantBoursier {
+public class EtudiantBoursier extends Etudiant implements Util {
+    private double bourse;
     
+    public EtudiantBoursier (String Nom, String Prenom, double Bourse){
+        super(Nom, Prenom);
+        setBourse(Bourse);
+    }
+    
+    /** Verifie et incrémente la Bourse*/
+    public void setBourse (double Val){
+        if(Val>0)
+            this.bourse = Val;
+        else 
+            this.bourse = 0.;
+    }
+    /** Méthode qui retourne si oui ou non cest un étudiant Boursier.*/
+    public boolean estEtudiant (Object O) {
+        return O instanceof EtudiantBoursier;
+    }
+
 }

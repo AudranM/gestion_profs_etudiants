@@ -9,9 +9,26 @@ package Personne;
  * @author audranmalosse
  */
 public class Test {
-    private static Personne[]registre;
-    
-    public static void main (String [] args){
-        registre[0] = new Etudiant ("Malosse", "Audran");
+    public static void main (String [] args){        
+        Etudiant Test1 = new Etudiant ("test", "test");
+        Etudiant Test2 = new Etudiant ("test", "test");
+        Etudiant Test3 = new Etudiant ("test", "test");
+        Etudiant Test4 = new Etudiant ("test", "test");
+        Etudiant Test5 = new Etudiant ("test", "test");
+        System.out.println(Test1);
+        System.out.println("");
+        
+        Test1.addAbsNonJustif(6);
+        
+        System.out.println(Test1);
+        System.out.println("");
+        
+        Test1.addAbsJustif(2);
+        
+        System.out.println(Test1);
+        System.out.println("");
+        
+        Personne.afficheRegistre();
     }
+    
 }
