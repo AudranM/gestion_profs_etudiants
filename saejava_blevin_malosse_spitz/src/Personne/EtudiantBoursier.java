@@ -8,7 +8,7 @@ package Personne;
  *
  * @author audranmalosse
  */
-public class EtudiantBoursier extends Etudiant implements Util {
+public class EtudiantBoursier extends Etudiant {
     private double bourse;
     
     public EtudiantBoursier (String Nom, String Prenom, double Bourse){

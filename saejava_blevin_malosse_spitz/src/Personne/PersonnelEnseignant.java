@@ -8,9 +8,9 @@ package Personne;
  *
  * @author audranmalosse
  */
-interface Util {
+public abstract class PersonnelEnseignant extends Personnel {
     
-    @Override
-    String toString();
-    boolean equals(Personne P);
+    public PersonnelEnseignant(String Nom, String Prenom){
+        super(Nom, Prenom);
+    }
 }
