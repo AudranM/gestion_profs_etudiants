@@ -110,6 +110,6 @@ public abstract class Personne {
             System.out.println(registre);
     }
     /**Méthode abstraite qui verifie le nombre d'absence*/
-    public abstract void verifAbs();
+
     
 }

@@ -28,7 +28,6 @@ public class Etudiant extends Personne {
     /**Méthode de vérification du nombre d'absences injustifie pour valider ou 
      * non l'année
      */
-    @Override
     public void verifAbs (){
         if (super.getAbsNonJustif()>=5)
             this.anneeValide = false;
@@ -64,7 +63,6 @@ public class Etudiant extends Personne {
     /** addAbsJustif transforme le nombre d'absence injustifiée, transmise en 
      * paramètre, en absence justifiée et test la validitée de l'année.
      */
-    @Override
     public void addAbsJustif (int Nombre){
         super.addAbsJustif(Nombre);
         this.verifAbs();

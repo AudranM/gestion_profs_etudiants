@@ -14,12 +14,9 @@ public class PersonnelAdministratif extends Personnel {
     private Double primeAnnuelle;
     
 
-    public PersonnelAdministratif(String Nom, String Prenom) {
+    public PersonnelAdministratif(String Nom, String Prenom, double SalaireFixe, boolean PrimeDispo){
         super(Nom, Prenom);
-    }
-
-    @Override
-    public void verifAbs() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.setSalaireFixe(SalaireFixe);
+        this.setPrimeDispo(PrimeDispo);
     }
 }
