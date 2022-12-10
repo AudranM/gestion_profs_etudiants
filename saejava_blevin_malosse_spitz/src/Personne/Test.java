@@ -29,6 +29,9 @@ public class Test {
         System.out.println("");
         
         Personne.afficheRegistre();
+        
+        Bureau TestB = new Bureau(3, Test1, Test2, Test3);
+        TestB.afficheOccupants();
     }
     
 }

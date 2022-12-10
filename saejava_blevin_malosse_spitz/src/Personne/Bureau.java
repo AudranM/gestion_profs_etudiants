@@ -115,9 +115,9 @@ public class Bureau {
 
     public void setOccupant(Personne occupant){
 
-        if (occupants[1] == null && nbPlace <= 1) occupants[1] = occupant;
-        else if (occupants[2] == null && nbPlace <= 2) occupants[2] = occupant;
-        else if (occupants[3] == null && nbPlace <= 3) occupants[3] = occupant;
+        if (occupants[0] == null && nbPlace >= 1) occupants[0] = occupant;
+        else if (occupants[1] == null && nbPlace >= 2) occupants[1] = occupant;
+        else if (occupants[2] == null && nbPlace >= 3) occupants[2] = occupant;
         else System.out.println("ERREUR : Il n'y a plus de places dans ce bureau");
 
     }
@@ -136,15 +136,14 @@ public class Bureau {
 
     //public 
     
-//---- AFFICHEUR ----
+//---- AFFICHEURS ----
 
     public void afficheOccupants(){
         
         System.out.println("Occupant(s) du bureau " + getNumero() + " : ");
-        for (int i = 0; i < nbPlace; ){
+        for (int i = 0; i < nbPlace; i++ ){
             
-            System.out.println(occupants[i]);
-            
+            if (occupants[i] != null) System.out.println(occupants[i].getNom());    
         }
     }
 }
