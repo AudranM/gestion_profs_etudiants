@@ -38,6 +38,7 @@ public class Test {
         Bureau TestB1 = new Bureau(3, pers1, pers2, pers3);
         Bureau TestB2 = new Bureau(3, pers1, pers2, pers3);
         Bureau TestB3 = new Bureau(3, pers1, pers2, pers3);
+        Bureau TestB4 = new Bureau();
         TestB1.afficheOccupants();
         Bureau.afficheBureaux();
     }

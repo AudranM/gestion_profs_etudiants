@@ -11,10 +11,24 @@ import java.util.ArrayList;
  */
 public class Bureau {
     
+    /**
+     * Attributs statics
+     * @param bureaux liste de tous les bureaux créés
+     * @param comptNum  compteur du nb de bureaux créés (pour attribuer le num
+     * des noveaux bureaux
+     */
     private static ArrayList<Bureau>bureaux = new ArrayList<>();
+    private static int comptNum;
+    
+    /**
+     * Attributs
+     * @param nbPlace nb de places dans le bureau
+     * @param numero numero du bureau, définit automatiquement grâce au compteur
+     * @param occupants tab de type Personnel contenant les références vers les
+     * X (nbPlace) occupants du bureau
+     */
     private int nbPlace;
     private final int numero;
-    private static int comptNum;
     private Personnel occupants[];
     
     
@@ -96,10 +110,13 @@ public class Bureau {
     }
 
 //---- SETTERS ----
+    
+    /**
+     * @param nbPlace (min 1, max 3
+     */
+    public final void setNbPlace(int nbPlace){
 
-    public void setNbPlace(int nbPlace){
-
-        if (nbPlace < 0) this.nbPlace = 0;
+        if (nbPlace < 1) this.nbPlace = 1;
         else if (nbPlace > 3) this.nbPlace = 3; //Nombre de place max = 3
         else this.nbPlace = nbPlace;
 
@@ -111,17 +128,30 @@ public class Bureau {
         occupants = new Personnel[nbPlace];
 
     }
+    
+    /**
+     * 
+     * @param occupant référence vers le Personnel à ajouter au bureau
+     */
+    public final void setOccupant(Personnel occupant){
 
-    public void setOccupant(Personnel occupant){
-
-        if (occupants[0] == null && nbPlace >= 1) occupants[0] = occupant;
-        else if (occupants[1] == null && nbPlace >= 2) occupants[1] = occupant;
-        else if (occupants[2] == null && nbPlace >= 3) occupants[2] = occupant;
-        else System.out.println("ERREUR : Il n'y a plus de places dans ce bureau");
+        if (!occupant.getBureauAssigne()){
+            occupant.setBureauAssigne(true);
+            if (occupants[0] == null && nbPlace >= 1) occupants[0] = occupant;
+            else if (occupants[1] == null && nbPlace >= 2) occupants[1] = occupant;
+            else if (occupants[2] == null && nbPlace >= 3) occupants[2] = occupant;
+            else{
+                System.out.println("ERREUR : Il n'y a plus de places dans ce bureau");
+                occupant.setBureauAssigne(false);
+            }
+        } else {
+            System.out.println("ERREUR : " + occupant.getNomPrenom() + " a déjà un bureau"); //rajouter de get le num de bureau quand l'att aura été add dans Personnel
+        }
 
     }
     
 //---- GETTERS ----
+
 
     public int getNbPlace(){
 
@@ -138,7 +168,7 @@ public class Bureau {
         String stringOccupants = "Occupant(s) du bureau " + getNumero() + " : \n";
         for (int i = 0; i < nbPlace; i++ ){
             
-            if (occupants[i] != null) stringOccupants += occupants[i].getPrenom() + " " + occupants[i].getNom() + "\n";    
+            if (occupants[i] != null) stringOccupants += occupants[i].getNomPrenom() + "\n";    
         }
         
         return stringOccupants;
@@ -178,8 +208,11 @@ public class Bureau {
         comptNum++;
     }
     
-    /** Ajoute un bureau dans la liste des bureaux*/
-    public void incrTab (Bureau B){
+    /**
+     * 
+     * @param B référence vers le bureau à ajouté à la liste
+     */
+    private void incrTab (Bureau B){
         bureaux.add(B);
     }
     

@@ -38,6 +38,8 @@ public abstract class Personne {
     
     public String getNom(){ return this.nom;}
     public String getPrenom(){ return this.prenom;}
+    //Pour l'affichage, où l'on a souvent besoin de nom + prenom
+    public String getNomPrenom(){return this.getNom() + " " + this.getPrenom();}
     public int getAbsJustif(){ return this.absJustif;}
     public int getAbsNonJustif(){ return this.absNonJustif;}
     public int getNumPersonne(){ return this.numPersonne;}
