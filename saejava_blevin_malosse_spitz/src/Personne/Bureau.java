@@ -11,7 +11,8 @@ package Personne;
 public class Bureau {
     
     private static Bureau bureaux[];
-    private int nbPlace, numero;
+    private int nbPlace;
+    private final int numero;
     private static int comptNum;
     private Personne occupants[];
     
@@ -31,6 +32,7 @@ public class Bureau {
         setNumero();
         setNbPlace(3);
         setNbOccupants(this.nbPlace);
+        numero = comptNum;
     }
     /**
      * Constructeur sans assigner d'occupants
@@ -43,6 +45,8 @@ public class Bureau {
         setNumero();
         setNbPlace(nbPlace);
         setNbOccupants(this.nbPlace);
+        numero = comptNum;
+
     }
 
     /**
@@ -53,10 +57,8 @@ public class Bureau {
      * le compteur (att static) et la taille du tab occupant par nbPlace
      */
     Bureau(int nbPlace, Personne occupant1){
-
-        setNumero();
-        setNbPlace(nbPlace);
-        setNbOccupants(this.nbPlace);
+        
+        this(nbPlace);
         setOccupant(occupant1);
     }
 
@@ -70,10 +72,7 @@ public class Bureau {
      */
     Bureau(int nbPlace, Personne occupant1, Personne occupant2){
 
-        setNumero();
-        setNbPlace(nbPlace);
-        setNbOccupants(this.nbPlace);
-        setOccupant(occupant1);
+        this(nbPlace, occupant1);
         setOccupant(occupant2);
     }
 
@@ -88,11 +87,7 @@ public class Bureau {
      */
     Bureau(int nbPlace, Personne occupant1, Personne occupant2, Personne occupant3){
 
-        setNumero();
-        setNbPlace(nbPlace);
-        setNbOccupants(this.nbPlace);
-        setOccupant(occupant1);
-        setOccupant(occupant2);
+        this(nbPlace, occupant1, occupant2);
         setOccupant(occupant3);
     }
 
@@ -100,7 +95,7 @@ public class Bureau {
     public void setNumero(){
 
         comptNum++; 
-        numero = comptNum;
+        //numero = comptNum;
     }
 
     public void setNbPlace(int nbPlace){
@@ -133,6 +128,23 @@ public class Bureau {
 
         return nbPlace;
     }
+    
+    public int getNumero(){
+        
+        return numero;
+    }
 
     //public 
+    
+//---- AFFICHEUR ----
+
+    public void afficheOccupants(){
+        
+        System.out.println("Occupant(s) du bureau " + getNumero() + " : ");
+        for (int i = 0; i < nbPlace; ){
+            
+            System.out.println(occupants[i]);
+            
+        }
+    }
 }
