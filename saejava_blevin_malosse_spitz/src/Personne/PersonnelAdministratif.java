@@ -12,7 +12,14 @@ public class PersonnelAdministratif extends Personnel {
     
     
     /**Constructeur qui donne la possibilitée d'ajouter la disponibilitée de la prime*/
-    public PersonnelAdministratif (String Nom, String Prenom, Double SalaireFixe, boolean PrimeDispo) {
-        super(Nom,Prenom);
+    public PersonnelAdministratif (String Nom, String Prenom, Double SalaireFixe) {
+        super(Nom,Prenom,SalaireFixe);
+        super.setDroitPrime(true);
+    }
+    public PersonnelAdministratif (String Nom, String Prenom) {
+        super(Nom,Prenom, 0);
+    }
+    public PersonnelAdministratif () {
+        super("inconnu","inconnu", 0);
     }
 }

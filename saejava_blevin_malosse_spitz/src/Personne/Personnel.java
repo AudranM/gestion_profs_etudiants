@@ -21,11 +21,19 @@ public abstract class Personnel extends Personne {
     public Personnel (String Nom, String Prenom, double SalaireFixe){
         super(Nom, Prenom);
         this.setSalaireFixe(SalaireFixe);
+        this.salaireFixe = SalaireFixe;
+        this.defSalaireMensuel();
+        this.defSalaireAnnuel();
     }
 
     /**Constructeur qui prend le Nom et le Prenom*/
     public Personnel (String Nom, String Prenom){
-        super(Nom, Prenom);
+        this(Nom, Prenom, 0);
+    }
+    
+    /**Constructeur par défaut*/
+    public Personnel (){
+        this("Inconnu", "Inconnu", 0);
     }
     
     //getter
