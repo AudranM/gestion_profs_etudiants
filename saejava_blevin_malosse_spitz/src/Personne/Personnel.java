@@ -84,7 +84,10 @@ public abstract class Personnel extends Personne {
     
     /**Défini le salaire annuel du personnel*/
     public void defSalaireAnnuel(){
-        this.salaireTotalAnnuel = this.getSalaireFixe()*12;
+        if(this.droitPrime == true)
+            this.salaireTotalAnnuel = this.getSalaireFixe()*12+this.primeAnnuelle;
+        else
+            this.salaireTotalAnnuel = this.getSalaireFixe()*12;
     }
     
     /**Méthode qui permet d'augmenter le salaire mensuel de la valeure transmise*/

@@ -9,11 +9,20 @@ package Personne;
  * @author audranmalosse
  */
 public class PersonnelEnseignantTitulaire extends PersonnelEnseignant {
+    
         private static double tarifHeureSup;
+        private double volHoraire;
+        
+        
+        public PersonnelEnseignantTitulaire(String Nom, String Prenom, double TarifHeureSup){
+            super(Nom, Prenom);
+            this.tarifHeureSup = TarifHeureSup;
+        }
+        
+         //getter
         public double getTarifHeureSup(){return PersonnelEnseignantTitulaire.tarifHeureSup;}
+        
+        //setter
         public void setTarifHeureSup(double Val){PersonnelEnseignantTitulaire.tarifHeureSup = Math.abs(Val);}
         
-        public PersonnelEnseignantTitulaire(String Nom, String Prenom){
-            super(Nom, Prenom);
-        }
 }
