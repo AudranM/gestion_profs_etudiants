@@ -45,7 +45,9 @@ public abstract class Personnel extends Personne {
     //setter
     public void setSalaireFixe(double Val){this.salaireFixe = Math.abs(Val);}
     public static void setPrimeAnnuelle(double Val){Personnel.primeAnnuelle = Math.abs(Val);}
+    /**Permet de donner l'obtenstion ou non à la Prime*/
     public void setObtentionPrime(boolean Bool){this.obtentionPrime = verifBool(Bool);}
+    /**Permet de donner le droit ou non à la Prime*/
     public void setDroitPrime(boolean Bool){this.droitPrime = verifBool(Bool);}
     
     /** Test d'égalité de deux peronnes*/
@@ -69,14 +71,6 @@ public abstract class Personnel extends Personne {
             return Bool;
         else
             return false;
-    }
-    /**Permet de donner l'obtenstion ou non à la Prime*/
-    public void setaccesPrime (boolean Bool){
-        this.obtentionPrime = verifBool(Bool);
-    }
-    /**Permet de donner le droit ou non à la Prime*/
-    public void setdroitPrime (boolean Bool){
-        this.droitPrime = verifBool(Bool);
     }
     
     /**Défini le salaire mensuel du personnel*/

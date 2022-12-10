@@ -28,14 +28,15 @@ public abstract class Personne {
             setPrenom(Prenom);
             this.numPersonne = cpt++;
     }
+    
     /**Constructeur par defaut qui utilise les setters et aucun argument*/
     public Personne (){
             this.nom = "inconnu";
             this.prenom = "inconnu";    
             this.numPersonne = cpt++;
     }
-    //getter
     
+    //getter
     public String getNom(){ return this.nom;}
     public String getPrenom(){ return this.prenom;}
     public int getAbsJustif(){ return this.absJustif;}
@@ -67,6 +68,7 @@ public abstract class Personne {
     public void addAbsJustif (){
         if (absNonJustif >= 1){
             this.absJustif += 1;
+            this.absNonJustif -=1;
         }
         else
             System.out.println("ERREUR: Il n'y a pas assez d'absences non justifiée");
@@ -96,7 +98,7 @@ public abstract class Personne {
     public void incrTab (Personne P){
         registre.add(P);
     }
-    
+    /**Redéfinition de toString*/
     public String toString(){
         return "Nature de la personne : " + this.getClass().getSimpleName() +
                "\nNom : " + this.nom + 
