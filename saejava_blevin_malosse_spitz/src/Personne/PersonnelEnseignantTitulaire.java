@@ -8,10 +8,12 @@ package Personne;
  *
  * @author audranmalosse
  */
-public class PersonnelEnseignantTitulaire {
+public class PersonnelEnseignantTitulaire extends PersonnelEnseignant {
         private static double tarifHeureSup;
-        
         public double getTarifHeureSup(){return PersonnelEnseignantTitulaire.tarifHeureSup;}
         public void setTarifHeureSup(double Val){PersonnelEnseignantTitulaire.tarifHeureSup = Math.abs(Val);}
-    
+        
+        public PersonnelEnseignantTitulaire(String Nom, String Prenom){
+            super(Nom, Prenom);
+        }
 }

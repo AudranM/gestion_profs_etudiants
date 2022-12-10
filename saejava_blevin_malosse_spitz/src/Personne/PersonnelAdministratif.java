@@ -10,13 +10,4 @@ package Personne;
  */
 public class PersonnelAdministratif extends Personnel {
     
-    private Double salaire;
-    private Double primeAnnuelle;
-    
-
-    public PersonnelAdministratif(String Nom, String Prenom, double SalaireFixe, boolean PrimeDispo){
-        super(Nom, Prenom);
-        this.setSalaireFixe(SalaireFixe);
-        this.setPrimeDispo(PrimeDispo);
-    }
 }
