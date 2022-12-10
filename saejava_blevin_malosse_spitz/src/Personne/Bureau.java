@@ -6,7 +6,7 @@ package Personne;
 
 /**
  *
- * @author audranmalosse
+ * @author lucasspitz
  */
 public class Bureau {
     
