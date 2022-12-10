@@ -48,7 +48,7 @@ public class Bureau {
         setNbOccupants(this.nbPlace);
         incrCompt();
         numero = comptNum;
-        incrTab(this);
+        incrTab();
     }
     /**
      * Constructeur sans assigner d'occupants
@@ -63,7 +63,7 @@ public class Bureau {
         setNbOccupants(this.nbPlace);
         incrCompt();
         numero = comptNum;
-        incrTab(this);
+        incrTab();
 
     }
 
@@ -189,7 +189,6 @@ public class Bureau {
         int size = bureaux.size();
         for (int i = 0; i < size; i++){
             System.out.println(bureaux.get(i).toString());
-            //System.out.println("-----------------------------");
         }
         
     } 
@@ -212,8 +211,8 @@ public class Bureau {
      * 
      * @param B référence vers le bureau à ajouté à la liste
      */
-    private void incrTab (Bureau B){
-        bureaux.add(B);
+    private void incrTab (){
+        bureaux.add(this);
     }
     
    
