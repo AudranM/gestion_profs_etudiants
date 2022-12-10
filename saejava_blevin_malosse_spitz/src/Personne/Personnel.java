@@ -13,6 +13,7 @@ public abstract class Personnel extends Personne {
     private static double primeAnnuelle;
     private boolean obtentionPrime = false;
     private boolean droitPrime = false;
+    private boolean bureauAssigne = false;
     private double salaireFixe;
     private double salaireTotalMensuel;
     private double salaireTotalAnnuel;
@@ -41,6 +42,7 @@ public abstract class Personnel extends Personne {
     public static double getPrimeAnnuelle(){return Personnel.primeAnnuelle;}
     public boolean getObtensionPrime() {return this.obtentionPrime;}
     public boolean getDroitPrime() {return this.droitPrime;}
+    public boolean getBureauAssigne(){return bureauAssigne;}
     
     //setter
     public void setSalaireFixe(double Val){this.salaireFixe = Math.abs(Val);}
@@ -49,20 +51,22 @@ public abstract class Personnel extends Personne {
     public void setObtentionPrime(boolean Bool){this.obtentionPrime = verifBool(Bool);}
     /**Permet de donner le droit ou non à la Prime*/
     public void setDroitPrime(boolean Bool){this.droitPrime = verifBool(Bool);}
+    public void setBureauAssigne(boolean Bool){bureauAssigne = verifBool(Bool);}
     
     /** Test d'égalité de deux peronnes*/
     public boolean equals (Personnel obj){
         if (!(obj instanceof Personnel))
             return false;
         Personnel p = (Personnel) obj;
-        return super.equals(obj) && this.salaireFixe == p.salaireFixe;    
+        return super.equals(obj) && this.salaireFixe == p.salaireFixe && this.bureauAssigne == p.bureauAssigne;    
     }
     
     /**Redéfinition de toString*/
     public String toString(){
         return super.toString() + "\nLe salaire fixe est de : " + salaireFixe + 
             "\nLe salaire mensuel est de : " + salaireTotalMensuel +
-            "\nLe salaire annuel total est de :" + salaireTotalAnnuel;
+            "\nLe salaire annuel total est de :" + salaireTotalAnnuel +
+            "\nBureau assigné : " + bureauAssigne;
     }
     
     /**Permet de verifier si l'argument transmis est bien un booléen*/
