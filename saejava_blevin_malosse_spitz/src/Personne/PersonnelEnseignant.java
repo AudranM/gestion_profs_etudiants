@@ -10,6 +10,9 @@ package Personne;
  */
 public abstract class PersonnelEnseignant extends Personnel {
     
+    private int nbHeures;
+    private double txHauraire;
+    
     public PersonnelEnseignant(String Nom, String Prenom){
         super(Nom, Prenom);
     }
