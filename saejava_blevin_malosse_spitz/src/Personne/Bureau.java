@@ -4,6 +4,7 @@
  */
 package Personne;
 import java.util.ArrayList; 
+import java.util.Arrays;
 
 /**
  *
@@ -213,6 +214,31 @@ public class Bureau {
      */
     private void incrTab (){
         bureaux.add(this);
+    }
+    
+    /**
+     * @param o référence de type objet
+     * @return vrai si c'est le même bureau, faux sinon
+     */
+    @Override
+    public boolean equals(Object o){
+        
+        if (this == o) return true;
+        if (this == null) return false;
+        if (this.getClass() != o.getClass()) return false;
+        Bureau b = (Bureau) o;
+        return this.nbPlace == b.nbPlace && this.numero == b.nbPlace && this.occupants == b.occupants;
+    }
+    
+    /*Je ne pense pas qu'on va utiliser le hashcode, mais on l'a au cas où et
+    ça fait disparaitre le warning */
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 47 * hash + this.nbPlace;
+        hash = 47 * hash + this.numero;
+        hash = 47 * hash + Arrays.deepHashCode(this.occupants);
+        return hash;
     }
     
    
