@@ -14,6 +14,7 @@ public abstract class Personnel extends Personne {
     private boolean obtentionPrime = false;
     private boolean droitPrime = false;
     private boolean bureauAssigne = false;
+    public Bureau sonBureau;
     private double salaireFixe;
     private double salaireTotalMensuel;
     private double salaireTotalAnnuel;
@@ -43,10 +44,12 @@ public abstract class Personnel extends Personne {
     public boolean getObtensionPrime() {return this.obtentionPrime;}
     public boolean getDroitPrime() {return this.droitPrime;}
     public boolean getBureauAssigne(){return bureauAssigne;}
+    public Bureau getSonBureau(){return sonBureau;}
     
     //setter
     public void setSalaireFixe(double Val){this.salaireFixe = Math.abs(Val);}
     public static void setPrimeAnnuelle(double Val){Personnel.primeAnnuelle = Math.abs(Val);}
+    public void setSonBureau(Bureau bureau){sonBureau = bureau;}
     /**Permet de donner l'obtenstion ou non à la Prime*/
     public void setObtentionPrime(boolean Bool){this.obtentionPrime = verifBool(Bool);}
     /**Permet de donner le droit ou non à la Prime*/
