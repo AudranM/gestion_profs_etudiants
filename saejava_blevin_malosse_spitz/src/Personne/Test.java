@@ -32,6 +32,7 @@ public class Test {
         
         System.out.println(Test1);
         System.out.println("");
+        //comment
         
         Personne.afficheRegistre();
         
