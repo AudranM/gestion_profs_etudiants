@@ -139,7 +139,7 @@ public class Bureau {
         if (occupant.getSonBureau() == null ){
             boolean assigne = false;
             for (int i = 0; i < nbPlace; i++){
-                if (isNull(occupants[i]) && !assigne){
+                if (Utils.isNull(occupants[i]) && !assigne){
                     occupants[i] = occupant;
                     occupant.setSonBureau(this);
                     assigne = true; 
@@ -157,10 +157,6 @@ public class Bureau {
         
     }
     
-    public boolean isNull(Object o){
-        
-        return o == null;
-    }
     
 //---- GETTERS ----
 
