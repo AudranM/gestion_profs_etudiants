@@ -120,5 +120,13 @@ public abstract class Personne {
             System.out.println(registre);
     } 
     
-    
+    public static int recupIndiceRegistre(int NumPersonne){
+        int i=0;
+        while (i<registre.size()){
+            if (registre.get(i).getNumPersonne() == NumPersonne )
+                return i;
+            i++;
+        }
+        return -1;
+    }
 }
