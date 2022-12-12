@@ -92,14 +92,4 @@ public abstract class Personnel extends Personne {
         else
             this.salaireTotalAnnuel = this.getSalaireFixe()*12;
     }
-    
-    /**Méthode qui permet d'augmenter le salaire mensuel de la valeure transmise*/
-    public void addAtSalaireMensuel(double Val){
-        this.salaireTotalMensuel += Val;
-    }
-    
-    /**Méthode qui permet d'augmenter le salaire annuel de la valeure transmise*/
-    public void addAtSalaireAnnuel(double Val){
-        this.salaireTotalAnnuel += Val;
-    }
 }

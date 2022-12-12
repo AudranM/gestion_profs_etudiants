@@ -21,7 +21,7 @@ public class Utils {
     /**Permet de vérifier qu'un string n'est pas null ou vide*/
         public static String verifString(String Char){
             if (Char == null || Char.equals("") || Char.equals(" "))
-                return "inconnu";
+                return "INCONNU";
             else 
                 return Char;
         }

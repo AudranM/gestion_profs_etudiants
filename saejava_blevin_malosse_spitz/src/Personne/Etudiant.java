@@ -9,13 +9,11 @@ package Personne;
  * @author audranmalosse
  */
 public class Etudiant extends Personne {
-    private String numEtudiant;
     private boolean anneeValide = true;
     
     
     public Etudiant (String Nom, String Prenom){
         super(Nom, Prenom);
-        this.numEtudiant = "E" + String.valueOf(getNumPersonne());
         super.incrTab(this);
         
     }
