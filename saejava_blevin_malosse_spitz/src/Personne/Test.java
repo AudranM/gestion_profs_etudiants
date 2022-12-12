@@ -11,7 +11,7 @@ package Personne;
 public class Test {
     public static void main (String [] args){  
         
-        Personnel pers1 = new PersonnelAdministratif("pers1", "pers1", 0.);
+       /* Personnel pers1 = new PersonnelAdministratif("pers1", "pers1", 0.);
         Personnel pers2 = new PersonnelAdministratif("pers2", "pers2", 0.);
         Personnel pers3 = new PersonnelAdministratif("pers3", "pers3", 0.);
         
@@ -41,7 +41,8 @@ public class Test {
         Bureau TestB3 = new Bureau(3, pers1, pers2, pers3);
         Bureau TestB4 = new Bureau();
         TestB1.afficheOccupants();
-        Bureau.afficheBureaux();
+        Bureau.afficheBureaux(); */
+       
     }
     
 }
