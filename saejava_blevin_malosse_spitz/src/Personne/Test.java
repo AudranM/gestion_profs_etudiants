@@ -42,6 +42,8 @@ public class Test {
         Bureau TestB4 = new Bureau();
         TestB1.afficheOccupants();
         Bureau.afficheBureaux();
+        
+        System.out.println(pers1.toString());
     }
     
 }

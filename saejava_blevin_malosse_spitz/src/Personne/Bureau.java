@@ -136,19 +136,30 @@ public class Bureau {
      */
     public final void setOccupant(Personnel occupant){
 
-        if (!occupant.getBureauAssigne()){
-            occupant.setBureauAssigne(true);
-            if (occupants[0] == null && nbPlace >= 1) occupants[0] = occupant;
-            else if (occupants[1] == null && nbPlace >= 2) occupants[1] = occupant;
-            else if (occupants[2] == null && nbPlace >= 3) occupants[2] = occupant;
-            else{
-                System.out.println("ERREUR : Il n'y a plus de places dans ce bureau");
-                occupant.setBureauAssigne(false);
+        if (occupant.getSonBureau() == null ){
+            boolean assigne = false;
+            for (int i = 0; i < nbPlace; i++){
+                if (isNull(occupants[i]) && !assigne){
+                    occupants[i] = occupant;
+                    occupant.setSonBureau(this);
+                    assigne = true; 
+                }
             }
+            if (!assigne) System.out.println("ERREUR : Il n'y a plus de places dans ce bureau");
         } else {
-            System.out.println("ERREUR : " + occupant.getNomPrenom() + " a déjà un bureau"); //rajouter de get le num de bureau quand l'att aura été add dans Personnel
+            System.out.println("ERREUR : " + occupant.getNomPrenom() + " est déjà dans le bureau " + occupant.getSonBureau().numero); 
         }
 
+    }
+    
+    public void changeBureau(Personnel occupant, Bureau newBureau){
+        
+        
+    }
+    
+    public boolean isNull(Object o){
+        
+        return o == null;
     }
     
 //---- GETTERS ----
