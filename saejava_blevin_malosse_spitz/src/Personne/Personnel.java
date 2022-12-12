@@ -65,11 +65,17 @@ public abstract class Personnel extends Personne {
      * @return l'ensemble des attributs de la classe et leur valeur*/
     @Override
     public String toString(){
+        
+        String bureau = "";
+        if (Utils.isNull(sonBureau)) bureau += "aucun";
+        else bureau += sonBureau.getNumero();
+        
         return super.toString() + "\nLe salaire fixe est de : " + salaireFixe + 
             "\nLe salaire mensuel est de : " + salaireTotalMensuel +
             "\nLe salaire annuel total est de :" + salaireTotalAnnuel +
-            "\nBureau : ";
+            "\nBureau : " + bureau;
     }
+    
     
     
     
