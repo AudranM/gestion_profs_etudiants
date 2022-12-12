@@ -13,10 +13,13 @@ public class Etudiant extends Personne {
     
     
     public Etudiant (String Nom, String Prenom){
-        super(Nom, Prenom);
-        super.incrTab(this);
-        
+        super(Nom, Prenom);  
     }
+    
+    public Etudiant (){
+        this("INCONNU", "INCONNU");  
+    }
+    
     public boolean anneeValidee () {
          if (getAbsNonJustif()>=5)
             return true;
@@ -88,4 +91,5 @@ public class Etudiant extends Personne {
     public boolean estEtudiant (Object O) {
         return O instanceof Etudiant;
     }
+    
 }

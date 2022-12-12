@@ -28,7 +28,7 @@ public abstract class Personne {
             this.setNom(Nom);
             this.setPrenom(Prenom);
             this.numPersonne = cpt++;
-            Personne.incrTab(this);
+            this.ajoutPersonne(this);
             
     }
     
@@ -97,15 +97,14 @@ public abstract class Personne {
         return this.nom.equals(p.nom) && this.prenom.equals(p.prenom) && this.numPersonne == p.numPersonne;
     }
     
-    /** Méthode d'incrémentation du tablea
+    /** Méthode d'incrémentation du tableau
      * @param P Personne qui sera ajouté au registre
      */
-    public static void incrTab (Personne P){registre.add(P);}
+    public static void ajoutPersonne (Personne P){registre.add(P);}
     
     //**Méthode qui parcour le registre*/
-    public void getRegistreNumPersonne (){
-        
-    }
+    public static void supprimePersonne (Personne P) {registre.remove(P);}
+    
     /**Redéfinition de toString*/
     @Override
     public String toString(){
@@ -120,4 +119,6 @@ public abstract class Personne {
     public static void afficheRegistre(){
             System.out.println(registre);
     } 
+    
+    
 }
