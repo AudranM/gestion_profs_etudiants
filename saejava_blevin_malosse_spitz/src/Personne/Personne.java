@@ -103,7 +103,7 @@ public abstract class Personne {
     public static void ajoutPersonne (Personne P){registre.add(P);}
     
     //**Méthode qui parcour le registre*/
-    public static void supprimePersonne (Personne P) {registre.remove(P);}
+    public static void supprimePersonne (int i) {registre.remove(i);}
     
     /**Redéfinition de toString*/
     @Override
@@ -129,4 +129,6 @@ public abstract class Personne {
         }
         return -1;
     }
+    
+    public static int tailleRegistre(){return registre.size();}
 }
