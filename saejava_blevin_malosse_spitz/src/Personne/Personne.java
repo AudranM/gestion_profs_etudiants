@@ -162,9 +162,8 @@ public abstract class Personne {
      */
     public static ArrayList<Personne> retourEtuPlus5Abs() {
         ArrayList<Personne> registreTmp = new ArrayList<>();
-        Personne P = new Etudiant();
         for (int i = 0; i < registre.size(); i++) {
-            if (registre.get(i).getClass() == P.getClass() && registre.get(i).getAbsNonJustif()>5) {
+            if (registre.get(i) instanceof Etudiant && registre.get(i).getAbsNonJustif()>5) {
                 registreTmp.add(registre.get(i));
             }
         }
