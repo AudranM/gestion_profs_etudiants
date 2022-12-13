@@ -9,29 +9,15 @@ package Personne;
  * @author audranmalosse
  */
 public class PersonnelEnseignantTitulaire extends PersonnelEnseignant {
-    
-        private static double tarifHeureSup;
-        private double volHoraire;
-        
-        
-        public PersonnelEnseignantTitulaire(String Nom, String Prenom, double TarifHeureSup){
-            super(Nom, Prenom);
-            this.tarifHeureSup = TarifHeureSup;
-        }
-        public PersonnelEnseignantTitulaire(String Nom, String Prenom){
-            super(Nom, Prenom);
-            this.tarifHeureSup = 0;
-        }
-        
-        public PersonnelEnseignantTitulaire(){
-        this("INCONNU","INCONNU");
-        }
-        
-         //getter
-        public double getTarifHeureSup(){return PersonnelEnseignantTitulaire.tarifHeureSup;}
-        
-        //setter
-        public void setTarifHeureSup(double Val){PersonnelEnseignantTitulaire.tarifHeureSup = Math.abs(Val);}
-        public void setVolHoraire(double Val){this.volHoraire = Math.abs(Val);}
-        
+
+    public PersonnelEnseignantTitulaire(String Nom, String Prenom) {
+        super(Nom, Prenom);
+        super.setDroitPrime(true);
+        super.setEstTitulaire(true);
+    }
+
+    public PersonnelEnseignantTitulaire() {
+        this("INCONNU", "INCONNU");
+    }
+
 }
