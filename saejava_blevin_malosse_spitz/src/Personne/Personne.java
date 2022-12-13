@@ -115,11 +115,12 @@ public abstract class Personne {
                "\nNombre d'absences justifié : " + this.absJustif +
                "\nNombre d'absence injustifié : " + this.absNonJustif + "\n";
     }
-    
+    /**Affiche le registre*/
     public static void afficheRegistre(){
             System.out.println(registre);
     } 
     
+    /**Revoie l'indice de la personne dans le registre en lui transmettant son ID*/
     public static int recupIndiceRegistre(int NumPersonne){
         int i=0;
         while (i<registre.size()){
@@ -130,9 +131,10 @@ public abstract class Personne {
         return -1;
     }
     
+    /**Retourne la taille actuel du registre*/
     public static int tailleRegistre(){return registre.size();}
         
-    
+    /**Retourne un registre de personnes du même types*/
     public static ArrayList<Personne> retourPersonnesType(Personne P){
         ArrayList<Personne>registreTmp = new ArrayList<>();
         for (int i=0; i<registre.size(); i++)
