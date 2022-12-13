@@ -13,7 +13,6 @@ public abstract class Personnel extends Personne {
     private static double primeAnnuelle;
     private boolean obtentionPrime = false;
     private boolean droitPrime = false;
-    private boolean bureauAssigne = false;
     public Bureau sonBureau;
     private double salaireFixe;
     private double salaireTotalMensuel;
@@ -43,7 +42,6 @@ public abstract class Personnel extends Personne {
     public static double getPrimeAnnuelle(){return Personnel.primeAnnuelle;}
     public boolean getObtensionPrime() {return this.obtentionPrime;}
     public boolean getDroitPrime() {return this.droitPrime;}
-    public boolean getBureauAssigne(){return bureauAssigne;}
     public Bureau getSonBureau(){return sonBureau;}
     
     //setter
@@ -54,23 +52,32 @@ public abstract class Personnel extends Personne {
     public void setObtentionPrime(boolean Bool){this.obtentionPrime = verifBool(Bool);}
     /**Permet de donner le droit ou non à la Prime*/
     public void setDroitPrime(boolean Bool){this.droitPrime = verifBool(Bool);}
-    public void setBureauAssigne(boolean Bool){bureauAssigne = verifBool(Bool);}
     
     /** Test d'égalité de deux peronnes*/
     public boolean equals (Personnel obj){
         if (!(obj instanceof Personnel))
             return false;
         Personnel p = (Personnel) obj;
-        return super.equals(obj) && this.salaireFixe == p.salaireFixe && this.bureauAssigne == p.bureauAssigne;    
+        return super.equals(obj) && this.salaireFixe == p.salaireFixe && this.sonBureau == p.sonBureau;   
     }
     
-    /**Redéfinition de toString*/
+    /**Redéfinition de toString
+     * @return l'ensemble des attributs de la classe et leur valeur*/
+    @Override
     public String toString(){
+        
+        String bureau = "";
+        if (Utils.isNull(sonBureau)) bureau += "aucun";
+        else bureau += sonBureau.getNumero();
+        
         return super.toString() + "\nLe salaire fixe est de : " + salaireFixe + 
             "\nLe salaire mensuel est de : " + salaireTotalMensuel +
             "\nLe salaire annuel total est de :" + salaireTotalAnnuel +
-            "\nBureau assigné : " + bureauAssigne;
+            "\nBureau : " + bureau;
     }
+    
+    
+    
     
     /**Permet de verifier si l'argument transmis est bien un booléen*/
     public boolean verifBool(boolean Bool){

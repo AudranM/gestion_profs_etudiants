@@ -20,10 +20,13 @@ public class Utils {
     
     /**Permet de vérifier qu'un string n'est pas null ou vide*/
         public static String verifString(String Char){
-            if (Char == null || Char.equals("") || Char.equals(" "))
+            if (isNull(Char) || Char.equals("") || Char.equals(" "))
                 return "INCONNU";
             else 
                 return Char;
         }
     
+        public static boolean isNull(Object o){
+            return (o == null);
+        }
 }
