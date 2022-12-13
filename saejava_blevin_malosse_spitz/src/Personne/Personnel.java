@@ -76,6 +76,9 @@ public abstract class Personnel extends Personne {
             "\nBureau : " + bureau + "\n";
     }
     
+    public void changeBureau(Bureau newBureau){
+        sonBureau.envoieVersNewBureau(this, newBureau);
+    }
     
     
     
