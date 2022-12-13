@@ -146,4 +146,18 @@ public abstract class Personne {
     public static Personne retourPersonneNum (int Num){
         return registre.get(Personne.recupIndiceRegistre(Num));
     }
+
+    /**
+     * Retourne un registre de personnes qui ont plus de 5 abs
+     */
+    public static ArrayList<Personne> retourEtuPlus5Abs() {
+        ArrayList<Personne> registreTmp = new ArrayList<>();
+        Personne P = new Etudiant();
+        for (int i = 0; i < registre.size(); i++) {
+            if (registre.get(i).getClass() == P.getClass() && registre.get(i).getAbsNonJustif()>5) {
+                registreTmp.add(P);
+            }
+        }
+        return registreTmp;
+    }
 }
