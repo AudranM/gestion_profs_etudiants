@@ -122,7 +122,7 @@ public class Console {
         String prenom = Clavier.lireString();
         System.out.println("Saisir le salaire fixe");
         double tarifHeureSup = Clavier.lireDouble();
-        Personne Personne = new PersonnelEnseignantTitulaire(nom, prenom, tarifHeureSup);
+        Personne Personne = new PersonnelEnseignantTitulaire(nom, prenom);
     }
 
     // a finir
@@ -136,7 +136,7 @@ public class Console {
         String prenom = Clavier.lireString();
         System.out.println("Saisir le nombre d'heure");
         int nbHeure = Clavier.lireInt();
-        Personne Personne = new PersonnelEnseignantVacataire(nom, prenom, nbHeure);       
+        Personne Personne = new PersonnelEnseignantVacataire(nom, prenom);       
     }
 
 }
