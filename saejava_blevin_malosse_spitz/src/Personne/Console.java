@@ -6,17 +6,33 @@ package Personne;
 
 import static Personne.Application.*;
 import static Personne.Personne.*;
-
+import static Personne.Bureau.*;
 /**
  *
  * @author fabio
  */
 public class Console {
 
-    public static void definiHeuresSuplementaire(){
+    
+    public static void ajouterUnOccupant(){
     System.out.println("\nindiquer le numero de la personne");
     int numPersonne = Clavier.lireInt();
-    System.out.println("\nindiquer les heures à suplemantaire effectué");
+    System.out.println("\nindiquer le numero du bureau");
+    int numBureau = Clavier.lireInt();
+    Bureau.bureaux.get(0);
+    }
+    
+    public static void ajouterUnBureau(){
+    System.out.println("\nindiquer le nombre de place dans le bureau");
+    int numPlace = Clavier.lireInt();
+    Bureau bureau = new Bureau(numPlace);
+    }
+    
+    
+    public static void definiHeuresSuplementaire(){
+    System.out.println("\nIndiquer le numero de la personne");
+    int numPersonne = Clavier.lireInt();
+    System.out.println("\nIndiquer les heures à suplemantaire effectué");
     double heureAEffectue = Clavier.lireDouble();
          if (retourPersonneNum(numPersonne) instanceof Personnel) {
             ((Personnel) retourPersonneNum(numPersonne)).setVolHoraire(heureAEffectue);
@@ -26,7 +42,7 @@ public class Console {
     }
     
     public static void heureAEffectue(){
-    System.out.println("\nindiquer le numero de la personne");
+    System.out.println("\nIndiquer le numero de la personne");
     int numPersonne = Clavier.lireInt();
     System.out.println("\nindiquer les heures à effectué");
     double heureAEffectue = Clavier.lireDouble();
@@ -40,9 +56,9 @@ public class Console {
     
     
     public static void definiBourseEtudiantboursier(){
-    System.out.println("\nindiquer le numero de la personne");
+    System.out.println("\nIndiquer le numero de la personne");
     int numPersonne = Clavier.lireInt();
-    System.out.println("\nindiquer le montant de la bourse");
+    System.out.println("\nIndiquer le montant de la bourse");
     double montantBourse = Clavier.lireDouble();
      if (retourPersonneNum(numPersonne) instanceof EtudiantBoursier) {
             ((EtudiantBoursier) retourPersonneNum(numPersonne)).setBourse(montantBourse);
@@ -52,13 +68,14 @@ public class Console {
     }
     
     public static void definiPrime() {
-        System.out.println("\nindiquer le numero de la personne");
+        System.out.println("\nIndiquer le numero de la personne");
         int numPersonne = Clavier.lireInt();
         boolean choix;
         String reponse;
-        System.out.println("\nindiquer si vous voulez donner la prime Oui/Non");
+        System.out.println("\nIndiquer si vous voulez donner la prime Oui/Non");
         reponse = Clavier.lireString();
-        if (reponse.equals("Oui")) {
+        reponse = reponse.toLowerCase();
+        if (reponse.equals("oui")) {
             choix = true;
         } else {
             choix = false;
@@ -74,7 +91,7 @@ public class Console {
      * Methode pour fixer le salaire Fixe des personnels
      */
     public static void definiSalaireFixe() {
-        System.out.println("\nindiquer le numero de la personne");
+        System.out.println("\nIndiquer le numero de la personne");
         int numPersonne = Clavier.lireInt();
         System.out.println("\nindiquer le nombre d'absence justifie");
         double salaireFixe = Clavier.lireDouble();
@@ -102,14 +119,14 @@ public class Console {
     public static void ajoutDuneAbsenceJustifie() {
         System.out.println("\nindiquer le numero de la personne pour lui ajouter une absence justife");
         int numPersonne = Clavier.lireInt();
-        System.out.println("\nindiquer le nombre d'absence justifie");
+        System.out.println("\nIndiquer le nombre d'absence justifie");
         int numAbsenceJusitife = Clavier.lireInt();
         retourPersonneNum(numPersonne).addAbsJustif(numAbsenceJusitife);
         absence();
     }
 
     public static void ajoutDuneAbsenceinjustifie() {
-        System.out.println("\ninsiquer le numero de la personne pour lui ajouter une absence injustife");
+        System.out.println("\nIndiquer le numero de la personne pour lui ajouter une absence injustife");
         int numPersonne = Clavier.lireInt();
         System.out.println("\nindiquer le nombre d'absence injustifie");
         int numAbsenceJusitife = Clavier.lireInt();

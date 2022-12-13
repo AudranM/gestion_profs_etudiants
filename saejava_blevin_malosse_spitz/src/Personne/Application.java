@@ -307,17 +307,21 @@ public class Application {
         }
 
     }
-public static void gestionDesBureaux(){
-int choix = -1;
+
+    public static void gestionDesBureaux() {
+        int choix = -1;
         System.out.println("\nMenu de gestion des bureaux");
         System.out.println("\nMerci de faire votre choix");
         System.out.println("--------------------------------------------------\n");
         System.out.println("[0] : Arrêter le programme");
         System.out.println("[1] : Retour au menu principal");
-        System.out.println("[2] : Modifier le Salaire Fixe");
-        System.out.println("[3] : Modifier les Heure à Effectué");
-        System.out.println("[4] : Modifier les Heures Suplementaire");
-        System.out.println("[5] : Modifier les Heures Effectué");
+        System.out.println("[2] : Ajouter un Bureau");
+        System.out.println("[3] : Ajouter un occupant à un bureau");
+        System.out.println("[4] : Afficher toutes les infos d'un Bureau");
+        System.out.println("[5] : Affiche tous les bureaux et toutes leurs infos");
+        System.out.println("[6] : Afficher les occupants d'un Bureau");
+        System.out.println("[7] : Set le nombre de places");
+        System.out.println("[8] : Changer le bureau d'une personne");
         choix = Clavier.lireInt();
 
         switch (choix) {
@@ -328,16 +332,27 @@ int choix = -1;
                 menu();
                 break;
             case 2:
-               gestionDesBureaux();
+                ajouterUnBureau();
+                gestionDesBureaux();
                 break;
-            case 3:                
+            case 3: 
+                ajouterUnOccupant();
                 gestionDesBureaux();
                 break;
             case 4: ;
                 gestionDesBureaux();
                 break;
             case 5: ;
-               gestionDesBureaux();
+                gestionDesBureaux();
+                break;
+            case 6: ;
+                gestionDesBureaux();
+                break;
+            case 7: ;
+                gestionDesBureaux();
+                break;
+            case 8: ;
+                gestionDesBureaux();
                 break;
             default:
                 menu();
@@ -348,4 +363,3 @@ int choix = -1;
     }
 
 }
-
