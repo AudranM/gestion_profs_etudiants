@@ -102,7 +102,8 @@ public abstract class Personne {
      */
     public static void ajoutPersonne (Personne P){registre.add(P);}
     
-    /**Méthode qui parcour le registre*/
+    /**Méthode qui parcour le registr
+     * @param i Index d'une personne*/
     public static void supprimePersonne (int i) {registre.remove(i);}
     
     /**Redéfinition de toString*/
@@ -120,7 +121,10 @@ public abstract class Personne {
             System.out.println(registre);
     } 
     
-    /**Revoie l'indice de la personne dans le registre en lui transmettant son ID*/
+    /**Revoie l'indice de la personne dans le registre en lui transmettant son ID.
+     * @param NumPersonne ID d'une personne
+     * @return Indice dans registre d'une personne 
+     */
     public static int recupIndiceRegistre(int NumPersonne){
         int i=0;
         while (i<registre.size()){
@@ -131,11 +135,15 @@ public abstract class Personne {
         return -1;
     }
     
-    /**Retourne la taille actuel du registre*/
+    /**Retourne la taille actuel du registr
+     * @return Taille du registre
+     */
     public static int tailleRegistre(){return registre.size();}
         
     /**Retourne un registre de personnes du même types
-        System.out.println(registre.get(i).getClass().getName());*/
+     * @param classe Nom de classe en string
+     * @return Registre temporaire de Personnes du mêmes types
+     */
     public static ArrayList<Personne> retourPersonnesType(String classe){
         ArrayList<Personne>registreTmp = new ArrayList<>();
         int i;  
@@ -149,8 +157,8 @@ public abstract class Personne {
         return registre.get(Personne.recupIndiceRegistre(Num));
     }
 
-    /**
-     * Retourne un registre de personnes qui ont plus de 5 abs
+    /**Retourne un registre d'étudient qui ont plus de 5 absences
+     * @return ArrayList registre temporaire
      */
     public static ArrayList<Personne> retourEtuPlus5Abs() {
         ArrayList<Personne> registreTmp = new ArrayList<>();
@@ -163,8 +171,8 @@ public abstract class Personne {
         return registreTmp;
     }
     
-     /**
-     * Retourne un registre de personnes qui ont plus de 5 abs
+     /**Retourne un registre de personnes qui ont plus de 5 aabsences
+     * @return ArrayList registre temporaire
      */
     public static ArrayList<Personne> retourPerPlus5Abs() {
         ArrayList<Personne> registreTmp = new ArrayList<>();

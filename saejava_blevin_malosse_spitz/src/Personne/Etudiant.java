@@ -21,19 +21,13 @@ public class Etudiant extends Personne {
     }
     
     public boolean anneeValidee () {
-         if (getAbsNonJustif()>=5)
-            return true;
-        else
-            return false;
+        return getAbsNonJustif() >= 5;
     }
     /**Méthode de vérification du nombre d'absences injustifie pour valider ou 
      * non l'année
      */
     public void verifAbs (){
-        if (super.getAbsNonJustif()>=5)
-            this.anneeValide = false;
-        else
-            this.anneeValide = true;
+        this.anneeValide = super.getAbsNonJustif() < 5;
     }
     /** Redefinition de la méthode pour ajouter une abs injustifier et tester
      * la validité de l'année. 
@@ -64,6 +58,7 @@ public class Etudiant extends Personne {
     /** addAbsJustif transforme le nombre d'absence injustifiée, transmise en 
      * paramètre, en absence justifiée et test la validitée de l'année.
      */
+    @Override
     public void addAbsJustif (int Nombre){
         super.addAbsJustif(Nombre);
         this.verifAbs();
@@ -87,7 +82,10 @@ public class Etudiant extends Personne {
             System.out.print("L'etudiant a n'a pas de souci d'absence pour valider son année");
     }
     
-    /** Méthode qui retourne si oui ou non cest un étudiant.*/
+    /** Méthode qui retourne si oui ou non cest un étudiant
+     * @param O Un objet à coparer
+     * @return Boolean
+     */
     public boolean estEtudiant (Object O) {
         return O instanceof Etudiant;
     }
