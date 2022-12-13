@@ -339,13 +339,13 @@ public class Application {
                 ajouterUnOccupant();
                 gestionDesBureaux();
                 break;
-            case 4: ;
+            case 4:  afficherToutesLesInfos();
                 gestionDesBureaux();
                 break;
-            case 5: ;
+            case 5: afficheTousLesBureauxEtInfos();
                 gestionDesBureaux();
                 break;
-            case 6: ;
+            case 6: afficherLesOccupantsDunBureau();
                 gestionDesBureaux();
                 break;
             case 7: ;

@@ -7,66 +7,136 @@ package Personne;
 import static Personne.Application.*;
 import static Personne.Personne.*;
 import static Personne.Bureau.*;
+
 /**
  *
  * @author fabio
  */
 public class Console {
 
-    
-    public static void ajouterUnOccupant(){
-    System.out.println("\nindiquer le numero de la personne");
-    int numPersonne = Clavier.lireInt();
-    System.out.println("\nindiquer le numero du bureau");
-    int numBureau = Clavier.lireInt();
-    Bureau.bureaux.get(0);
+    public static void alouerUnBureauApresCreation() {
+        if (Bureau.bureaux.size() < 1) {
+            String reponse;
+            System.out.println("\nIndiquer si vous voulez creer un bureau et ajouter un occupant? Oui/Non");
+            reponse = Clavier.lireString();
+            reponse = reponse.toLowerCase();
+            if (reponse.equals("oui")) {
+                ajouterUnBureau();
+                ajouterUnOccupant();
+            } else {
+                ajoutPersonne();
+            }
+        } else {
+            System.out.println("\nIndiquer si vous voulez ajouter un occupant a un bureau? Oui/Non");
+            String reponse;
+            reponse = Clavier.lireString();
+            reponse = reponse.toLowerCase();
+            if (reponse.equals("oui")) {
+                ajouterUnOccupant();
+            } else {
+                ajoutPersonne();
+            }
+        }
+
     }
-    
-    public static void ajouterUnBureau(){
-    System.out.println("\nindiquer le nombre de place dans le bureau");
-    int numPlace = Clavier.lireInt();
-    Bureau bureau = new Bureau(numPlace);
+
+    /**
+     * Methode pour afficher les occupants d'un bureau
+     */
+    public static void afficherLesOccupantsDunBureau() {
+        System.out.println("\nindiquer le numero du bureau");
+        int numBureau = Clavier.lireInt();
+        retourBureauNum(numBureau).getStringOccupants();
     }
-    
-    
-    public static void definiHeuresSuplementaire(){
-    System.out.println("\nIndiquer le numero de la personne");
-    int numPersonne = Clavier.lireInt();
-    System.out.println("\nIndiquer les heures à suplemantaire effectué");
-    double heureAEffectue = Clavier.lireDouble();
-         if (retourPersonneNum(numPersonne) instanceof Personnel) {
+
+    /**
+     * Methode pour afficher tous les bureaux et leurs informations
+     */
+    public static void afficheTousLesBureauxEtInfos() {
+        afficheBureaux();
+    }
+
+    /**
+     * Methode pour afficher toutes les informations d'un bureau en particulier
+     */
+    public static void afficherToutesLesInfos() {
+        System.out.println("\nindiquer le numero du bureau");
+        int numBureau = Clavier.lireInt();
+        System.out.println(retourBureauNum(numBureau));
+    }
+
+    /**
+     * Methode pour assigner un personnel à un bureau
+     */
+    public static void ajouterUnOccupant() {
+        System.out.println("\nindiquer le numero de la personne");
+        int numPersonne = Clavier.lireInt();
+        if (retourPersonneNum(numPersonne) instanceof Personnel) {
+            System.out.println("\nindiquer le numero du bureau");
+            int numBureau = Clavier.lireInt();
+            retourBureauNum(numBureau).setOccupant((Personnel) retourPersonneNum(numPersonne));
+        } else {
+            System.out.println("Ce n'est pas un Personnel");
+        }
+    }
+
+    /**
+     * Methode pour ajouter un bureau
+     */
+    public static void ajouterUnBureau() {
+        System.out.println("\nindiquer le nombre de place dans le bureau");
+        int numPlace = Clavier.lireInt();
+        Bureau bureau = new Bureau(numPlace);
+    }
+
+    /**
+     * Methode pour definir les heures suplementaire du personnel
+     */
+    public static void definiHeuresSuplementaire() {
+        System.out.println("\nIndiquer le numero de la personne");
+        int numPersonne = Clavier.lireInt();
+        System.out.println("\nIndiquer les heures à suplemantaire effectué");
+        double heureAEffectue = Clavier.lireDouble();
+        if (retourPersonneNum(numPersonne) instanceof Personnel) {
+            //((Personnel) retourPersonneNum(numPersonne)).setVolHoraire(heureAEffectue);
+        } else {
+            System.out.println("Ce n'est pas un Personnel");
+        }
+    }
+
+    /**
+     * Methode pour definir les heures a effectué par le personnel
+     */
+    public static void heureAEffectue() {
+        System.out.println("\nIndiquer le numero de la personne");
+        int numPersonne = Clavier.lireInt();
+        System.out.println("\nindiquer les heures à effectué");
+        double heureAEffectue = Clavier.lireDouble();
+        if (retourPersonneNum(numPersonne) instanceof Personnel) {
             ((Personnel) retourPersonneNum(numPersonne)).setVolHoraire(heureAEffectue);
         } else {
             System.out.println("Ce n'est pas un Personnel");
         }
     }
-    
-    public static void heureAEffectue(){
-    System.out.println("\nIndiquer le numero de la personne");
-    int numPersonne = Clavier.lireInt();
-    System.out.println("\nindiquer les heures à effectué");
-    double heureAEffectue = Clavier.lireDouble();
-     if (retourPersonneNum(numPersonne) instanceof Personnel) {
-            ((Personnel) retourPersonneNum(numPersonne)).setVolHoraire(heureAEffectue);
-        } else {
-            System.out.println("Ce n'est pas un Personnel");
-        }
-    }
-    
-    
-    
-    public static void definiBourseEtudiantboursier(){
-    System.out.println("\nIndiquer le numero de la personne");
-    int numPersonne = Clavier.lireInt();
-    System.out.println("\nIndiquer le montant de la bourse");
-    double montantBourse = Clavier.lireDouble();
-     if (retourPersonneNum(numPersonne) instanceof EtudiantBoursier) {
+
+    /**
+     * Methode pour definir la bourse des etudiant boursier
+     */
+    public static void definiBourseEtudiantboursier() {
+        System.out.println("\nIndiquer le numero de la personne");
+        int numPersonne = Clavier.lireInt();
+        System.out.println("\nIndiquer le montant de la bourse");
+        double montantBourse = Clavier.lireDouble();
+        if (retourPersonneNum(numPersonne) instanceof EtudiantBoursier) {
             ((EtudiantBoursier) retourPersonneNum(numPersonne)).setBourse(montantBourse);
         } else {
             System.out.println("Ce n'est pas un Personnel");
         }
     }
-    
+
+    /**
+     * Methode pour definir la prime des personnel
+     */
     public static void definiPrime() {
         System.out.println("\nIndiquer le numero de la personne");
         int numPersonne = Clavier.lireInt();
@@ -235,6 +305,7 @@ public class Console {
         System.out.println("Saisir le salaire fixe");
         double salaireFixe = Clavier.lireDouble();
         Personne Personne = new PersonnelAdministratif(nom, prenom, salaireFixe);
+        alouerUnBureauApresCreation();
     }
 
     /**
@@ -248,6 +319,7 @@ public class Console {
         System.out.println("Saisir le salaire fixe");
         double tarifHeureSup = Clavier.lireDouble();
         Personne Personne = new PersonnelEnseignantTitulaire(nom, prenom, tarifHeureSup);
+        alouerUnBureauApresCreation();
     }
 
     // a finir
@@ -262,6 +334,7 @@ public class Console {
         System.out.println("Saisir le nombre d'heure");
         int nbHeure = Clavier.lireInt();
         Personne Personne = new PersonnelEnseignantVacataire(nom, prenom, nbHeure);
+        alouerUnBureauApresCreation();
     }
 
 }
