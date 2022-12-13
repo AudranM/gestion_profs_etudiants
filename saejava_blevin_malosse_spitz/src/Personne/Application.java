@@ -15,13 +15,13 @@ public class Application {
     // Menu principale
     public static void menu() {
         int choix = -1;
-        System.out.println("\nMenu principale");
+        System.out.println("\nMenu principal");
         System.out.println("\nMerci de faire votre choix");
         System.out.println("\n0 : Arrêter le programme");
         System.out.println("\n1 : Ajouter au registre");
         System.out.println("\n2 : Effacer du registre");
         System.out.println("\n3 : Les etudiants avec plus de 5 absence injustifié");
-        System.out.println("\n4 : Liste des salariés qui ont une retenu sur salaire");
+        System.out.println("\n4 : Liste des salariés qui ont une retenue sur salaire");
         System.out.println("\n5 : Voir les informations d'une personne dans le registre");
         System.out.println("\n6 : Ajouter une absence");
         choix = Clavier.lireInt();
@@ -34,7 +34,7 @@ public class Application {
                 ajoutPersonne();
                 break;
             case 2:
-                Application.suprimePersonne();
+                supprimePersonne();
                 break;
             case 3:
                 ajoutPersonne();
@@ -56,9 +56,10 @@ public class Application {
 
     public static void ajoutPersonne() {
         int choix = -1;
+        System.out.println("\nMenu d'Ajout des Personnes");
         System.out.println("\nMerci de faire votre choix");
         System.out.println("\n0 : Arrêter le programme");
-        System.out.println("\n1 : retourner au menu principale");
+        System.out.println("\n1 : Retour au menu principal");
         System.out.println("\n2 : Ajouter un etudiant");
         System.out.println("\n3 : Ajouter un etudiant boursier");
         System.out.println("\n4 : Ajouter un enseignant titulaire");
@@ -100,57 +101,58 @@ public class Application {
         }
     }
 
-    public static void suprimePersonne() {
+    public static void supprimePersonne() {
         int choix = -1;
-        System.out.println("\nMenu principale");
+        System.out.println("\nMenu de Supression des Personnes");
         System.out.println("\nMerci de faire votre choix");
-        System.out.println("\n0 : Menu principale");
-        System.out.println("\n1 : Effacer un element du registre");
-        System.out.println("\n2 : Voir les elements du registre");
+        System.out.println("\n0 : Arrêter le programme");
+        System.out.println("\n1 : Retour au menu principal");
+        System.out.println("\n2 : Effacer un element du registre");
+        System.out.println("\n3 : Voir le registre etudiant");
 
         switch (choix) {
+            
             case 0:
-                menu();
+                quitterLeProgramme();
                 break;
             case 1:
-                effacerUnElement();
-                suprimePersonne();
+                menu();
                 break;
             case 2:
-                afficherToutesLesPersonne();
-                suprimePersonne();
+                effacerUnElement();
+                supprimePersonne();
                 break;
             case 3:
                 ;
                 break;
-            default:
-                menu();
-                break;
         }
     }
-
+    
     public static void absence() {
         int choix = -1;
-        System.out.println("\nMenu principale");
+        System.out.println("\nMenu Gestion des Absences");
         System.out.println("\nMerci de faire votre choix");
-        System.out.println("\n0 : Menu principale");
-        System.out.println("\n1 : ajouter une absence jusitfié");
-        System.out.println("\n2 : ajouter une absence injusitfié");
+        System.out.println("\n0 : Arrêter le programme");
+        System.out.println("\n1 : Retour au menu principal");
+        System.out.println("\n2 : ajouter une absence jusitfié");
+        System.out.println("\n3 : ajouter une absence injusitfié");
+ 
 
         switch (choix) {
             case 0:
-                menu();
+                quitterLeProgramme();
                 break;
             case 1:
-
+                menu();
                 break;
             case 2:
-                ;
+
                 break;
             case 3:
                 ;
                 break;
         }
     }
-
+    
+    
 }
