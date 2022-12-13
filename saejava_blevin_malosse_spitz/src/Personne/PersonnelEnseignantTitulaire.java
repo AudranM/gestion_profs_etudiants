@@ -18,6 +18,10 @@ public class PersonnelEnseignantTitulaire extends PersonnelEnseignant {
             super(Nom, Prenom);
             this.tarifHeureSup = TarifHeureSup;
         }
+        public PersonnelEnseignantTitulaire(String Nom, String Prenom){
+            super(Nom, Prenom);
+            this.tarifHeureSup = 0;
+        }
         
          //getter
         public double getTarifHeureSup(){return PersonnelEnseignantTitulaire.tarifHeureSup;}

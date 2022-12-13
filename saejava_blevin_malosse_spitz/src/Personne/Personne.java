@@ -4,7 +4,6 @@
  */
 package Personne;
 import java.util.ArrayList; 
-import java.util.List;
 /**
  *
  * @author audranmalosse
@@ -12,28 +11,30 @@ import java.util.List;
 public abstract class Personne {
 
     // attributs 
-    private int numPersonne=0;
+    private final int numPersonne;
     private int absJustif= 0;
     private int absNonJustif =0;
     private String nom;
     private String prenom;
     private static int cpt = 0;
     private static ArrayList<Personne>registre = new ArrayList<>();
-    private static int tailleTab = 0;
     
     
-    /**Constructeur qui utilise les setters avec Nom et Prenom comme argument*/
+    /**Constructeur qui utilise les setters avec Nom et Prenom comme argumen
+     * @param Nom Nom de la personne
+     * @param Prenom Pernom de la personne
+     */
     public Personne (String Nom, String Prenom){
-            setNom(Nom);
-            setPrenom(Prenom);
+            this.setNom(Nom);
+            this.setPrenom(Prenom);
             this.numPersonne = cpt++;
+            this.ajoutPersonne(this);
+            
     }
     
     /**Constructeur par defaut qui utilise les setters et aucun argument*/
     public Personne (){
-            this.nom = "inconnu";
-            this.prenom = "inconnu";    
-            this.numPersonne = cpt++;
+        this("INCONNU","INCONNU");
     }
     
     //getter
@@ -45,23 +46,18 @@ public abstract class Personne {
     public int getAbsNonJustif(){ return this.absNonJustif;}
     public int getNumPersonne(){ return this.numPersonne;}
     
-    /**Fonction qui verifie si la chaine de caractère transmise en argument n'est pas null ni vide*/
-    public String verifVide(String aVerifier){
-        if(aVerifier != null || (!aVerifier.equals("")))
-            return aVerifier;
-        else
-            return "inconnu";
-    }
+
     
     //setter
-    public void setNom(String Nom){this.nom = verifVide(Nom);}
+    void setNom(String Nom){this.nom = Utils.verifString(Nom);} 
+    void setPrenom(String Prenom){this.prenom = Utils.verifString(Prenom);}
     
-    public void setPrenom(String Prenom){this.prenom = verifVide(Prenom);}
-    
-    /**addAbsNonJustif ajoute une absence injustifiée*/
+    /** addAbsNonJustif ajoute une absence injustifiée*/
     public void addAbsNonJustif(){this.absNonJustif++;}
     
-    /** addAbsNonJustif ajoute la valeurs transmise en paramètre au nombre d'absences déjà enregistrées*/
+    /** addAbsNonJustif ajoute la valeurs transmise en paramètre au nombre d'absences déjà enregistrée
+     * @param Nombre Nombre d'absences injustifiées
+     */
     public void addAbsNonJustif(int Nombre){this.absNonJustif+=Math.abs(Nombre);}
     
     /** addAbsJustif transforme une absence injustifiée en absence justifiée 
@@ -76,8 +72,8 @@ public abstract class Personne {
             System.out.println("ERREUR: Il n'y a pas assez d'absences non justifiée");
     }
     
-    /** addAbsJustif transforme le nombre d'absence injustifiée, transmise en 
-     * paramètre, en absence justifiée
+    /** addAbsJustif transforme le nombre d'absence injustifiée, transmise en paramètre, en absence justifiée
+     * @param Nombre Nombre d'absences injustifiées que l'on veut passer en absence justifiées
      */
     public void addAbsJustif (int Nombre){
         
@@ -88,32 +84,64 @@ public abstract class Personne {
         else
             System.out.println("ERREUR: Il n'y a pas assez d'absences non justifiée"); 
     }
-    /** Test d'égalité de deux peronnes*/
+    /** Test d'égalité de deux peronne
+     * @param obj personne dont on veut tester l'égalitée
+     * @return 
+     */
     public boolean equals (Personne obj){
+        if (obj == null) return false;
+        if (obj == this) return true;
         if (!(obj instanceof Personne))
             return false;
         Personne p = (Personne) obj;
         return this.nom.equals(p.nom) && this.prenom.equals(p.prenom) && this.numPersonne == p.numPersonne;
     }
     
-    /** Méthode d'incrémentation du tableau*/
-    public void incrTab (Personne P){
-        registre.add(P);
-    }
+    /** Méthode d'incrémentation du tableau
+     * @param P Personne qui sera ajouté au registre
+     */
+    public static void ajoutPersonne (Personne P){registre.add(P);}
+    
+    /**Méthode qui parcour le registre*/
+    public static void supprimePersonne (int i) {registre.remove(i);}
+    
     /**Redéfinition de toString*/
+    @Override
     public String toString(){
-        return "Nature de la personne : " + this.getClass().getSimpleName() +
+        return "\nNature de la personne : " + this.getClass().getSimpleName() +
                "\nNom : " + this.nom + 
                "\nPrenom : " + this.prenom + 
                "\nid Personne : " + this.numPersonne + 
                "\nNombre d'absences justifié : " + this.absJustif +
-               "\nNombre d'absence injustifié : " + this.absNonJustif;
+               "\nNombre d'absence injustifié : " + this.absNonJustif + "\n";
     }
     
     public static void afficheRegistre(){
             System.out.println(registre);
-    }
-    /**Méthode abstraite qui verifie le nombre d'absence*/
-
+    } 
     
+    public static int recupIndiceRegistre(int NumPersonne){
+        int i=0;
+        while (i<registre.size()){
+            if (registre.get(i).getNumPersonne() == NumPersonne )
+                return i;
+            i++;
+        }
+        return -1;
+    }
+    
+    public static int tailleRegistre(){return registre.size();}
+        
+    
+    public static ArrayList<Personne> retourPersonnesType(Personne P){
+        ArrayList<Personne>registreTmp = new ArrayList<>();
+        for (int i=0; i<registre.size(); i++)
+            if (registre.get(i).getClass() == P.getClass())
+                registreTmp.add(P);
+        return registreTmp;
+    }
+    
+    public static Personne retourPersonneNum (int Num){
+        return registre.get(Personne.recupIndiceRegistre(Num));
+    }
 }
