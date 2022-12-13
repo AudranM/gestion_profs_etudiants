@@ -152,9 +152,23 @@ public class Bureau {
 
     }
     
-    public void changeBureau(Personnel occupant, Bureau newBureau){
+    /**
+     * 
+     * @param occupant reference de type Personnel duquel il faut changer le bureau
+     * @param newBureau reference de type Bureau vers lequel il faut déplacer le Personnel
+     */
+    public void envoieVersNewBureau(Personnel occupant, Bureau newBureau){
         
-        
+        for (int i = 0; i <nbPlace; i++){
+            
+            if (occupants[i].equals(occupant)){
+                occupants[i] = null;
+                occupants[i].setSonBureau(null);
+                newBureau.setOccupant(occupants[i]);
+                occupants[i].setSonBureau(newBureau);
+            }
+            
+        }
     }
     
     

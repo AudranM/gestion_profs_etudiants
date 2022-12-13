@@ -22,19 +22,15 @@ public class EtudiantBoursier extends Etudiant {
     }
 
     /**
-     * Verifie et incrémente la Bourse
+     * Incrémente la bourse
+     * @param Val Montant de la bourse
      */
-    public void setBourse(double Val) {
-        if (Val > 0) {
-            this.bourse = Val;
-        } else {
-            this.bourse = 0.;
-        }
-    }
+    private void setBourse(double Val) {this.bourse = Math.abs(Val);}
 
     /**
      * Méthode qui retourne si oui ou non cest un étudiant Boursier.
      */
+    @Override
     public boolean estEtudiant(Object O) {
         return O instanceof EtudiantBoursier;
     }
