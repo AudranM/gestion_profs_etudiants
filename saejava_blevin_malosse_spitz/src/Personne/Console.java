@@ -12,9 +12,11 @@ import static Personne.Personne.*;
  */
 public class Console {
 
+    
+    
+    
     /**
      * Méthode pour supprimer un element de Arraylist dans la classe Personne
-     *
      * @return
      */
     public static void effacerUnElement() {
@@ -32,9 +34,9 @@ public class Console {
     /**
      * Méthode pour quitter le programme
      */
-    public static void quitterLeProgramme() {
+    public static int quitterLeProgramme() {
         System.out.println("Merci d'avoir utilisé notre programme");
-        System.exit(1);
+        return 0;
     }
 
     /**
@@ -96,7 +98,8 @@ public class Console {
         String nom = Clavier.lireString();
         System.out.println("Saisir le Prénom");
         String prenom = Clavier.lireString();
-        System.out.println("Saisir le salaire fixe");
-        Personne Personne = new PersonnelEnseignantVacataire(nom, prenom);
+        System.out.println("Saisir le nombre d'heure");
+        int nbHeure = Clavier.lireInt();
+        Personne Personne = new PersonnelEnseignantVacataire(nom, prenom, nbHeure);
     }
 }

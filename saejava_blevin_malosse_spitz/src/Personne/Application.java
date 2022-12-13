@@ -23,6 +23,7 @@ public class Application {
         System.out.println("\n3 : Les etudiants avec plus de 5 absence injustifié");
         System.out.println("\n4 : Liste des salariés qui ont une retenu sur salaire");
         System.out.println("\n5 : Voir les informations d'une personne dans le registre");
+        System.out.println("\n6 : Ajouter une absence");
         choix = Clavier.lireInt();
 
         switch (choix) {
@@ -43,6 +44,9 @@ public class Application {
                 break;
             case 5:
                 ajoutPersonne();
+                break;
+            case 6:
+                absence();
                 break;
             default:
                 menu();
@@ -71,18 +75,23 @@ public class Application {
                 break;
             case 2:
                 creatEtudiant();
+                ajoutPersonne();
                 break;
             case 3:
                 creatEtudiantBoursier();
+                ajoutPersonne();
                 break;
             case 4:
                 creatPersonnelEnseignantTitulaire();
+                ajoutPersonne();
                 break;
             case 5:
                 creatPersonnelEnseignantVacataire();
+                ajoutPersonne();
                 break;
             case 6:
                 creatPersonnelAdministratif();
+                ajoutPersonne();
                 break;
             default:
                 menu();
@@ -105,6 +114,7 @@ public class Application {
                 break;
             case 1:
                 effacerUnElement();
+                suprimePersonne();
                 break;
             case 2:
                 ;
@@ -114,4 +124,31 @@ public class Application {
                 break;
         }
     }
+    
+    public static void absence() {
+        int choix = -1;
+        System.out.println("\nMenu principale");
+        System.out.println("\nMerci de faire votre choix");
+        System.out.println("\n0 : Menu principale");
+        System.out.println("\n1 : ajouter une absence jusitfié");
+        System.out.println("\n2 : ajouter une absence injusitfié");
+ 
+
+        switch (choix) {
+            case 0:
+                menu();
+                break;
+            case 1:
+
+                break;
+            case 2:
+                ;
+                break;
+            case 3:
+                ;
+                break;
+        }
+    }
+    
+    
 }
