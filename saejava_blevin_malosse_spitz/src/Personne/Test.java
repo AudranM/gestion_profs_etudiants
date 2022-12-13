@@ -28,8 +28,12 @@ public class Test {
         Bureau TestB2 = new Bureau(3, pers1, pers2, pers3);
         Bureau TestB3 = new Bureau(3, pers1, pers2, pers3);
         Bureau TestB4 = new Bureau();
+        
+        pers1.changeBureau(TestB2);
+        
+        Bureau.afficheBureaux();
  
-       Test1.addAbsNonJustif(7);
+       /*Test1.addAbsNonJustif(7);
        pers1.addAbsNonJustif(10);
        System.out.println("\netu\n");
        System.out.println(Personne.retourEtuPlus5Abs());
@@ -39,7 +43,7 @@ public class Test {
                    
         System.out.println(Personne.retourPersonnesType("Etudiant"));
         
-  
+  */
     }
     
 }
