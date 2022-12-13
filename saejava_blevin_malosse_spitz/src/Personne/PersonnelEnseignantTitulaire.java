@@ -32,5 +32,6 @@ public class PersonnelEnseignantTitulaire extends PersonnelEnseignant {
         
         //setter
         public void setTarifHeureSup(double Val){PersonnelEnseignantTitulaire.tarifHeureSup = Math.abs(Val);}
+        public void setVolHoraire(double Val){this.volHoraire = Math.abs(Val);}
         
 }

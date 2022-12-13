@@ -49,9 +49,9 @@ public abstract class Personnel extends Personne {
     public static void setPrimeAnnuelle(double Val){Personnel.primeAnnuelle = Math.abs(Val);}
     public void setSonBureau(Bureau bureau){sonBureau = bureau;}
     /**Permet de donner l'obtenstion ou non à la Prime*/
-    public void setObtentionPrime(boolean Bool){this.obtentionPrime = verifBool(Bool);}
+    public void setObtentionPrime(boolean Bool){this.obtentionPrime = Utils.verifBool(Bool);}
     /**Permet de donner le droit ou non à la Prime*/
-    public void setDroitPrime(boolean Bool){this.droitPrime = verifBool(Bool);}
+    public void setDroitPrime(boolean Bool){this.droitPrime = Utils.verifBool(Bool);}
     
     /** Test d'égalité de deux peronnes*/
     public boolean equals (Personnel obj){
@@ -73,19 +73,11 @@ public abstract class Personnel extends Personne {
         return super.toString() + "\nLe salaire fixe est de : " + salaireFixe + 
             "\nLe salaire mensuel est de : " + salaireTotalMensuel +
             "\nLe salaire annuel total est de :" + salaireTotalAnnuel +
-            "\nBureau : " + bureau;
+            "\nBureau : " + bureau + "\n";
     }
     
     
     
-    
-    /**Permet de verifier si l'argument transmis est bien un booléen*/
-    public boolean verifBool(boolean Bool){
-        if (Bool == true || Bool == false)
-            return Bool;
-        else
-            return false;
-    }
     
     /**Défini le salaire mensuel du personnel*/
     public void defSalaireMensuel(){

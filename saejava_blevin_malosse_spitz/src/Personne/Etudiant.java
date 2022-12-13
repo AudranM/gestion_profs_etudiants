@@ -71,7 +71,7 @@ public class Etudiant extends Personne {
 
     @Override
     public String toString() {
-        return super.toString() + "\nValidation de l'année : " + this.anneeValide;
+        return super.toString() + "\nValidation de l'année : " + this.anneeValide + "\n";
         
     }
     /**Méthode qui print le résultat du nombre d'absence*/
