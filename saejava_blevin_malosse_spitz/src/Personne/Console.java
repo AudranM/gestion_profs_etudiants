@@ -39,4 +39,6 @@ public class Console {
         String y = Clavier.lireString(); 
         Personne Personne = new PersonnelEnseignantVacataire (x,y);
     }
+    
+    
 }

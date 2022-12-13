@@ -131,4 +131,17 @@ public abstract class Personne {
     }
     
     public static int tailleRegistre(){return registre.size();}
+        
+    
+    public static ArrayList<Personne> retourPersonnesType(Personne P){
+        ArrayList<Personne>registreTmp = new ArrayList<>();
+        for (int i=0; i<registre.size(); i++)
+            if (registre.get(i).getClass() == P.getClass())
+                registreTmp.add(P);
+        return registreTmp;
+    }
+    
+    public static Personne retourPersonneNum (int Num){
+        return registre.get(Personne.recupIndiceRegistre(Num));
+    }
 }
