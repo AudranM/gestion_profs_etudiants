@@ -148,7 +148,7 @@ public class Application {
             case 1:
                 menu();
                 break;
-            case 2:etourPersonneNum().
+            case 2://etourPersonneNum().
 
                 break;
             case 3:
