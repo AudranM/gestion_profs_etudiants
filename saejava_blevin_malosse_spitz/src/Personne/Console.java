@@ -22,30 +22,31 @@ public class Console {
         System.out.println("\n3 : Afficher tout les personnel administratif");
         System.out.println("\n4 : Afficher tout les enseignant titulaire");
         System.out.println("\n5 : Afficher tout les enseignant vacataire");
-
+        choix = Clavier.lireInt();
         switch (choix) {
             case 0:
                 menu();
                 break;
-            case 1:
-                Etudiant E = new Etudiant();
-                System.out.println(retourPersonnesType(E));
+            case 1:               
+                System.out.println(retourPersonnesType("Personne.Etudiant"));
+                
+                supprimePersonne();
                 break;
             case 2:
-                EtudiantBoursier EB = new EtudiantBoursier();
-                System.out.println(retourPersonnesType(EB));
+                System.out.println(retourPersonnesType("Personne.EtudiantBoursier"));
+                supprimePersonne();
                 break;
             case 3:
-                PersonnelAdministratif PA = new PersonnelAdministratif();
-                System.out.println(retourPersonnesType(PA));
+                System.out.println(retourPersonnesType("Pesonne.PersonnelAdministratif"));
+                supprimePersonne();
                 break;
             case 4:
-                PersonnelEnseignantTitulaire ET = new PersonnelEnseignantTitulaire();
-                System.out.println(retourPersonnesType(ET));
+                System.out.println(retourPersonnesType("Personne.PersonnelEnseignantTitulaire"));
+                supprimePersonne();
                 break;
             case 5:
-                PersonnelEnseignantVacataire EV = new PersonnelEnseignantVacataire();
-                System.out.println(retourPersonnesType(EV));
+                System.out.println(retourPersonnesType("Personne.PersonnelEnseignantVacataire"));
+                supprimePersonne();
                 break;
         }
     }
@@ -135,7 +136,7 @@ public class Console {
         String prenom = Clavier.lireString();
         System.out.println("Saisir le nombre d'heure");
         int nbHeure = Clavier.lireInt();
-        Personne Personne = new PersonnelEnseignantVacataire(nom, prenom, nbHeure);
+        Personne Personne = new PersonnelEnseignantVacataire(nom, prenom, nbHeure);       
     }
 
 }

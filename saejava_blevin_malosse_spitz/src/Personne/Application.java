@@ -5,6 +5,7 @@
 package Personne;
 
 import static Personne.Console.*;
+import static Personne.Personne.*;
 
 /**
  *
@@ -37,13 +38,15 @@ public class Application {
                 supprimePersonne();
                 break;
             case 3:
-                ajoutPersonne();
+                retourEtuPlus5Abs();
+                menu();
                 break;
             case 4:
-                ajoutPersonne();
+                retourPerPlus5Abs();
+                menu();
                 break;
             case 5:
-                ajoutPersonne();
+                // a faire 
                 break;
             case 6:
                 absence();
@@ -108,8 +111,8 @@ public class Application {
         System.out.println("\n0 : Arrêter le programme");
         System.out.println("\n1 : Retour au menu principal");
         System.out.println("\n2 : Effacer un element du registre");
-        System.out.println("\n3 : Voir le registre etudiant");
-
+        System.out.println("\n3 : Voir les elements du registre");
+        choix = Clavier.lireInt();
         switch (choix) {
             
             case 0:
@@ -122,8 +125,8 @@ public class Application {
                 effacerUnElement();
                 supprimePersonne();
                 break;
-            case 3:
-                ;
+            case 3: afficherToutesLesPersonne();
+                
                 break;
         }
     }
@@ -136,7 +139,7 @@ public class Application {
         System.out.println("\n1 : Retour au menu principal");
         System.out.println("\n2 : ajouter une absence jusitfié");
         System.out.println("\n3 : ajouter une absence injusitfié");
- 
+        choix = Clavier.lireInt();
 
         switch (choix) {
             case 0:
@@ -145,7 +148,7 @@ public class Application {
             case 1:
                 menu();
                 break;
-            case 2:
+            case 2:etourPersonneNum().
 
                 break;
             case 3:

@@ -134,12 +134,14 @@ public abstract class Personne {
     /**Retourne la taille actuel du registre*/
     public static int tailleRegistre(){return registre.size();}
         
-    /**Retourne un registre de personnes du même types*/
-    public static ArrayList<Personne> retourPersonnesType(Personne P){
+    /**Retourne un registre de personnes du même types
+        System.out.println(registre.get(i).getClass().getName());*/
+    public static ArrayList<Personne> retourPersonnesType(String classe){
         ArrayList<Personne>registreTmp = new ArrayList<>();
-        for (int i=0; i<registre.size(); i++)
-            if (registre.get(i).getClass() == P.getClass())
-                registreTmp.add(P);
+        int i;  
+        for (i=0; i<registre.size(); i++)
+            if (registre.get(i).getClass().getName().equals(classe))
+                registreTmp.add(registre.get(i));
         return registreTmp;
     }
     
@@ -155,7 +157,20 @@ public abstract class Personne {
         Personne P = new Etudiant();
         for (int i = 0; i < registre.size(); i++) {
             if (registre.get(i).getClass() == P.getClass() && registre.get(i).getAbsNonJustif()>5) {
-                registreTmp.add(P);
+                registreTmp.add(registre.get(i));
+            }
+        }
+        return registreTmp;
+    }
+    
+     /**
+     * Retourne un registre de personnes qui ont plus de 5 abs
+     */
+    public static ArrayList<Personne> retourPerPlus5Abs() {
+        ArrayList<Personne> registreTmp = new ArrayList<>();
+        for (int i = 0; i < registre.size(); i++) {
+            if (registre.get(i) instanceof Personnel && registre.get(i).getAbsNonJustif()>5) {
+                registreTmp.add(registre.get(i));
             }
         }
         return registreTmp;
