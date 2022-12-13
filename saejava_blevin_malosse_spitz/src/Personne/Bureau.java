@@ -187,7 +187,7 @@ public class Bureau {
             }
 
         }
-        if (reassigne) System.out.println("ERREUR : Le bureau " + newBureau.getNumero() + " est plein");
+        if (!reassigne) System.out.println("ERREUR : Le bureau " + newBureau.getNumero() + " est plein");
     }
 
 //---- GETTERS ----
