@@ -34,7 +34,7 @@ public class Application {
                 ajoutPersonne();
                 break;
             case 2:
-                suprimePersonne();
+                Application.suprimePersonne();
                 break;
             case 3:
                 ajoutPersonne();
@@ -106,7 +106,7 @@ public class Application {
         System.out.println("\nMerci de faire votre choix");
         System.out.println("\n0 : Menu principale");
         System.out.println("\n1 : Effacer un element du registre");
-        System.out.println("\n2 : Voir le registre etudiant");
+        System.out.println("\n2 : Voir les elements du registre");
 
         switch (choix) {
             case 0:
@@ -117,14 +117,18 @@ public class Application {
                 suprimePersonne();
                 break;
             case 2:
-                ;
+                afficherToutesLesPersonne();
+                suprimePersonne();
                 break;
             case 3:
                 ;
                 break;
+            default:
+                menu();
+                break;
         }
     }
-    
+
     public static void absence() {
         int choix = -1;
         System.out.println("\nMenu principale");
@@ -132,7 +136,6 @@ public class Application {
         System.out.println("\n0 : Menu principale");
         System.out.println("\n1 : ajouter une absence jusitfié");
         System.out.println("\n2 : ajouter une absence injusitfié");
- 
 
         switch (choix) {
             case 0:
@@ -149,6 +152,5 @@ public class Application {
                 break;
         }
     }
-    
-    
+
 }

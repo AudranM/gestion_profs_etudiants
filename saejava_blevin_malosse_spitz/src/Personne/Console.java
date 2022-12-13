@@ -13,6 +13,7 @@ import static Personne.Personne.*;
  */
 public class Console {
 
+
     public static void afficherToutesLesPersonne() {
         int choix = -1;
         System.out.println("\nMerci de faire votre choix");
@@ -26,20 +27,25 @@ public class Console {
             case 0:
                 menu();
                 break;
-            case 1: Etudiant E = new Etudiant();
-                    retourPersonnesType(E);
+            case 1:
+                Etudiant E = new Etudiant();
+                System.out.println(retourPersonnesType(E));
                 break;
-            case 2: EtudiantBoursier EB = new EtudiantBoursier();
-                retourPersonnesType(EB);;
+            case 2:
+                EtudiantBoursier EB = new EtudiantBoursier();
+                System.out.println(retourPersonnesType(EB));
                 break;
-            case 3: PersonnelAdministratif PA = new PersonnelAdministratif();
-                retourPersonnesType(PA);;
+            case 3:
+                PersonnelAdministratif PA = new PersonnelAdministratif();
+                System.out.println(retourPersonnesType(PA));
                 break;
-            case 4: PersonnelEnseignantTitulaire ET = new PersonnelEnseignantTitulaire();
-                retourPersonnesType(ET);;
+            case 4:
+                PersonnelEnseignantTitulaire ET = new PersonnelEnseignantTitulaire();
+                System.out.println(retourPersonnesType(ET));
                 break;
-            case 5: PersonnelEnseignantVacataire EV = new PersonnelEnseignantVacataire();
-                retourPersonnesType(EV);
+            case 5:
+                PersonnelEnseignantVacataire EV = new PersonnelEnseignantVacataire();
+                System.out.println(retourPersonnesType(EV));
                 break;
         }
     }
