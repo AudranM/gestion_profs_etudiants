@@ -102,18 +102,18 @@ public abstract class Personne {
      */
     public static void ajoutPersonne (Personne P){registre.add(P);}
     
-    //**Méthode qui parcour le registre*/
+    /**Méthode qui parcour le registre*/
     public static void supprimePersonne (int i) {registre.remove(i);}
     
     /**Redéfinition de toString*/
     @Override
     public String toString(){
-        return "Nature de la personne : " + this.getClass().getSimpleName() +
+        return "\nNature de la personne : " + this.getClass().getSimpleName() +
                "\nNom : " + this.nom + 
                "\nPrenom : " + this.prenom + 
                "\nid Personne : " + this.numPersonne + 
                "\nNombre d'absences justifié : " + this.absJustif +
-               "\nNombre d'absence injustifié : " + this.absNonJustif;
+               "\nNombre d'absence injustifié : " + this.absNonJustif + "\n";
     }
     
     public static void afficheRegistre(){

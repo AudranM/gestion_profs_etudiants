@@ -15,11 +15,12 @@ public class Test {
         Personnel pers2 = new PersonnelAdministratif("pers2", "pers2", 0.);
         Personnel pers3 = new PersonnelAdministratif("pers3", "pers3", 0.);
         
-        Etudiant Test1 = new Etudiant ("test", "test");
-        Etudiant Test2 = new Etudiant ("test1", "test1");
-        Etudiant Test3 = new Etudiant ("test2", "test2");
-        Etudiant Test4 = new Etudiant ("test", "test");
-        Etudiant Test5 = new Etudiant ("test", "test");
+        
+        Personne.afficheRegistre();
+        
+        Console.effacerUnElement();
+        
+        Personne.afficheRegistre();
     }
     
 }

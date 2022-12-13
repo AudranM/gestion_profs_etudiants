@@ -11,21 +11,22 @@ import static Personne.Personne.*;
  * @author fabio
  */
 public class Console {
+
     /**
      * Méthode pour supprimer un element de Arraylist dans la classe Personne
-     * @return 
+     *
+     * @return
      */
-    public static String effacerUnElement() {
+    public static void effacerUnElement() {
         System.out.println("indiquer le Numero de la personne à supprimer du registre : ");
         int idASupprimer = Clavier.lireInt();
-        if (idASupprimer < 0 || idASupprimer > tailleRegistre()) {
-            return "Le numero indiqué n'est pas dans le registre";
-        }
         if (recupIndiceRegistre(idASupprimer) < 0) {
-            return "Le numéro de la personne n'a pas été trouvé.";
+            System.out.print("Le numéro de la personne n'a pas été trouvé.");
+        } 
+        else {
+            supprimePersonne(recupIndiceRegistre(idASupprimer));
+            System.out.print("le numéro " + idASupprimer + "a bien été supprimé");
         }
-        supprimePersonne(recupIndiceRegistre(idASupprimer));
-        return "le numéro "+idASupprimer+ "a bien été supprimé";
     }
 
     /**
