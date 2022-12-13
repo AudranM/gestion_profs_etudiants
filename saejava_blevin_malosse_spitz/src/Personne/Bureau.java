@@ -267,6 +267,21 @@ public class Bureau {
         Bureau b = (Bureau) o;
         return this.nbPlace == b.nbPlace && this.numero == b.nbPlace && this.occupants == b.occupants;
     }
+    
+    public static int recupIndiceBureaux(int NumBureau){
+        int i=0;
+        while (i<bureaux.size()){
+            if (bureaux.get(i).getNumero()== NumBureau )
+                return i;
+            i++;
+        }
+        return -1;
+    }
+    
+     public static Bureau retourBureauNum (int NumBureau){
+        return bureaux.get(Bureau.recupIndiceBureaux(NumBureau));
+    }
+    
 
     /*Je ne pense pas qu'on va utiliser le hashcode, mais on l'a au cas où et
     ça fait disparaitre le warning */
