@@ -4,6 +4,8 @@
  */
 package Personne;
 
+import static Personne.EntierContraint.*;
+
 /**
  *
  * @author audranmalosse
@@ -13,18 +15,24 @@ public abstract class Personnel extends Personne {
     private static double primeAnnuelle;
     private boolean obtentionPrime = false;
     private boolean droitPrime = false;
-    public Bureau sonBureau;
+    private boolean estTitulaire = false;
+    private boolean estVacataire = false;
+    private double txHoraire = 42;
+    private double nbHeures= 0;
+    private double heuresEffectue=0;
     private double salaireFixe;
     private double salaireTotalMensuel;
     private double salaireTotalAnnuel;
+    
+    private Bureau sonBureau;
     
     /**Constructeur qui prend le Nom, le Prenom, le Salaire Fixe */
     public Personnel (String Nom, String Prenom, double SalaireFixe){
         super(Nom, Prenom);
         this.setSalaireFixe(SalaireFixe);
         this.salaireFixe = SalaireFixe;
-        this.defSalaireMensuel();
-        this.defSalaireAnnuel();
+
+        
     }
 
     /**Constructeur qui prend le Nom et le Prenom*/
@@ -52,7 +60,26 @@ public abstract class Personnel extends Personne {
     public void setObtentionPrime(boolean Bool){this.obtentionPrime = Utils.verifBool(Bool);}
     /**Permet de donner le droit ou non à la Prime*/
     public void setDroitPrime(boolean Bool){this.droitPrime = Utils.verifBool(Bool);}
+    public void setEstTitulaire(boolean Bool){this.estTitulaire = Bool;}
+    public void setEstVacataire(boolean Bool){this.estVacataire = Bool;}
+    public void addNbHeuresEffectuee(double Heures){this.heuresEffectue += Heures;}
     
+    
+    public void setNbHeures(double Heures){
+        if (this.estTitulaire){
+            if (Heures < 64)
+                this.nbHeures = 64;
+            else if (Heures > 384)
+                this.nbHeures = 384;
+            else 
+                this.nbHeures = Heures;    
+        }
+        if (this.estVacataire){
+            this.nbHeures = Heures;
+        }
+            
+    }
+            
     /** Test d'égalité de deux peronnes*/
     public boolean equals (Personnel obj){
         if (!(obj instanceof Personnel))
@@ -80,18 +107,30 @@ public abstract class Personnel extends Personne {
         sonBureau.envoieVersNewBureau(this, newBureau);
     }
     
-    
+    /**Calcule des heures suplémentaire du titulaire*/
+    public double calculHeuresSuplémentaire (){
+        if(this.nbHeures>192)
+            if ((this.heuresEffectue-this.nbHeures)>0)
+                return (this.heuresEffectue - this.nbHeures);
+        return 0;
+    }
     
     /**Défini le salaire mensuel du personnel*/
-    public void defSalaireMensuel(){
-        this.salaireTotalMensuel = this.getSalaireFixe();
+    public double getSalaireMensuel(){
+        if (this.estTitulaire)
+            return (this.calculHeuresSuplémentaire()*this.txHoraire)+this.salaireFixe;
+        if (this.estVacataire)
+            return this.nbHeures*this.txHoraire;
+        else
+            return this.salaireFixe;
+
     }
     
     /**Défini le salaire annuel du personnel*/
-    public void defSalaireAnnuel(){
-        if(this.droitPrime == true)
-            this.salaireTotalAnnuel = this.getSalaireFixe()*12+this.primeAnnuelle;
+    public double defSalaireAnnuel(){
+        if(this.droitPrime  && this.obtentionPrime)
+            return this.getSalaireFixe()*12+this.primeAnnuelle;
         else
-            this.salaireTotalAnnuel = this.getSalaireFixe()*12;
+            return this.getSalaireFixe()*12;
     }
 }

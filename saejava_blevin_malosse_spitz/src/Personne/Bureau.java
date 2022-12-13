@@ -47,7 +47,7 @@ public class Bureau {
     Bureau() {
 
         setNbPlace(3);
-        setNbOccupants(this.nbPlace);
+        occupants = new Personnel[3];
         incrCompt();
         numero = comptNum;
         incrTab();
@@ -63,7 +63,7 @@ public class Bureau {
     Bureau(int nbPlace) {
 
         setNbPlace(nbPlace);
-        setNbOccupants(this.nbPlace);
+        occupants = new Personnel[3];
         incrCompt();
         numero = comptNum;
         incrTab();
@@ -117,24 +117,26 @@ public class Bureau {
 
 //---- SETTERS ----
     /**
-     * @param nbPlace (min 1, max 3
+     * @param nbPlace minimum 1 place, maximum 3 places (int)
      */
     public final void setNbPlace(int nbPlace) {
 
         if (nbPlace < 1) {
+            if (!Utils.isNull(occupants[0])){
+                
+                if (!Utils.isNull(occupants[0])){
+                    
+                    if (!Utils.isNull(occupants[0])){
+                        
+                    }
+                }
+            }
             this.nbPlace = 1;
         } else if (nbPlace > 3) {
-            this.nbPlace = 3; //Nombre de place max = 3
+            this.nbPlace = 3;
         } else {
             this.nbPlace = nbPlace;
         }
-
-        setNbOccupants(nbPlace);// reste à ajouter qq ch qui gère la réassignation des occupants dans le tableau
-    }
-
-    private void setNbOccupants(int nbPlace) {
-
-        occupants = new Personnel[nbPlace];
 
     }
 
@@ -142,10 +144,11 @@ public class Bureau {
      *
      * @param occupant référence vers le Personnel à ajouter au bureau
      */
-    public final void setOccupant(Personnel occupant) {
-
+    public final boolean setOccupant(Personnel occupant) {
+        
+        boolean assigne = false;
         if (occupant.getSonBureau() == null) {
-            boolean assigne = false;
+            
             for (int i = 0; i < nbPlace; i++) {
                 if (Utils.isNull(occupants[i]) && !assigne) {
                     occupants[i] = occupant;
@@ -159,7 +162,7 @@ public class Bureau {
         } else {
             System.out.println("ERREUR : " + occupant.getNomPrenom() + " est déjà dans le bureau " + occupant.getSonBureau().numero);
         }
-
+        return assigne;
     }
 
     /**
@@ -170,22 +173,21 @@ public class Bureau {
      * Personnel
      */
     public void envoieVersNewBureau(Personnel occupant, Bureau newBureau) {
-        if ((Utils.isNull(newBureau.occupants[0]))
-                || (Utils.isNull(newBureau.occupants[1]) && newBureau.nbPlace >= 2)
-                || (Utils.isNull(newBureau.occupants[1]) && newBureau.nbPlace >= 2)) {
-            
-            for (int i = 0; i < nbPlace; i++) {
+        
+        boolean reassigne = false;
+        for (int i = 0; i < nbPlace; i++) {
 
-                if (occupants[i].equals(occupant)) {
-                    occupants[i].setSonBureau(null);
-                    newBureau.setOccupant(occupants[i]);
+            if (occupants[i].equals(occupant)) {
+                occupants[i].setSonBureau(null);
+                if (newBureau.setOccupant(occupants[i])) {
                     occupants[i].setSonBureau(newBureau);
                     occupants[i] = null;
+                    reassigne = true;
                 }
-
             }
+
         }
-        else System.out.println("ERREUR : Le bureau " + newBureau.getNumero() + " est plein");
+        if (!reassigne) System.out.println("ERREUR : Le bureau " + newBureau.getNumero() + " est plein");
     }
 
 //---- GETTERS ----

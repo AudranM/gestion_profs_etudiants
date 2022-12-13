@@ -9,10 +9,7 @@ package Personne;
  * @author audranmalosse
  */
 public abstract class PersonnelEnseignant extends Personnel {
-    
-    private int nbHeures;
-    private double txHauraire;
-    
+
     /**
      * Constructeur prenant en arguments :
      * @param Nom Nom du Personnel (String)
