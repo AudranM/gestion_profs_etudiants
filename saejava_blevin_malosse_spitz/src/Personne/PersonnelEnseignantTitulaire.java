@@ -23,6 +23,10 @@ public class PersonnelEnseignantTitulaire extends PersonnelEnseignant {
             this.tarifHeureSup = 0;
         }
         
+        public PersonnelEnseignantTitulaire(){
+        this("INCONNU","INCONNU");
+        }
+        
          //getter
         public double getTarifHeureSup(){return PersonnelEnseignantTitulaire.tarifHeureSup;}
         

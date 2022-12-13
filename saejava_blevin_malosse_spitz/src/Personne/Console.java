@@ -4,6 +4,7 @@
  */
 package Personne;
 
+import static Personne.Application.*;
 import static Personne.Personne.*;
 
 /**
@@ -12,11 +13,40 @@ import static Personne.Personne.*;
  */
 public class Console {
 
-    
-    
-    
+    public static void afficherToutesLesPersonne() {
+        int choix = -1;
+        System.out.println("\nMerci de faire votre choix");
+        System.out.println("\n1 : Afficher tout les etudiants");
+        System.out.println("\n2 : Afficher tout les etudiants boursier");
+        System.out.println("\n3 : Afficher tout les personnel administratif");
+        System.out.println("\n4 : Afficher tout les enseignant titulaire");
+        System.out.println("\n5 : Afficher tout les enseignant vacataire");
+
+        switch (choix) {
+            case 0:
+                menu();
+                break;
+            case 1: Etudiant E = new Etudiant();
+                    retourPersonnesType(E);
+                break;
+            case 2: EtudiantBoursier EB = new EtudiantBoursier();
+                retourPersonnesType(EB);;
+                break;
+            case 3: PersonnelAdministratif PA = new PersonnelAdministratif();
+                retourPersonnesType(PA);;
+                break;
+            case 4: PersonnelEnseignantTitulaire ET = new PersonnelEnseignantTitulaire();
+                retourPersonnesType(ET);;
+                break;
+            case 5: PersonnelEnseignantVacataire EV = new PersonnelEnseignantVacataire();
+                retourPersonnesType(EV);
+                break;
+        }
+    }
+
     /**
      * Méthode pour supprimer un element de Arraylist dans la classe Personne
+     *
      * @return
      */
     public static void effacerUnElement() {
@@ -24,8 +54,7 @@ public class Console {
         int idASupprimer = Clavier.lireInt();
         if (recupIndiceRegistre(idASupprimer) < 0) {
             System.out.print("Le numéro de la personne n'a pas été trouvé.");
-        } 
-        else {
+        } else {
             supprimePersonne(recupIndiceRegistre(idASupprimer));
             System.out.print("le numéro " + idASupprimer + "a bien été supprimé");
         }
@@ -102,6 +131,5 @@ public class Console {
         int nbHeure = Clavier.lireInt();
         Personne Personne = new PersonnelEnseignantVacataire(nom, prenom, nbHeure);
     }
-    
-    
+
 }
