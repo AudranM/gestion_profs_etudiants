@@ -25,7 +25,7 @@ public class EtudiantBoursier extends Etudiant {
      * Incrémente la bourse
      * @param Val Montant de la bourse
      */
-    private void setBourse(double Val) {this.bourse = Math.abs(Val);}
+    public void setBourse(double Val) {this.bourse = Math.abs(Val);}
 
     /**
      * Méthode qui retourne si oui ou non cest un étudiant Boursier.
