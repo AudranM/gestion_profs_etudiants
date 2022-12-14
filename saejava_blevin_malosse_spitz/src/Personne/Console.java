@@ -14,28 +14,55 @@ import static Personne.Personnel.setPrimeAnnuelle;
  * @author fabio
  */
 public class Console {
-    
+
+    /**
+     * Methode pour demander à l'utilisateur le numero du bureau <br>
+     * Demande le numero du bureau à l'utilisateur
+     */
+    public static int indiquerLeNumeroDuBureau() {
+        int numBureau;
+        do {
+            System.out.println("\nindiquer le numero du bureau");
+            numBureau = Clavier.lireInt();
+            if (recupIndiceBureaux(numBureau) == -1) {
+                System.out.println("\nLe numero indique n'existe pas");
+                System.out.println("\nVoulez vous afficher les bureaux? Oui/Non");
+                String reponse;
+                reponse = Clavier.lireString();
+                reponse = reponse.toLowerCase();
+                if (reponse.equals("oui")) {
+                    afficheTousLesBureauxEtInfos();
+                }
+            } else {
+                return numBureau;
+            }
+        } while (recupIndiceBureaux(numBureau) == -1);
+        return numBureau;
+    }
+
     /**
      * Methode pour demander à l'utilisateur l'id de la personne <br>
      * Demande le numero de la personne à l'utilisateur
      */
     public static int indiquerLeNumeroDeLaPersonne() {
         int numPersonne;
-        do{
-        System.out.println("\nindiquer le numero de la personne");
-        numPersonne = Clavier.lireInt();
-        if (recupIndiceRegistre(numPersonne) == -1) {
-            System.out.println("\nLe numero indique n'existe pas");
-            System.out.println("\nVoulez vous afficher le registre? Oui/Non");
-            String reponse;
-            reponse = Clavier.lireString();
-            reponse = reponse.toLowerCase();
-            if (reponse.equals("oui")) {
-                affichageSimpleregistre();
-            } 
-        }else {return numPersonne;}
-        }while (recupIndiceRegistre(numPersonne) == -1);        
-       return numPersonne;  
+        do {
+            System.out.println("\nindiquer le numero de la personne");
+            numPersonne = Clavier.lireInt();
+            if (recupIndiceRegistre(numPersonne) == -1) {
+                System.out.println("\nLe numero indique n'existe pas");
+                System.out.println("\nVoulez vous afficher le registre? Oui/Non");
+                String reponse;
+                reponse = Clavier.lireString();
+                reponse = reponse.toLowerCase();
+                if (reponse.equals("oui")) {
+                    affichageSimpleRegistre();
+                }
+            } else {
+                return numPersonne;
+            }
+        } while (recupIndiceRegistre(numPersonne) == -1);
+        return numPersonne;
     }
 
     /**
@@ -45,13 +72,12 @@ public class Console {
      * à l'utilisateur
      */
     public static void changerLeBureauDunePersonne() {
-        System.out.println("\nindiquer le numero de la personne");
-        int numPersonne = Clavier.lireInt();
+        int numPersonne = indiquerLeNumeroDeLaPersonne();
         if (retourPersonneNum(numPersonne) instanceof Personnel) {
             System.out.println("\nindiquer le numero du bureau actuel de la personne");
-            int numBureau = Clavier.lireInt();
+            int numBureau = indiquerLeNumeroDuBureau();
             System.out.println("\nindiquer le numero du bureau futur de la personne");
-            int numNewBureau = Clavier.lireInt();
+            int numNewBureau = indiquerLeNumeroDuBureau();
             retourBureauNum(numBureau).envoieVersNewBureau((Personnel) (retourPersonneNum(numPersonne)), retourBureauNum(numNewBureau));
         } else {
             System.out.println("Ce n'est pas un Personnel");
@@ -63,8 +89,7 @@ public class Console {
      * Demande le numero de la personne à l'utilisateur
      */
     public static void recuperationDuSalaireAnnuel() {
-        System.out.println("\nindiquer le numero de la personne");
-        int numPersonne = Clavier.lireInt();
+        int numPersonne = indiquerLeNumeroDeLaPersonne();
         ((Personnel) retourPersonneNum(numPersonne)).defSalaireAnnuel();
 
     }
@@ -74,8 +99,7 @@ public class Console {
      * Demande le numero de la personne à l'utilisateur
      */
     public static void recuperationDuSalaireMensuel() {
-        System.out.println("\nindiquer le numero de la personne");
-        int numPersonne = Clavier.lireInt();
+        int numPersonne = indiquerLeNumeroDeLaPersonne();
         ((Personnel) retourPersonneNum(numPersonne)).getSalaireMensuel();
     }
 
@@ -123,8 +147,7 @@ public class Console {
      * Demande le numero du bureau à l'utilisateur
      */
     public static void afficherLesOccupantsDunBureau() {
-        System.out.println("\nindiquer le numero du bureau");
-        int numBureau = Clavier.lireInt();
+        int numBureau = indiquerLeNumeroDuBureau();
         retourBureauNum(numBureau).getStringOccupants();
     }
 
@@ -141,8 +164,7 @@ public class Console {
      * Demande le numero du bureau à l'utilisateur
      */
     public static void afficherToutesLesInfos() {
-        System.out.println("\nindiquer le numero du bureau");
-        int numBureau = Clavier.lireInt();
+        int numBureau = indiquerLeNumeroDuBureau();
         System.out.println(retourBureauNum(numBureau));
     }
 
@@ -151,11 +173,9 @@ public class Console {
      * Demande le numero de la personne et numero du bureau à l'utilisateur
      */
     public static void ajouterUnOccupant() {
-        System.out.println("\nindiquer le numero de la personne");
-        int numPersonne = Clavier.lireInt();
+        int numPersonne = indiquerLeNumeroDeLaPersonne();
         if (retourPersonneNum(numPersonne) instanceof Personnel) {
-            System.out.println("\nindiquer le numero du bureau");
-            int numBureau = Clavier.lireInt();
+            int numBureau = indiquerLeNumeroDuBureau();
             retourBureauNum(numBureau).setOccupant((Personnel) retourPersonneNum(numPersonne));
         } else {
             System.out.println("Ce n'est pas un Personnel");
@@ -180,8 +200,7 @@ public class Console {
      * à l'utilisateur
      */
     public static void heureAEffectue() {
-        System.out.println("\nIndiquer le numero de la personne");
-        int numPersonne = Clavier.lireInt();
+        int numPersonne = indiquerLeNumeroDeLaPersonne();
         System.out.println("\nindiquer les heures à effectué");
         double heureAEffectue = Clavier.lireDouble();
         if (retourPersonneNum(numPersonne) instanceof Personnel) {
@@ -197,8 +216,7 @@ public class Console {
      * à l'utilisateur
      */
     public static void definiBourseEtudiantboursier() {
-        System.out.println("\nIndiquer le numero de la personne");
-        int numPersonne = Clavier.lireInt();
+        int numPersonne = indiquerLeNumeroDeLaPersonne();
         System.out.println("\nIndiquer le montant de la bourse");
         double montantBourse = Clavier.lireDouble();
         if (retourPersonneNum(numPersonne) instanceof EtudiantBoursier) {
@@ -207,10 +225,13 @@ public class Console {
             System.out.println("Ce n'est pas un Personnel");
         }
     }
-    
-    
-    public static void consoleSetPrimeAnnuelle(double prime){
-    setPrimeAnnuelle(prime);
+
+    /**
+     * Methode pour definir la prime annuell <br>
+     * Demande le montant de la prime annuel
+     */
+    public static void consoleSetPrimeAnnuelle(double prime) {
+        setPrimeAnnuelle(prime);
     }
 
     /**
@@ -219,8 +240,7 @@ public class Console {
      * donner la prime a la personne
      */
     public static void definiPrime() {
-        System.out.println("\nIndiquer le numero de la personne");
-        int numPersonne = Clavier.lireInt();
+        int numPersonne = indiquerLeNumeroDeLaPersonne();
         boolean choix;
         String reponse;
         System.out.println("\nIndiquer si vous voulez donner la prime Oui/Non");
@@ -244,8 +264,7 @@ public class Console {
      * à l'utilisateur
      */
     public static void definiSalaireFixe() {
-        System.out.println("\nIndiquer le numero de la personne");
-        int numPersonne = Clavier.lireInt();
+        int numPersonne = indiquerLeNumeroDeLaPersonne();
         System.out.println("\nindiquer le salaire fixe");
         double salaireFixe = Clavier.lireDouble();
         if (retourPersonneNum(numPersonne) instanceof Personnel) {
@@ -275,8 +294,7 @@ public class Console {
      * à l'utilisateur
      */
     public static void ajoutDuneAbsenceJustifie() {
-        System.out.println("\nindiquer le numero de la personne pour lui ajouter une absence justife");
-        int numPersonne = Clavier.lireInt();
+        int numPersonne = indiquerLeNumeroDeLaPersonne();
         System.out.println("\nIndiquer le nombre d'absence justifie");
         int numAbsenceJusitife = Clavier.lireInt();
         retourPersonneNum(numPersonne).addAbsJustif(numAbsenceJusitife);
@@ -289,8 +307,8 @@ public class Console {
      * à utilisateur
      */
     public static void ajoutDuneAbsenceinjustifie() {
-        System.out.println("\nIndiquer le numero de la personne pour lui ajouter une absence injustife");
-        int numPersonne = Clavier.lireInt();
+
+        int numPersonne = indiquerLeNumeroDeLaPersonne();
         System.out.println("\nindiquer le nombre d'absence injustifie");
         int numAbsenceJusitife = Clavier.lireInt();
         retourPersonneNum(numPersonne).addAbsNonJustif(numAbsenceJusitife);
@@ -366,8 +384,7 @@ public class Console {
      * demande le numero de la personne à utilisateur
      */
     public static void effacerUnElement() {
-        System.out.println("indiquer le Numero de la personne à supprimer du registre : ");
-        int idASupprimer = Clavier.lireInt();
+        int idASupprimer = indiquerLeNumeroDeLaPersonne();
         if (recupIndiceRegistre(idASupprimer) < 0) {
             System.out.print("Le numéero de la personne n'a pas ete trouve.");
         } else {

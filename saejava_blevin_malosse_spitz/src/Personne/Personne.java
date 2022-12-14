@@ -186,7 +186,7 @@ public abstract class Personne {
     /**
      * Affichage légère du registre
      */
-    public void affichageSimpleRegistre(){
+    public static void affichageSimpleRegistre(){
         int i;
             System.out.println( " ID Personne  |    Nom     |    Prenom     |    Type de Personne");
         for (i=0; i<registre.size(); i++){

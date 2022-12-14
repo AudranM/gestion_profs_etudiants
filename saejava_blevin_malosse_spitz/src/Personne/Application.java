@@ -501,9 +501,15 @@ public class Application {
         }
     }
 
+    /**
+     * Menu de demarage de l'application
+     *
+     * @see Console#consoleSetPrimeAnnuelle()
+     */
     public static void debut() {
         System.out.println("Bonjour, Bienvenue sur le prgramme de gestion de l'IUT.");
         System.out.println("Pour commencer merci d'indiquer la prime Annuel");
+        System.out.println("----------------------------------------------------------");
         double prime = Clavier.lireDouble();
         consoleSetPrimeAnnuelle(prime);
     }
