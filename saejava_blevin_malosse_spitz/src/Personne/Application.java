@@ -13,18 +13,13 @@ import static Personne.Console.*;
 public class Application {
 
     /**
-     * Methode du menu principale
-     * Plusieur choix sont proposés à l'utilisateur :
-     * - Arreter le programme
-     * - Retour au menu principale
-     * - Effacer du registre
-     * - Les etudiants avec plus de 5 absence injustifié
-     * - Liste des salaries qui ont une retenue sur salaire
-     * - Modifier les personnes dans le registre
-     * - Ajouter une absence
-     * - Gestion des bureaux
-     * - Gestion des salaires
-     * - Voir tout le registre
+     * Methode du menu principale Plusieur choix sont proposés à l'utilisateur :
+     * - Arreter le programme - Retour au menu principale - Effacer du registre
+     * - Les etudiants avec plus de 5 absence injustifié - Liste des salaries
+     * qui ont une retenue sur salaire - Modifier les personnes dans le registre
+     * - Ajouter une absence - Gestion des bureaux - Gestion des salaires - Voir
+     * tout le registre
+     *
      * @see Console#quitterLeProgramme()
      * @see Console#consoleRetourEtuPlus5Abs()
      * @see Console#consoleRetourPerPlus5Abs()
@@ -77,7 +72,8 @@ public class Application {
             case 8:
                 gestionDesSalaire();
                 break;
-            case 9: consoleAffichageSimpleRegistre();
+            case 9:
+                consoleAffichageSimpleRegistre();
                 menu();
                 break;
             default:
@@ -87,15 +83,11 @@ public class Application {
     }
 
     /**
-     * Menu d'ajout d'une personne
-     * Plusieur choix sont proposés à l'utilisateur :
-     * - Arreter le programme
-     * - Retour au menu principale
-     * - Ajouter un etudiant
-     * - Ajouter un etudiant boursier
-     * - Ajouter un enseignant titulaire
-     * - Ajouter un enseignant vacataire
-     * - Ajouter un personnel administratif
+     * Menu d'ajout d'une personne Plusieur choix sont proposés à l'utilisateur
+     * : - Arreter le programme - Retour au menu principale - Ajouter un
+     * etudiant - Ajouter un etudiant boursier - Ajouter un enseignant titulaire
+     * - Ajouter un enseignant vacataire - Ajouter un personnel administratif
+     *
      * @see Console#creatEtudiant()
      * @see Console#creatEtudiantBoursier()
      * @see Console#creatPersonnelEnseignantTitulaire()
@@ -151,12 +143,10 @@ public class Application {
     }
 
     /**
-     * Menu pour supprimer une personne
-     * Plusieur choix sont proposés à l'utilisateur :
-     * - Arreter le programme
-     * - Retour au menu principale
-     * - Effacer un element du registre
-     * - Voir les elements du registre
+     * Menu pour supprimer une personne Plusieur choix sont proposés à
+     * l'utilisateur : - Arreter le programme - Retour au menu principale -
+     * Effacer un element du registre - Voir les elements du registre
+     *
      * @see Console#quitterLeProgramme()
      * @see Console#effacerUnElement()
      * @see Console#afficherToutesLesPersonne()
@@ -193,12 +183,10 @@ public class Application {
     }
 
     /**
-     * Menu pour gerer les absences
-     * Plusieur choix sont proposés à l'utilisateur :
-     * - Arreter le programme
-     * - Retour au menu principale
-     * - Ajouter une absence jusitfie
-     * - Ajouter une absence injusitfie
+     * Menu pour gerer les absences Plusieur choix sont proposés à l'utilisateur
+     * : - Arreter le programme - Retour au menu principale - Ajouter une
+     * absence jusitfie - Ajouter une absence injusitfie
+     *
      * @see Console#quitterLeProgramme()
      * @see Console#ajoutDuneAbsenceJustifie()
      * @see Console#ajoutDuneAbsenceinjustifie()
@@ -235,13 +223,11 @@ public class Application {
 
     /**
      * Menu pour les modifier elements du registre ( Arraylist de personne )
-     * Plusieur choix sont proposés à l'utilisateur :
-     * - Arreter le programme
-     * - Retour au menu principale
-     * - Personnel Administratif
-     * - Personnel Enseignant Titulaire
-     * - Personnel Enseignant Vacataire
-     * - Ajouter une bouse a un Etudiant Boursier
+     * Plusieur choix sont proposés à l'utilisateur : - Arreter le programme -
+     * Retour au menu principale - Personnel Administratif - Personnel
+     * Enseignant Titulaire - Personnel Enseignant Vacataire - Ajouter une bouse
+     * a un Etudiant Boursier
+     *
      * @see Console#quitterLeProgramme()
      * @see Console#definiBourseEtudiantboursier()
      */
@@ -289,13 +275,11 @@ public class Application {
     }
 
     /**
-     * Menu pour modfier les Personnel Adminstratif
-     * Plusieur choix sont proposés à l'utilisateur :
-     * - Arreter le programme
-     * - Retour au menu principale
-     * - Modifier le Salaire Fixe
-     * - Obtient la prime
-     * - afficher les Personnels Admistratif
+     * Menu pour modfier les Personnel Adminstratif Plusieur choix sont proposés
+     * à l'utilisateur : - Arreter le programme - Retour au menu principale -
+     * Modifier le Salaire Fixe - Obtient la prime - afficher les Personnels
+     * Admistratif
+     *
      * @see Console#quitterLeProgramme()
      * @see Console#definiSalaireFixe()
      * @see Console#definiPrime()
@@ -341,14 +325,11 @@ public class Application {
     }
 
     /**
-     * Menu pour gerer les enseignant titulaire
-     * Plusieur choix sont proposés à l'utilisateur :
-     * - Arreter le programme
-     * - Retour au menu principale
-     * - Modifier le Salaire Fixe
-     * - Modifier les Heure  Effectue
-     * - Obtient la prime
+     * Menu pour gerer les enseignant titulaire Plusieur choix sont proposés à
+     * l'utilisateur : - Arreter le programme - Retour au menu principale -
+     * Modifier le Salaire Fixe - Modifier les Heure Effectue - Obtient la prime
      * - Afficher les Enseignants Titulaires
+     *
      * @see Console#quitterLeProgramme()
      * @see Console#definiSalaireFixe()
      * @see Console#heureAEffectue()
@@ -399,12 +380,10 @@ public class Application {
     }
 
     /**
-     * Menu pour gerer les enseignant vacataire
-     * Plusieur choix sont proposés à l'utilisateur :
-     * - Arreter le programme
-     * - Retour au menu principale
-     * - Modifier les Heure  Effectue
-     * - Afficher les Enseignants Vacataire
+     * Menu pour gerer les enseignant vacataire Plusieur choix sont proposés à
+     * l'utilisateur : - Arreter le programme - Retour au menu principale -
+     * Modifier les Heure Effectue - Afficher les Enseignants Vacataire
+     *
      * @see Console#quitterLeProgramme()
      * @see Console#heureAEffectue()
      * @see Console#retourPersonneTypeEnseignantsVacataire()
@@ -443,16 +422,12 @@ public class Application {
     }
 
     /**
-     * Menu pour gerer les bureaux
-     * Plusieur choix sont proposés à l'utilisateur :
-     * - Arreter le programme
-     * - Retour au menu principale
-     * - Ajouter un bureau
-     * - Ajouter un occupant à un bureau
-     * - Afficher toutes les infos d'un Bureau
-     * - Affiche tous les bureaux et toutes leurs infos
-     * - Afficher les occupants d'un bureau
-     * - Changer le bureau d'une personne
+     * Menu pour gerer les bureaux Plusieur choix sont proposés à l'utilisateur
+     * : - Arreter le programme - Retour au menu principale - Ajouter un bureau
+     * - Ajouter un occupant à un bureau - Afficher toutes les infos d'un Bureau
+     * - Affiche tous les bureaux et toutes leurs infos - Afficher les occupants
+     * d'un bureau - Changer le bureau d'une personne - Supprimer un bureau
+     *
      * @see Console#quitterLeProgramme()
      * @see Console#ajouterUnBureau()
      * @see Console#ajouterUnOccupant()
@@ -474,6 +449,7 @@ public class Application {
         System.out.println("[5] : Affiche tous les bureaux et toutes leurs infos");
         System.out.println("[6] : Afficher les occupants d'un bureau");
         System.out.println("[7] : Changer le bureau d'une personne");
+        System.out.println("[8] : Supprimer un bureau");
         choix = Clavier.lireInt();
 
         switch (choix) {
@@ -507,6 +483,10 @@ public class Application {
                 changerLeBureauDunePersonne();
                 gestionDesBureaux();
                 break;
+            case 8:
+                supprimerUnBureau();
+                gestionDesBureaux();
+                break;
             default:
                 menu();
                 break;
@@ -516,12 +496,10 @@ public class Application {
     }
 
     /**
-     * Menu pour gerer les salaires
-     * Plusieur choix sont proposés à l'utilisateur :
-     * - Arreter le programme
-     * - Retour au menu principale
-     * - Recuperation du salaire Mensuel
-     * - Recuperation du salaire Annuel
+     * Menu pour gerer les salaires Plusieur choix sont proposés à l'utilisateur
+     * : - Arreter le programme - Retour au menu principale - Recuperation du
+     * salaire Mensuel - Recuperation du salaire Annuel
+     *
      * @see Console#quitterLeProgramme()
      * @see Console#recuperationDuSalaireMensuel()
      * @see Console#recuperationDuSalaireAnnuel()
@@ -561,6 +539,7 @@ public class Application {
 
     /**
      * Menu de demarage de l'application
+     *
      * @see Console#consoleSetPrimeAnnuelle()
      */
     public static void debut() {
