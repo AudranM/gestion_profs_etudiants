@@ -122,23 +122,12 @@ public class Bureau {
     /**
      * La méthode vérifie que la valeur envoyée soit légale [1;3], sinon corrige
      * puis assigne à att : nbPlace <br>
-     * Le private est temporaire, quand la méthode gèrera le passage à 0 places elle sera remise en public
+     * Le private est temporaire, quand la méthode gèrera le passage à 0 places elle sera remise en public (potentiellement remettre le final à ce moment là)
      * @param nbPlace minimum 1 place, maximum 3 places (int)
      */
-    private final void setNbPlace(int nbPlace) {
+    private void setNbPlace(int nbPlace) {
 
-        if (nbPlace < 1) {
-            
-            //Vérification inutile pour l'instant, feature à venir (si assez de temps)
-            if (!Utils.isNull(occupants[0])){
-                
-                if (!Utils.isNull(occupants[0])){
-                    
-                    if (!Utils.isNull(occupants[0])){
-                        
-                    }
-                }
-            }
+        if (nbPlace < 1) {       
             this.nbPlace = 1;
         } else if (nbPlace > 3) {
             this.nbPlace = 3;
@@ -379,7 +368,7 @@ public class Bureau {
      
     //Feature non finie, methode qui supprime un bureau
     public boolean supprimeBureau(){
-        Bureau temp = null;
+        Bureau temp;
         for (int i = 0; i < nbPlace ;i++){
             
             temp = Bureau.bureauAvecPlace();
@@ -404,16 +393,28 @@ public class Bureau {
         for (int j = 0; j < limite; j++) {
             temp = bureaux.get(j);
             for (int i = 0; i < temp.nbPlace; i++) {
-
                 if (temp.nbPlace >= i && Utils.isNull(temp.occupants[i])){
                     return temp;
                 }
             }
         }
-        
         return null;
     }
      
+    public void changeNbPlace(int newNbPlace){
+        
+        int diffPlace = nbPlace - newNbPlace;
+        
+        if (diffPlace > 0){
+            
+            for (int i = 2; ; i--)
+            setNbPlace(newNbPlace);
+            
+        }
+        
+        
+    }
+    
     /**
      * Méthode hasCode() redéfinie depuis Object <br>
      * Je ne pense pas qu'on va utiliser le hashcode, mais on l'a au cas où et

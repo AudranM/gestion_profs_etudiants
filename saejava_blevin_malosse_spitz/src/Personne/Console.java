@@ -65,6 +65,13 @@ public class Console {
         return numPersonne;
     }
 
+    public static void supprimerUnBureau(){
+    int numBureau = indiquerLeNumeroDuBureau();
+    retourBureauNum(numBureau).supprimeBureau();
+    }
+    
+    
+    
     /**
      * Methode pour changer de bureau un personnel <br>
      * Demande le numero de la personne, le bureau actuel et le bureau futur
