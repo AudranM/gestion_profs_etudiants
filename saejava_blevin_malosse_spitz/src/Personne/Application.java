@@ -14,6 +14,7 @@ public class Application {
 
     /**
      * Methode du menu principale
+     *
      * @see Console#quitterLeProgramme()
      * @see Console#consoleRetourEtuPlus5Abs()
      * @see Console#consoleRetourPerPlus5Abs()
@@ -32,6 +33,7 @@ public class Application {
         System.out.println("[6] : Ajouter une absence");
         System.out.println("[7] : Gestion des bureaux");
         System.out.println("[8] : Gestion des salaires");
+        System.out.println("[9] : Voir tout le registre");
         choix = Clavier.lireInt();
 
         switch (choix) {
@@ -65,6 +67,9 @@ public class Application {
             case 8:
                 gestionDesSalaire();
                 break;
+            case 9: // en attente de la function d'Audran
+                menu();
+                break;
             default:
                 menu();
                 break;
@@ -73,6 +78,7 @@ public class Application {
 
     /**
      * Menu d'ajout d'une personne
+     *
      * @see Console#creatEtudiant()
      * @see Console#creatEtudiantBoursier()
      * @see Console#creatPersonnelEnseignantTitulaire()
@@ -129,6 +135,7 @@ public class Application {
 
     /**
      * Menu pour supprimer une personne
+     *
      * @see Console#quitterLeProgramme()
      * @see Console#effacerUnElement()
      * @see Console#afficherToutesLesPersonne()
@@ -166,6 +173,7 @@ public class Application {
 
     /**
      * Menu pour gerer les absences
+     *
      * @see Console#quitterLeProgramme()
      * @see Console#ajoutDuneAbsenceJustifie()
      * @see Console#ajoutDuneAbsenceinjustifie()
@@ -202,6 +210,7 @@ public class Application {
 
     /**
      * Menu pour les modifier elements du registre ( Arraylist de personne )
+     *
      * @see Console#quitterLeProgramme()
      * @see Console#definiBourseEtudiantboursier()
      */
@@ -250,6 +259,7 @@ public class Application {
 
     /**
      * Menu pour modfier les Personnel Adminstratif
+     *
      * @see Console#quitterLeProgramme()
      * @see Console#definiSalaireFixe()
      * @see Console#definiPrime()
@@ -296,6 +306,7 @@ public class Application {
 
     /**
      * Menu pour gerer les enseignant titulaire
+     *
      * @see Console#quitterLeProgramme()
      * @see Console#definiSalaireFixe()
      * @see Console#heureAEffectue()
@@ -310,7 +321,7 @@ public class Application {
         System.out.println("[0] : Arreter le programme");
         System.out.println("[1] : Retour au menu principal");
         System.out.println("[2] : Modifier le Salaire Fixe");
-        System.out.println("[3] : Modifier les Heure à Effectué");
+        System.out.println("[3] : Modifier les Heure  Effectué");
         System.out.println("[4] : Obtient la prime");
         System.out.println("[5] : Afficher les Enseignants Titulaires");
         choix = Clavier.lireInt();
@@ -347,6 +358,7 @@ public class Application {
 
     /**
      * Menu pour gerer les enseignant vacataire
+     *
      * @see Console#quitterLeProgramme()
      * @see Console#heureAEffectue()
      * @see Console#retourPersonneTypeEnseignantsVacataire()
@@ -358,7 +370,7 @@ public class Application {
         System.out.println("--------------------------------------------------\n");
         System.out.println("[0] : Arreter le programme");
         System.out.println("[1] : Retour au menu principal");
-        System.out.println("[2] : Modifier les Heure a Effectué");
+        System.out.println("[2] : Modifier les Heure  Effectué");
         System.out.println("[3] : Afficher les Enseignants Vacataire ");
         choix = Clavier.lireInt();
 
@@ -386,6 +398,7 @@ public class Application {
 
     /**
      * Menu pour gerer les bureaux
+     *
      * @see Console#quitterLeProgramme()
      * @see Console#ajouterUnBureau()
      * @see Console#ajouterUnOccupant()
@@ -450,6 +463,7 @@ public class Application {
 
     /**
      * Methode pour gerer les salaires
+     *
      * @see Console#quitterLeProgramme()
      * @see Console#recuperationDuSalaireMensuel()
      * @see Console#recuperationDuSalaireAnnuel()
@@ -464,7 +478,7 @@ public class Application {
         System.out.println("[2] : Récuperation du salaire Mensuel");
         System.out.println("[3] : Récuperation du salaire Annuel");
         choix = Clavier.lireInt();
-        
+
         switch (choix) {
             case 0:
                 quitterLeProgramme();
@@ -485,6 +499,13 @@ public class Application {
                 break;
 
         }
+    }
+
+    public static void debut() {
+        System.out.println("Bonjour, Bienvenue sur le prgramme de gestion de l'IUT.");
+        System.out.println("Pour commencer merci d'indiquer la prime Annuel");
+        double prime = Clavier.lireDouble();
+        consoleSetPrimeAnnuelle(prime);
     }
 
 }

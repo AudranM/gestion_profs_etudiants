@@ -7,25 +7,37 @@ package Personne;
 import static Personne.Application.*;
 import static Personne.Personne.*;
 import static Personne.Bureau.*;
+import static Personne.Personnel.setPrimeAnnuelle;
 
 /**
  *
  * @author fabio
  */
 public class Console {
-
+    
     /**
      * Methode pour demander à l'utilisateur l'id de la personne <br>
      * Demande le numero de la personne à l'utilisateur
-     
+     */
     public static int indiquerLeNumeroDeLaPersonne() {
-        do {
-            System.out.println("\nindiquer le numero de la personne");
-            int numPersonne = Clavier.lireInt();
-           
-        } while (XXX == false);
+        int numPersonne;
+        do{
+        System.out.println("\nindiquer le numero de la personne");
+        numPersonne = Clavier.lireInt();
+        if (recupIndiceRegistre(numPersonne) == -1) {
+            System.out.println("\nLe numero indique n'existe pas");
+            System.out.println("\nVoulez vous afficher le registre? Oui/Non");
+            String reponse;
+            reponse = Clavier.lireString();
+            reponse = reponse.toLowerCase();
+            if (reponse.equals("oui")) {
+                affichageSimpleregistre();
+            } 
+        }else {return numPersonne;}
+        }while (recupIndiceRegistre(numPersonne) == -1);        
+       return numPersonne;  
     }
-*/
+
     /**
      * Methode pour changer de bureau un personnel <br>
      * Demande le numero de la personne, le bureau actuel et le bureau futur
@@ -194,6 +206,11 @@ public class Console {
         } else {
             System.out.println("Ce n'est pas un Personnel");
         }
+    }
+    
+    
+    public static void consoleSetPrimeAnnuelle(double prime){
+    setPrimeAnnuelle(prime);
     }
 
     /**
