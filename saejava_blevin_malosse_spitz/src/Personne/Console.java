@@ -14,20 +14,42 @@ import static Personne.Bureau.*;
  */
 public class Console {
 
+    /**
+     * Methode pour demander à l'utilisateur l'id de la personne <br>
+     * Demande le numero de la personne à l'utilisateur
+     
+    public static int indiquerLeNumeroDeLaPersonne() {
+        do {
+            System.out.println("\nindiquer le numero de la personne");
+            int numPersonne = Clavier.lireInt();
+           
+        } while (XXX == false);
+    }
+*/
+    /**
+     * Methode pour changer de bureau un personnel <br>
+     * Demande le numero de la personne, le bureau actuel et le bureau futur
+     * <br>
+     * à l'utilisateur
+     */
     public static void changerLeBureauDunePersonne() {
         System.out.println("\nindiquer le numero de la personne");
         int numPersonne = Clavier.lireInt();
         if (retourPersonneNum(numPersonne) instanceof Personnel) {
-        System.out.println("\nindiquer le numero du bureau actuel de la personne");
-        int numBureau = Clavier.lireInt();
-        System.out.println("\nindiquer le numero du bureau futur de la personne");
-        int numNewBureau = Clavier.lireInt();
-        retourBureauNum(numBureau).envoieVersNewBureau((Personnel)(retourPersonneNum(numPersonne)), retourBureauNum(numNewBureau));
-        }else{
-         System.out.println("Ce n'est pas un Personnel");
+            System.out.println("\nindiquer le numero du bureau actuel de la personne");
+            int numBureau = Clavier.lireInt();
+            System.out.println("\nindiquer le numero du bureau futur de la personne");
+            int numNewBureau = Clavier.lireInt();
+            retourBureauNum(numBureau).envoieVersNewBureau((Personnel) (retourPersonneNum(numPersonne)), retourBureauNum(numNewBureau));
+        } else {
+            System.out.println("Ce n'est pas un Personnel");
         }
     }
 
+    /**
+     * Methode pour afficher le salaire annuel <br>
+     * Demande le numero de la personne à l'utilisateur
+     */
     public static void recuperationDuSalaireAnnuel() {
         System.out.println("\nindiquer le numero de la personne");
         int numPersonne = Clavier.lireInt();
@@ -35,12 +57,29 @@ public class Console {
 
     }
 
+    /**
+     * Methode pour afficher le salaire mensuel <br>
+     * Demande le numero de la personne à l'utilisateur
+     */
     public static void recuperationDuSalaireMensuel() {
         System.out.println("\nindiquer le numero de la personne");
         int numPersonne = Clavier.lireInt();
         ((Personnel) retourPersonneNum(numPersonne)).getSalaireMensuel();
     }
 
+    /**
+     * Methode pour proposer à l'utilisateur de creer un bureau apres
+     * l'ajout<br>
+     * d'une personne dans le registre <br>
+     * Demande si l'utilisateur veux creer un bureau s'il aucun bureau de creer
+     * <br>
+     * Demande si l'utilisateur veux alourer un bureaux si un bureau est creer
+     * <br>
+     *
+     * @see Console#ajouterUnBureau()
+     * @see Console#ajouterUnOccupant()
+     * @see Application#ajoutPersonne()
+     */
     public static void alouerUnBureauApresCreation() {
         if (getSizeBureaux() < 1) {
             String reponse;
@@ -68,7 +107,8 @@ public class Console {
     }
 
     /**
-     * Methode pour afficher les occupants d'un bureau
+     * Methode pour afficher les occupants d'un bureau <br>
+     * Demande le numero du bureau à l'utilisateur
      */
     public static void afficherLesOccupantsDunBureau() {
         System.out.println("\nindiquer le numero du bureau");
@@ -85,6 +125,8 @@ public class Console {
 
     /**
      * Methode pour afficher toutes les informations d'un bureau en particulier
+     * <br>
+     * Demande le numero du bureau à l'utilisateur
      */
     public static void afficherToutesLesInfos() {
         System.out.println("\nindiquer le numero du bureau");
@@ -93,7 +135,8 @@ public class Console {
     }
 
     /**
-     * Methode pour assigner un personnel à un bureau
+     * Methode pour assigner un personnel à un bureau <br>
+     * Demande le numero de la personne et numero du bureau à l'utilisateur
      */
     public static void ajouterUnOccupant() {
         System.out.println("\nindiquer le numero de la personne");
@@ -108,28 +151,21 @@ public class Console {
     }
 
     /**
-     * Methode pour ajouter un bureau
+     * Methode pour ajouter un bureau <br>
+     * Demande le nombre de place dans un bureau et l'ajoute au registre des
+     * <br>
+     * bureau
      */
     public static void ajouterUnBureau() {
-        System.out.println("\nindiquer le nombre de place dans le bureau");
+        System.out.println("\nindiquer le nombre de place souhaité dans le bureau");
         int numPlace = Clavier.lireInt();
         Bureau bureau = new Bureau(numPlace);
     }
 
     /**
-     * Methode pour definir les heures suplementaire du personnel
-     *
-     * public static void definiHeuresSuplementaire() {
-     * System.out.println("\nIndiquer le numero de la personne"); int
-     * numPersonne = Clavier.lireInt(); System.out.println("\nIndiquer les
-     * heures à suplemantaire effectué"); double heureAEffectue =
-     * Clavier.lireDouble(); if (retourPersonneNum(numPersonne) instanceof
-     * Personnel) { ((Personnel)
-     * retourPersonneNum(numPersonne)).setVolHoraire(heureAEffectue); } else {
-     * System.out.println("Ce n'est pas un Personnel"); } }
-     */
-    /**
-     * Methode pour definir les heures a effectué par le personnel
+     * Methode pour definir les heures a effectué par le personnel <br>
+     * Demande le numero de la personne et les nombre d'heure effectué <br>
+     * à l'utilisateur
      */
     public static void heureAEffectue() {
         System.out.println("\nIndiquer le numero de la personne");
@@ -144,7 +180,9 @@ public class Console {
     }
 
     /**
-     * Methode pour definir la bourse des etudiant boursier
+     * Methode pour definir la bourse des etudiant boursier <br>
+     * Demande le numero de la personne et le montant de la bourse <br>
+     * à l'utilisateur
      */
     public static void definiBourseEtudiantboursier() {
         System.out.println("\nIndiquer le numero de la personne");
@@ -159,7 +197,9 @@ public class Console {
     }
 
     /**
-     * Methode pour definir la prime des personnel
+     * Methode pour definir la prime des personnel <br>
+     * Demande le numero de la personne et si elle souhaite <br>
+     * donner la prime a la personne
      */
     public static void definiPrime() {
         System.out.println("\nIndiquer le numero de la personne");
@@ -182,7 +222,9 @@ public class Console {
     }
 
     /**
-     * Methode pour fixer le salaire Fixe des personnels
+     * Methode pour fixer le salaire Fixe des personnels <br>
+     * Demande le numero de la personne et le salaire fixe <br>
+     * à l'utilisateur
      */
     public static void definiSalaireFixe() {
         System.out.println("\nIndiquer le numero de la personne");
@@ -210,6 +252,11 @@ public class Console {
         retourPerPlus5Abs();
     }
 
+    /**
+     * Méthode pour ajouter une absence justifié <br>
+     * demande le numero de la personne et le nombre d'absence justifié <br>
+     * à l'utilisateur
+     */
     public static void ajoutDuneAbsenceJustifie() {
         System.out.println("\nindiquer le numero de la personne pour lui ajouter une absence justife");
         int numPersonne = Clavier.lireInt();
@@ -219,6 +266,11 @@ public class Console {
         absence();
     }
 
+    /**
+     * Méthode pour ajouter une absence injustifié <br>
+     * demande le numero de la personne et le nombre d'absence injustifié <br>
+     * à utilisateur
+     */
     public static void ajoutDuneAbsenceinjustifie() {
         System.out.println("\nIndiquer le numero de la personne pour lui ajouter une absence injustife");
         int numPersonne = Clavier.lireInt();
@@ -270,30 +322,40 @@ public class Console {
         }
     }
 
-    public static void retourPersonneTypeAdministratif(){
-     System.out.println(retourPersonnesType("Pesonne.PersonnelAdministratif"));
+    /**
+     * Méthode pour retourner tout les personnel administraitf <br>
+     */
+    public static void retourPersonneTypeAdministratif() {
+        System.out.println(retourPersonnesType("Pesonne.PersonnelAdministratif"));
     }
-    public static void retourPersonneTypeEnseignantsTitulaires(){
-    System.out.println(retourPersonnesType("Personne.PersonnelEnseignantTitulaire"));
+
+    /**
+     * Méthode pour retourner tout les personnel Titulaire <br>
+     */
+    public static void retourPersonneTypeEnseignantsTitulaires() {
+        System.out.println(retourPersonnesType("Personne.PersonnelEnseignantTitulaire"));
     }
-   public static void  retourPersonneTypeEnseignantsVacataire(){
-    System.out.println(retourPersonnesType("Personne.PersonnelEnseignantVacataire"));
-   }
-    
-    
+
+    /**
+     * Méthode pour retourner tout les personnel Vacataire <br>
+     */
+    public static void retourPersonneTypeEnseignantsVacataire() {
+        System.out.println(retourPersonnesType("Personne.PersonnelEnseignantVacataire"));
+    }
+
     /**
      * Méthode pour supprimer un element de Arraylist dans la classe Personne
-     *
-     * @return
+     * <br>
+     * demande le numero de la personne à utilisateur
      */
     public static void effacerUnElement() {
         System.out.println("indiquer le Numero de la personne à supprimer du registre : ");
         int idASupprimer = Clavier.lireInt();
         if (recupIndiceRegistre(idASupprimer) < 0) {
-            System.out.print("Le numéro de la personne n'a pas été trouvé.");
+            System.out.print("Le numéero de la personne n'a pas ete trouve.");
         } else {
             supprimePersonne(recupIndiceRegistre(idASupprimer));
-            System.out.print("le numéro " + idASupprimer + "a bien été supprimé");
+            System.out.print("le numero " + idASupprimer + "a bien été supprime");
         }
     }
 
@@ -301,12 +363,13 @@ public class Console {
      * Méthode pour quitter le programme
      */
     public static int quitterLeProgramme() {
-        System.out.println("Merci d'avoir utilisé notre programme");
+        System.out.println("Merci d'avoir utilise notre programme");
         return 0;
     }
 
     /**
-     * Méthode de creation d'un etudiant
+     * Méthode de creation d'un etudiant <br>
+     * Demande le nom et le prenom à l'utilisateur
      */
     public static void creatEtudiant() {
         System.out.println("Saisir le Nom");
@@ -317,7 +380,8 @@ public class Console {
     }
 
     /**
-     * Méthode de creation d'un etudiant boursier
+     * Méthode de creation d'un etudiant boursier <br>
+     * Demande le nom , Prenom et le montant de la bourse à l'utilisateur <br>
      */
     public static void creatEtudiantBoursier() {
         System.out.println("Saisir le Nom");
@@ -330,7 +394,8 @@ public class Console {
     }
 
     /**
-     * Méthode de creation d'un personnel administratif
+     * Méthode de creation d'un personnel administratif <br>
+     * Demande le Nom , Prenom et le salaire fixe à l'utilisateur
      */
     public static void creatPersonnelAdministratif() {
         System.out.println("Saisir le Nom");
@@ -340,11 +405,12 @@ public class Console {
         System.out.println("Saisir le salaire fixe");
         double salaireFixe = Clavier.lireDouble();
         Personne Personne = new PersonnelAdministratif(nom, prenom, salaireFixe);
-        alouerUnBureauApresCreation();
     }
 
     /**
-     * Méthode de creation d'un personnel enseignant titulaire
+     * Méthode de creation d'un personnel enseignant titulaire <br>
+     * Demande le nom, Prenom, Nombre d'heures statutaire et <br>
+     * salaire fixe à l'utilisateur
      */
     public static void creatPersonnelEnseignantTitulaire() {
         System.out.println("Saisir le Nom");
@@ -356,12 +422,11 @@ public class Console {
         System.out.println("Saisir le salaire fixe");
         double salaireFixe = Clavier.lireDouble();
         Personne Personne = new PersonnelEnseignantTitulaire(nom, prenom, NbHeuresStatutaire, salaireFixe);
-        alouerUnBureauApresCreation();
     }
 
-    // a finir
     /**
-     * Méthode de creation d'un personnel enseignant vacataire
+     * Méthode de creation d'un personnel enseignant vacataire <br>
+     * Demande le Nom , Prenom et le nombre d'heure a l'utilisateur
      */
     public static void creatPersonnelEnseignantVacataire() {
         System.out.println("Saisir le Nom");
@@ -371,7 +436,6 @@ public class Console {
         System.out.println("Saisir le nombre d'heure");
         int nbHeure = Clavier.lireInt();
         Personne Personne = new PersonnelEnseignantVacataire(nom, prenom);
-        alouerUnBureauApresCreation();
     }
 
 }
