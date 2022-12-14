@@ -10,14 +10,16 @@ package Personne;
  */
 public class PersonnelEnseignantTitulaire extends PersonnelEnseignant {
 
-    public PersonnelEnseignantTitulaire(String Nom, String Prenom) {
+    public PersonnelEnseignantTitulaire(String Nom, String Prenom, double NbHeuresStatutaire, double SalaireFixe) {
         super(Nom, Prenom);
         super.setDroitPrime(true);
         super.setEstTitulaire(true);
+        super.setNbHeures(NbHeuresStatutaire);
+        super.setSalaireFixe(SalaireFixe);
     }
 
     public PersonnelEnseignantTitulaire() {
-        this("INCONNU", "INCONNU");
+        this("INCONNU", "INCONNU",0.,0.);
     }
 
 }

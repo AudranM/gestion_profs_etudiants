@@ -12,14 +12,19 @@ import static Personne.EntierContraint.*;
  */
 public abstract class Personnel extends Personne {
     
+    
     private static double primeAnnuelle;
     private boolean obtentionPrime = false;
     private boolean droitPrime = false;
     private boolean estTitulaire = false;
     private boolean estVacataire = false;
+    /**Taux Horaire du Vacataire et des heures suplémentaires du Titulaire*/
     private double txHoraire = 42;
-    private double nbHeures= 0;
+    /**Nombre d'heure statutaire du titulaire*/
+    private double nbHeures = 0; 
+    /**Nombre d'heure effectué pas le vacataire ou le titulaire*/
     private double heuresEffectue=0;
+    /**Salaire fixe de l'administratif et du titulaire*/
     private double salaireFixe;
     private double salaireTotalMensuel;
     private double salaireTotalAnnuel;
