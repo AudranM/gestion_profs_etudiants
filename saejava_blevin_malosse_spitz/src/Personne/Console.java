@@ -113,7 +113,7 @@ public class Console {
         System.out.println("\nindiquer les heures à effectué");
         double heureAEffectue = Clavier.lireDouble();
         if (retourPersonneNum(numPersonne) instanceof Personnel) {
-            ((Personnel) retourPersonneNum(numPersonne)).setVolHoraire(heureAEffectue);
+            ((Personnel) retourPersonneNum(numPersonne)).setNbHeures(heureAEffectue);
         } else {
             System.out.println("Ce n'est pas un Personnel");
         }

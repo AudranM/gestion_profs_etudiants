@@ -73,13 +73,13 @@ public abstract class Personnel extends Personne {
                 this.nbHeures = 384;
             else 
                 this.nbHeures = Heures;    
-        }
-        if (this.estVacataire){
-            this.nbHeures = Heures;
-        }
-            
+        }       
     }
-            
+    
+    public void setHeuresEffectue(double Heures){
+        this.heuresEffectue = Math.abs(Heures);
+    }
+    
     /** Test d'égalité de deux peronnes*/
     public boolean equals (Personnel obj){
         if (!(obj instanceof Personnel))
@@ -120,7 +120,7 @@ public abstract class Personnel extends Personne {
         if (this.estTitulaire)
             return (this.calculHeuresSuplémentaire()*this.txHoraire)+this.salaireFixe;
         if (this.estVacataire)
-            return this.nbHeures*this.txHoraire;
+            return this.heuresEffectue*this.txHoraire;
         else
             return this.salaireFixe;
 
