@@ -20,7 +20,7 @@ public abstract class Personne {
     private static ArrayList<Personne>registre = new ArrayList<>();
     
     
-    /**Constructeur qui utilise les setters avec Nom et Prenom comme argumen
+    /**Constructeur qui utilise les setters avec Nom et Prenom comme argument.
      * @param Nom Nom de la personne
      * @param Prenom Pernom de la personne
      */
@@ -32,7 +32,9 @@ public abstract class Personne {
             
     }
     
-    /**Constructeur par defaut qui utilise les setters et aucun argument*/
+    /**
+     * Constructeur par defaut qui utilise les setters et aucun argument
+     */
     public Personne (){
         this("INCONNU","INCONNU");
     }
@@ -52,10 +54,13 @@ public abstract class Personne {
     void setNom(String Nom){this.nom = Utils.verifString(Nom);} 
     void setPrenom(String Prenom){this.prenom = Utils.verifString(Prenom);}
     
-    /** addAbsNonJustif ajoute une absence injustifiée*/
+    /** 
+     * addAbsNonJustif ajoute une absence injustifiée
+     */
     public void addAbsNonJustif(){this.absNonJustif++;}
     
-    /** addAbsNonJustif ajoute la valeurs transmise en paramètre au nombre d'absences déjà enregistrée
+    /** 
+     * addAbsNonJustif ajoute la valeurs transmise en paramètre au nombre d'absences déjà enregistrée
      * @param Nombre Nombre d'absences injustifiées
      */
     public void addAbsNonJustif(int Nombre){this.absNonJustif+=Math.abs(Nombre);}
@@ -72,7 +77,8 @@ public abstract class Personne {
             System.out.println("ERREUR: Il n'y a pas assez d'absences non justifiée");
     }
     
-    /** addAbsJustif transforme le nombre d'absence injustifiée, transmise en paramètre, en absence justifiée
+    /** 
+     * addAbsJustif transforme le nombre d'absence injustifiée, transmise en paramètre, en absence justifiée
      * @param Nombre Nombre d'absences injustifiées que l'on veut passer en absence justifiées
      */
     public void addAbsJustif (int Nombre){
@@ -84,7 +90,8 @@ public abstract class Personne {
         else
             System.out.println("ERREUR: Il n'y a pas assez d'absences non justifiée"); 
     }
-    /** Test d'égalité de deux peronne
+    /** 
+     * Test d'égalité de deux peronne
      * @param obj personne dont on veut tester l'égalitée
      * @return 
      */
@@ -97,16 +104,21 @@ public abstract class Personne {
         return this.nom.equals(p.nom) && this.prenom.equals(p.prenom) && this.numPersonne == p.numPersonne;
     }
     
-    /** Méthode d'incrémentation du tableau
+    /** 
+     * Méthode d'incrémentation du tableau
      * @param P Personne qui sera ajouté au registre
      */
     public static void ajoutPersonne (Personne P){registre.add(P);}
     
-    /**Méthode qui parcour le registr
-     * @param i Index d'une personne*/
+    /**
+     * Méthode qui parcour le registr
+     * @param i Index d'une personne
+     */
     public static void supprimePersonne (int i) {registre.remove(i);}
     
-    /**Redéfinition de toString*/
+    /**
+     * Redéfinition de toString
+     */
     @Override
     public String toString(){
         return "\nNature de la personne : " + this.getClass().getSimpleName() +
@@ -121,7 +133,8 @@ public abstract class Personne {
             System.out.println(registre);
     } 
     
-    /**Revoie l'indice de la personne dans le registre en lui transmettant son ID.
+    /**
+     * Revoie l'indice de la personne dans le registre en lui transmettant son ID.
      * @param NumPersonne ID d'une personne
      * @return Indice dans registre d'une personne 
      */
@@ -135,12 +148,14 @@ public abstract class Personne {
         return -1;
     }
     
-    /**Retourne la taille actuel du registr
+    /**
+     * Retourne la taille actuel du registr
      * @return Taille du registre
      */
     public static int tailleRegistre(){return registre.size();}
         
-    /**Retourne un registre de personnes du même types
+    /**
+     * Retourne un registre de personnes du même types
      * @param classe Nom de classe en string
      * @return Registre temporaire de Personnes du mêmes types
      */
@@ -157,7 +172,8 @@ public abstract class Personne {
         return registre.get(Personne.recupIndiceRegistre(Num));
     }
 
-    /**Retourne un registre d'étudient qui ont plus de 5 absences
+    /**
+     * Retourne un registre d'étudient qui ont plus de 5 absences
      * @return ArrayList registre temporaire
      */
     public static ArrayList<Personne> retourEtuPlus5Abs() {
@@ -170,7 +186,8 @@ public abstract class Personne {
         return registreTmp;
     }
     
-     /**Retourne un registre de personnes qui ont plus de 5 aabsences
+     /**
+      * Retourne un registre de personnes qui ont plus de 5 aabsences
      * @return ArrayList registre temporaire
      */
     public static ArrayList<Personne> retourPerPlus5Abs() {
@@ -184,15 +201,15 @@ public abstract class Personne {
     }
         
     /**
-     * Affichage légère du registre
+     * Affichage léger du registre: ID , Nom Prenom , Type de personne
      */
     public static void affichageSimpleRegistre(){
         int i;
-            System.out.println( " ID Personne  |    Nom     |    Prenom     |    Type de Personne");
+            System.out.println( " ID Personne  |    Nom         Prenom     |    Type de Personne");
         for (i=0; i<registre.size(); i++){
-            System.out.println("  " + (registre.get(i)).getNumPersonne() + "  ");
-            System.out.print("  " + (registre.get(i)).getNomPrenom()+ "  ");
-            System.out.print("  " + (registre.get(i)).getClass().getName()+ "  ");
+            System.out.print("\n         " + (registre.get(i)).getNumPersonne() + "      ");
+            System.out.print("       " + (registre.get(i)).getNomPrenom()+ "      ");
+            System.out.print("                 " + (registre.get(i)).getClass().getName()+ "  ");
             
         }
     }
