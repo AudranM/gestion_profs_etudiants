@@ -127,18 +127,7 @@ public class Bureau {
      */
     private void setNbPlace(int nbPlace) {
 
-        if (nbPlace < 1) {
-            
-            //Vérification inutile pour l'instant, feature à venir (si assez de temps)
-            if (!Utils.isNull(occupants[0])){
-                
-                if (!Utils.isNull(occupants[0])){
-                    
-                    if (!Utils.isNull(occupants[0])){
-                        
-                    }
-                }
-            }
+        if (nbPlace < 1) {       
             this.nbPlace = 1;
         } else if (nbPlace > 3) {
             this.nbPlace = 3;
@@ -404,16 +393,28 @@ public class Bureau {
         for (int j = 0; j < limite; j++) {
             temp = bureaux.get(j);
             for (int i = 0; i < temp.nbPlace; i++) {
-
                 if (temp.nbPlace >= i && Utils.isNull(temp.occupants[i])){
                     return temp;
                 }
             }
         }
-        
         return null;
     }
      
+    public void changeNbPlace(int newNbPlace){
+        
+        int diffPlace = nbPlace - newNbPlace;
+        
+        if (diffPlace > 0){
+            
+            for (int i = 2; ; i--)
+            setNbPlace(newNbPlace);
+            
+        }
+        
+        
+    }
+    
     /**
      * Méthode hasCode() redéfinie depuis Object <br>
      * Je ne pense pas qu'on va utiliser le hashcode, mais on l'a au cas où et
