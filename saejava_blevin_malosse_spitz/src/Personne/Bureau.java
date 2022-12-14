@@ -122,7 +122,7 @@ public class Bureau {
     /**
      * La méthode vérifie que la valeur envoyée soit légale [1;3], sinon corrige
      * puis assigne à att : nbPlace <br>
-     * Le private est temporaire, quand la méthode gèrera le passage à 0 places elle sera remise en public (potentiellement remettre le final à ce moment là)
+     * La méthode est private car uniquement appelée par les constructeurs et changeNbPlace
      * @param nbPlace minimum 1 place, maximum 3 places (int)
      */
     private void setNbPlace(int nbPlace) {
@@ -366,7 +366,18 @@ public class Bureau {
         return bureaux.get(Bureau.recupIndiceBureaux(NumBureau));
     }
      
-    //Feature non finie, methode qui supprime un bureau
+    /**
+     * Méthode qui permet de supprimer un bureau<br>
+     * La méthode réassigne les Personnels présent dans le bureau en bouclant à
+     * travers le tab Personnel[3] occupants et en appelant changeBureau() pour chaque
+     * occupant<br>
+     * Qui prend en argument le premier bureau avec une place disponible que trouve
+     * la méthode bureauAvecPlace()<br>
+     * Puis supprime la référence du Bureau de la liste bureaux 
+     * @return true si la suppression à fonctionnée, false sinon
+     * @see Personnel#changeBureau(Personne.Bureau) 
+     * @see Bureau#bureauAvecPlace() 
+     */
     public boolean supprimeBureau(){
         Bureau temp;
         for (int i = 0; i < nbPlace ;i++){
@@ -382,11 +393,16 @@ public class Bureau {
             System.out.println("Le nouveau bureau de " + occupants[i].getNomPrenom()
             + " est le numéro " + temp.getNumero());
         }
-        //this = null;
+        Bureau.bureaux.remove(Bureau.bureaux.get(recupIndiceBureaux(numero)));
         return true;    
     }
     
-    //Feature non finie, methode qui retourne le premier bureau avec une place displonible qu'il trouve
+    /**
+     * Methode qui renvoie le 1er bureau avec une place disponible<br>
+     * La méthode circule dans la liste des bureaux et à chaque bureau
+     * circule dans le tab Personnel[3] occupants pour voir si une place est dispo
+     * @return référence vers le 1er Bureau avec une place disponible trouvé
+     */
     public static Bureau bureauAvecPlace() {
         int limite = bureaux.size();
         Bureau temp;
@@ -400,19 +416,52 @@ public class Bureau {
         }
         return null;
     }
-     
-    public void changeNbPlace(int newNbPlace){
+
+    /**
+     * Methode qui permet de modifier le nb de places dans un bureau
+     * Plusieurs cas de figure :<br>
+     * - Le nouveau nombre de place est égal à l'actuel, seul setNbPlace() est appelée<br>
+     * - Le nouveau nombre de place est supérieur à l'ancien, seul setNbPlace() est appelée<br>
+     * - Si le nouveau de place est égal à 0, renvoie un message d'erreur, 
+     *   suggérant de plutôt supprimer le bureau<br>
+     * - Le nouveau nombre de place est inférieur à l'ancien, les Personnels
+     *   allant perdre leur place sont déplacés vers un nouveau bureau, puis setNbPlace est appelée
+     * (la methode gère aussi l'impossibilité de déplacer les occupants par manque de place)<br>
+     * La méthode utilise la méthode changeBureau() de Personnel pour déplacer les occupants<br>
+     * La méthode utilise bureauAvecPlace() pour vérifier qu'il est possible de/et déplacer les occupants<br>
+     * La méthode utilise setNbPlace() pour changer le nombre de place
+     * (c'est elle qui gère les expections de type nb de places trop grand/petit)
+     * Private temporaire, le temps que la feature soit test, elle ne sera surement pas implémentée faute de temps
+     * @param newNbPlace nouveau nb de places du bureau (int)
+     * @return true si le changement du nb de place a réussie, false sinon
+     * @see Bureau#setNbPlace(int)
+     * @see Bureau#bureauAvecPlace() 
+     * @see Personnel#changeBureau(Personne.Bureau) 
+     */
+    private boolean changeNbPlace(int newNbPlace){
         
         int diffPlace = nbPlace - newNbPlace;
+        boolean reassignation = false;
         
-        if (diffPlace > 0){
-            
-            for (int i = 2; ; i--)
-            setNbPlace(newNbPlace);
-            
+        if (newNbPlace == 0) System.out.println("ERREUR : Impossible de passer"
+                + " le nombre de places du bureau à 0,"
+                + " veuillez plutôt supprimer le bureau");
+        else{
+            for (int i = 0; i < diffPlace; i++){
+                reassignation = false;
+                if (!Utils.isNull(Bureau.bureauAvecPlace())){
+                    if (!Utils.isNull(occupants[nbPlace -1 - i])){
+                    occupants[nbPlace -1 - i].changeBureau(Bureau.bureauAvecPlace());
+                    reassignation = true;
+                    }
+                }    
+            }
+        if (reassignation)setNbPlace(newNbPlace);
+        else System.out.println("ERREUR : Impossible de changer le nb de places"
+                + " du bureau, faute de places dispônibles dans les autres "
+                + "bureaux pour accueillir les occupants déplacés ");
         }
-        
-        
+        return reassignation;
     }
     
     /**
