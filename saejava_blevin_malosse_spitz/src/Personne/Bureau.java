@@ -121,10 +121,11 @@ public class Bureau {
 //---- SETTERS ----
     /**
      * La méthode vérifie que la valeur envoyée soit légale [1;3], sinon corrige
-     * puis assigne à att : nbPlace
+     * puis assigne à att : nbPlace <br>
+     * Le private est temporaire, quand la méthode gèrera le passage à 0 places elle sera remise en public
      * @param nbPlace minimum 1 place, maximum 3 places (int)
      */
-    public final void setNbPlace(int nbPlace) {
+    private final void setNbPlace(int nbPlace) {
 
         if (nbPlace < 1) {
             
@@ -375,14 +376,50 @@ public class Bureau {
      public static Bureau retourBureauNum (int NumBureau){
         return bureaux.get(Bureau.recupIndiceBureaux(NumBureau));
     }
+     
+    //Feature non finie, methode qui supprime un bureau
+    public boolean supprimeBureau(){
+        Bureau temp = null;
+        for (int i = 0; i < nbPlace ;i++){
+            
+            temp = Bureau.bureauAvecPlace();
+            
+             if (Utils.isNull(temp)){
+                System.out.println("ERREUR : Impossible de supprimer "
+                    + "le bureau car il n'y a pas assez de places dans les autres bureaux pour tous les occupants");
+                return false;
+             }
+            occupants[i].changeBureau(Bureau.bureauAvecPlace());
+            System.out.println("Le nouveau bureau de " + occupants[i].getNomPrenom()
+            + " est le numéro " + temp.getNumero());
+        }
+        //this = null;
+        return true;    
+    }
     
+    //Feature non finie, methode qui retourne le premier bureau avec une place displonible qu'il trouve
+    public static Bureau bureauAvecPlace() {
+        int limite = bureaux.size();
+        Bureau temp;
+        for (int j = 0; j < limite; j++) {
+            temp = bureaux.get(j);
+            for (int i = 0; i < temp.nbPlace; i++) {
 
-     /**
-      * Méthode hasCode() redéfinie depuis Object <br>
-      * Je ne pense pas qu'on va utiliser le hashcode, mais on l'a au cas où et
-    ça fait disparaitre le warning
-      * @return 
-      */
+                if (temp.nbPlace >= i && Utils.isNull(temp.occupants[i])){
+                    return temp;
+                }
+            }
+        }
+        
+        return null;
+    }
+     
+    /**
+     * Méthode hasCode() redéfinie depuis Object <br>
+     * Je ne pense pas qu'on va utiliser le hashcode, mais on l'a au cas où et
+     * ça fait disparaitre le warning
+     * @return 
+     */
     @Override
     public int hashCode() {
         int hash = 5;
