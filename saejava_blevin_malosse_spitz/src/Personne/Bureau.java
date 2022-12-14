@@ -122,10 +122,10 @@ public class Bureau {
     /**
      * La méthode vérifie que la valeur envoyée soit légale [1;3], sinon corrige
      * puis assigne à att : nbPlace <br>
-     * Le private est temporaire, quand la méthode gèrera le passage à 0 places elle sera remise en public
+     * Le private est temporaire, quand la méthode gèrera le passage à 0 places elle sera remise en public (potentiellement remettre le final à ce moment là)
      * @param nbPlace minimum 1 place, maximum 3 places (int)
      */
-    private final void setNbPlace(int nbPlace) {
+    private void setNbPlace(int nbPlace) {
 
         if (nbPlace < 1) {
             
@@ -379,7 +379,7 @@ public class Bureau {
      
     //Feature non finie, methode qui supprime un bureau
     public boolean supprimeBureau(){
-        Bureau temp = null;
+        Bureau temp;
         for (int i = 0; i < nbPlace ;i++){
             
             temp = Bureau.bureauAvecPlace();
