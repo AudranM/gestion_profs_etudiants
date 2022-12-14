@@ -182,4 +182,18 @@ public abstract class Personne {
         }
         return registreTmp;
     }
+        
+    /**
+     * Affichage légère du registre
+     */
+    public void affichageSimpleRegistre(){
+        int i;
+            System.out.println( " ID Personne  |    Nom     |    Prenom     |    Type de Personne");
+        for (i=0; i<registre.size(); i++){
+            System.out.println("  " + (registre.get(i)).getNumPersonne() + "  ");
+            System.out.print("  " + (registre.get(i)).getNomPrenom()+ "  ");
+            System.out.print("  " + (registre.get(i)).getClass().getName()+ "  ");
+            
+        }
+    }
 }
