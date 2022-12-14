@@ -270,6 +270,17 @@ public class Console {
         }
     }
 
+    public static void retourPersonneTypeAdministratif(){
+     System.out.println(retourPersonnesType("Pesonne.PersonnelAdministratif"));
+    }
+    public static void retourPersonneTypeEnseignantsTitulaires(){
+    System.out.println(retourPersonnesType("Personne.PersonnelEnseignantTitulaire"));
+    }
+   public static void  retourPersonneTypeEnseignantsVacataire(){
+    System.out.println(retourPersonnesType("Personne.PersonnelEnseignantVacataire"));
+   }
+    
+    
     /**
      * Méthode pour supprimer un element de Arraylist dans la classe Personne
      *
