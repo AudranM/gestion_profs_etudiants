@@ -26,8 +26,7 @@ public abstract class Personnel extends Personne {
     private double heuresEffectue=0;
     /**Salaire fixe de l'administratif et du titulaire*/
     private double salaireFixe;
-    private double salaireTotalMensuel;
-    private double salaireTotalAnnuel;
+
     
     private Bureau sonBureau;
     
@@ -67,6 +66,7 @@ public abstract class Personnel extends Personne {
     public void setDroitPrime(boolean Bool){this.droitPrime = Utils.verifBool(Bool);}
     public void setEstTitulaire(boolean Bool){this.estTitulaire = Bool;}
     public void setEstVacataire(boolean Bool){this.estVacataire = Bool;}
+    
     public void addNbHeuresEffectuee(double Heures){this.heuresEffectue += Heures;}
     
     
@@ -103,8 +103,8 @@ public abstract class Personnel extends Personne {
         else bureau += sonBureau.getNumero();
         
         return super.toString() + "\nLe salaire fixe est de : " + salaireFixe + 
-            "\nLe salaire mensuel est de : " + salaireTotalMensuel +
-            "\nLe salaire annuel total est de :" + salaireTotalAnnuel +
+            "\nLe salaire mensuel est de : " + this.getSalaireMensuel() +
+            "\nLe salaire annuel total est de :" + this.defSalaireAnnuel() +
             "\nBureau : " + bureau + "\n";
     }
     
@@ -138,4 +138,5 @@ public abstract class Personnel extends Personne {
         else
             return this.getSalaireFixe()*12;
     }
+
 }

@@ -4,7 +4,7 @@
  */
 package Personne;
 
-import static Personne.Application.menu;
+import static Personne.Application.*;
 
 /**
  *
@@ -12,6 +12,8 @@ import static Personne.Application.menu;
  */
 public class Main {
     public static void  main(String[] args){
+        
+    debut();   
     menu();
     }
 }
