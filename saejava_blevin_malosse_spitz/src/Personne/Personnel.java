@@ -138,4 +138,5 @@ public abstract class Personnel extends Personne {
         else
             return this.getSalaireFixe()*12;
     }
+
 }
