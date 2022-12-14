@@ -471,5 +471,12 @@ public class Console {
         int nbHeure = Clavier.lireInt();
         Personne Personne = new PersonnelEnseignantVacataire(nom, prenom);
     }
-
+    
+       /**
+     * Méthode pour afficher le registre depuis l'application <br>
+     * @see Personne#affichageSimpleRegistre() 
+     */
+public static void consoleAffichageSimpleRegistre(){
+affichageSimpleRegistre();
+}
 }

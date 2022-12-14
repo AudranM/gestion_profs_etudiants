@@ -67,7 +67,7 @@ public class Application {
             case 8:
                 gestionDesSalaire();
                 break;
-            case 9: // en attente de la function d'Audran
+            case 9: consoleAffichageSimpleRegistre();
                 menu();
                 break;
             default:
@@ -503,7 +503,6 @@ public class Application {
 
     /**
      * Menu de demarage de l'application
-     *
      * @see Console#consoleSetPrimeAnnuelle()
      */
     public static void debut() {
