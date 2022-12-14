@@ -8,7 +8,7 @@ import static Personne.Console.*;
 
 /**
  *
- * @author audranmalosse
+ * @author fabio
  */
 public class Application {
 
@@ -28,6 +28,7 @@ public class Application {
         System.out.println("[5] : Modifier les personnes dans le registre");
         System.out.println("[6] : Ajouter une absence");
         System.out.println("[7] : Gestion des bureaux");
+        System.out.println("[8] : Gestion des salaires");
         choix = Clavier.lireInt();
 
         switch (choix) {
@@ -57,6 +58,9 @@ public class Application {
                 break;
             case 7:
                 gestionDesBureaux();
+                break;
+            case 8:
+                gestionDesSalaire();
                 break;
             default:
                 menu();
@@ -183,7 +187,7 @@ public class Application {
     }
 
     /**
-     * Methode pour les elements du registre ( Arraylist de personne )
+     * Methode pour les modifier elements du registre ( Arraylist de personne )
      */
     public static void modifierLeRegistre() {
         int choix = -1;
@@ -238,6 +242,7 @@ public class Application {
         System.out.println("[1] : Retour au menu principal");
         System.out.println("[2] : Modifier le Salaire Fixe");
         System.out.println("[3] : Obtient la prime");
+        System.out.println("[4] : afficher les Personnels Admistratif");
         choix = Clavier.lireInt();
 
         switch (choix) {
@@ -253,6 +258,10 @@ public class Application {
                 break;
             case 3:
                 definiPrime();
+                menuPersonnelAdministratif();
+                break;
+            case 4:
+                retourPersonneTypeAdministratif();
                 menuPersonnelAdministratif();
                 break;
             default:
@@ -275,8 +284,8 @@ public class Application {
         System.out.println("[1] : Retour au menu principal");
         System.out.println("[2] : Modifier le Salaire Fixe");
         System.out.println("[3] : Modifier les Heure à Effectué");
-        System.out.println("[4] : Modifier les Heures Suplementaire");
-        System.out.println("[5] : Modifier les Heures Effectué");
+        System.out.println("[4] : Obtient la prime");
+        System.out.println("[5] : Afficher les Enseignants Titulaires");
         choix = Clavier.lireInt();
 
         switch (choix) {
@@ -294,16 +303,50 @@ public class Application {
                 heureAEffectue();
                 menuPersonnelEnseignantTitulaire();
                 break;
-            case 4: ;
+            case 4:
+                definiPrime();
                 menuPersonnelEnseignantTitulaire();
                 break;
-            case 5: ;
+            case 5:
+                retourPersonneTypeEnseignantsTitulaires();
                 menuPersonnelEnseignantTitulaire();
                 break;
             default:
                 menu();
                 break;
+        }
 
+    }
+
+    public static void menuPersonnelEnseignantVacataire() {
+        int choix = -1;
+        System.out.println("\nMenu pour modifier les elements des Enseignants Vacataire");
+        System.out.println("\nMerci de faire votre choix");
+        System.out.println("--------------------------------------------------\n");
+        System.out.println("[0] : Arrêter le programme");
+        System.out.println("[1] : Retour au menu principal");
+        System.out.println("[2] : Modifier les Heure à Effectué");
+        System.out.println("[3] : Afficher les Enseignants Vacataire ");
+        choix = Clavier.lireInt();
+
+        switch (choix) {
+            case 0:
+                quitterLeProgramme();
+                break;
+            case 1:
+                menu();
+                break;
+            case 2:
+                heureAEffectue();
+                menuPersonnelEnseignantVacataire();
+                break;
+            case 3:
+                retourPersonneTypeEnseignantsVacataire();
+                menuPersonnelEnseignantVacataire();
+                break;
+            default:
+                menu();
+                break;
         }
 
     }
@@ -320,8 +363,7 @@ public class Application {
         System.out.println("[4] : Afficher toutes les infos d'un Bureau");
         System.out.println("[5] : Affiche tous les bureaux et toutes leurs infos");
         System.out.println("[6] : Afficher les occupants d'un Bureau");
-        System.out.println("[7] : Set le nombre de places");
-        System.out.println("[8] : Changer le bureau d'une personne");
+        System.out.println("[7] : Changer le bureau d'une personne");
         choix = Clavier.lireInt();
 
         switch (choix) {
@@ -335,23 +377,24 @@ public class Application {
                 ajouterUnBureau();
                 gestionDesBureaux();
                 break;
-            case 3: 
+            case 3:
                 ajouterUnOccupant();
                 gestionDesBureaux();
                 break;
-            case 4:  afficherToutesLesInfos();
+            case 4:
+                afficherToutesLesInfos();
                 gestionDesBureaux();
                 break;
-            case 5: afficheTousLesBureauxEtInfos();
+            case 5:
+                afficheTousLesBureauxEtInfos();
                 gestionDesBureaux();
                 break;
-            case 6: afficherLesOccupantsDunBureau();
+            case 6:
+                afficherLesOccupantsDunBureau();
                 gestionDesBureaux();
                 break;
-            case 7: ;
-                gestionDesBureaux();
-                break;
-            case 8: ;
+            case 7:
+                changerLeBureauDunePersonne();
                 gestionDesBureaux();
                 break;
             default:
@@ -360,6 +403,39 @@ public class Application {
 
         }
 
+    }
+
+    public static void gestionDesSalaire() {
+        int choix = -1;
+        System.out.println("\nMenu de gestion des salaires");
+        System.out.println("\nMerci de faire votre choix");
+        System.out.println("--------------------------------------------------\n");
+        System.out.println("[0] : Arrêter le programme");
+        System.out.println("[1] : Retour au menu principal");
+        System.out.println("[2] : Récuperation du salaire Mensuel");
+        System.out.println("[3] : Récuperation du salaire Annuel");
+
+        choix = Clavier.lireInt();
+        switch (choix) {
+            case 0:
+                quitterLeProgramme();
+                break;
+            case 1:
+                menu();
+                break;
+            case 2:
+                menu();
+                break;
+            case 3:
+                recuperationDuSalaireMensuel();
+                menu();
+                break;
+            default:
+                recuperationDuSalaireAnnuel();
+                menu();
+                break;
+
+        }
     }
 
 }

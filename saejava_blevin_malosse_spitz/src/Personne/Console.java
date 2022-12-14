@@ -14,8 +14,35 @@ import static Personne.Bureau.*;
  */
 public class Console {
 
+    public static void changerLeBureauDunePersonne() {
+        System.out.println("\nindiquer le numero de la personne");
+        int numPersonne = Clavier.lireInt();
+        if (retourPersonneNum(numPersonne) instanceof Personnel) {
+        System.out.println("\nindiquer le numero du bureau actuel de la personne");
+        int numBureau = Clavier.lireInt();
+        System.out.println("\nindiquer le numero du bureau futur de la personne");
+        int numNewBureau = Clavier.lireInt();
+        retourBureauNum(numBureau).envoieVersNewBureau((Personnel)(retourPersonneNum(numPersonne)), retourBureauNum(numNewBureau));
+        }else{
+         System.out.println("Ce n'est pas un Personnel");
+        }
+    }
+
+    public static void recuperationDuSalaireAnnuel() {
+        System.out.println("\nindiquer le numero de la personne");
+        int numPersonne = Clavier.lireInt();
+        ((Personnel) retourPersonneNum(numPersonne)).defSalaireAnnuel();
+
+    }
+
+    public static void recuperationDuSalaireMensuel() {
+        System.out.println("\nindiquer le numero de la personne");
+        int numPersonne = Clavier.lireInt();
+        ((Personnel) retourPersonneNum(numPersonne)).getSalaireMensuel();
+    }
+
     public static void alouerUnBureauApresCreation() {
-        if (Bureau.bureaux.size() < 1) {
+        if (getSizeBureaux() < 1) {
             String reponse;
             System.out.println("\nIndiquer si vous voulez creer un bureau et ajouter un occupant? Oui/Non");
             reponse = Clavier.lireString();
@@ -91,19 +118,16 @@ public class Console {
 
     /**
      * Methode pour definir les heures suplementaire du personnel
+     *
+     * public static void definiHeuresSuplementaire() {
+     * System.out.println("\nIndiquer le numero de la personne"); int
+     * numPersonne = Clavier.lireInt(); System.out.println("\nIndiquer les
+     * heures à suplemantaire effectué"); double heureAEffectue =
+     * Clavier.lireDouble(); if (retourPersonneNum(numPersonne) instanceof
+     * Personnel) { ((Personnel)
+     * retourPersonneNum(numPersonne)).setVolHoraire(heureAEffectue); } else {
+     * System.out.println("Ce n'est pas un Personnel"); } }
      */
-    public static void definiHeuresSuplementaire() {
-        System.out.println("\nIndiquer le numero de la personne");
-        int numPersonne = Clavier.lireInt();
-        System.out.println("\nIndiquer les heures à suplemantaire effectué");
-        double heureAEffectue = Clavier.lireDouble();
-        if (retourPersonneNum(numPersonne) instanceof Personnel) {
-            //((Personnel) retourPersonneNum(numPersonne)).setVolHoraire(heureAEffectue);
-        } else {
-            System.out.println("Ce n'est pas un Personnel");
-        }
-    }
-
     /**
      * Methode pour definir les heures a effectué par le personnel
      */
@@ -113,7 +137,7 @@ public class Console {
         System.out.println("\nindiquer les heures à effectué");
         double heureAEffectue = Clavier.lireDouble();
         if (retourPersonneNum(numPersonne) instanceof Personnel) {
-            ((Personnel) retourPersonneNum(numPersonne)).setNbHeures(heureAEffectue);
+            ((Personnel) retourPersonneNum(numPersonne)).addNbHeuresEffectuee(heureAEffectue);
         } else {
             System.out.println("Ce n'est pas un Personnel");
         }
@@ -163,7 +187,7 @@ public class Console {
     public static void definiSalaireFixe() {
         System.out.println("\nIndiquer le numero de la personne");
         int numPersonne = Clavier.lireInt();
-        System.out.println("\nindiquer le nombre d'absence justifie");
+        System.out.println("\nindiquer le salaire fixe");
         double salaireFixe = Clavier.lireDouble();
         if (retourPersonneNum(numPersonne) instanceof Personnel) {
             ((Personnel) retourPersonneNum(numPersonne)).setSalaireFixe(salaireFixe);
@@ -316,9 +340,11 @@ public class Console {
         String nom = Clavier.lireString();
         System.out.println("Saisir le Prénom");
         String prenom = Clavier.lireString();
+        System.out.println("Saisir le Nombre Heures Statutaire");
+        double NbHeuresStatutaire = Clavier.lireDouble();
         System.out.println("Saisir le salaire fixe");
-        double tarifHeureSup = Clavier.lireDouble();
-        Personne Personne = new PersonnelEnseignantTitulaire(nom, prenom);
+        double salaireFixe = Clavier.lireDouble();
+        Personne Personne = new PersonnelEnseignantTitulaire(nom, prenom, NbHeuresStatutaire, salaireFixe);
         alouerUnBureauApresCreation();
     }
 
