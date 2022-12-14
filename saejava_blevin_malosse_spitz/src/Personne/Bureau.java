@@ -71,12 +71,13 @@ public class Bureau {
     }
 
     /**
-     * Constructeur avec assignation d'un occupant
-     *
+     * Constructeur avec assignation d'un occupant<br>
+     * Utilise le constructeur sans assignation d'occupants
      * @param nbPlace (int)
      * @param occupant1 (référence de type Personne) Il n'y a pas d'autre
      * arguments car le numéro du bureau est déterminé par le compteur (att
      * static) et la taille du tab occupant par nbPlace
+     * @see Bureau#Bureau(int) 
      */
     Bureau(int nbPlace, Personnel occupant1) {
 
@@ -85,13 +86,14 @@ public class Bureau {
     }
 
     /**
-     * Constructeur avec assignation de deux occupants
-     *
+     * Constructeur avec assignation de deux occupants<br>
+     * Utilise le constructeur avec assignation d'un occupant
      * @param nbPlace (int)
      * @param occupant1 (référence de type Personne)
      * @param occupant2 (référence de type Personne) Il n'y a pas d'autre
      * arguments car le numéro du bureau est déterminé par le compteur (att
      * static) et la taille du tab occupant par nbPlace
+     * @see Bureau#Bureau(int, Personne.Personnel) 
      */
     Bureau(int nbPlace, Personnel occupant1, Personnel occupant2) {
 
@@ -100,14 +102,15 @@ public class Bureau {
     }
 
     /**
-     * Constructeur avec assignation de deux occupants
-     *
+     * Constructeur avec assignation de trois occupants<br>
+     * Utilise le constructeur avec l'assignation de deux occupants
      * @param nbPlace (int)
      * @param occupant1 (référence de type Personne)
      * @param occupant2 (référence de type Personne)
      * @param occupant3 (référence de type Personne) Il n'y a pas d'autre
      * arguments car le numéro du bureau est déterminé par le compteur (att
      * static) et la taille du tab occupant par nbPlace
+     * @see Bureau#Bureau(int, Personne.Personnel, Personne.Personnel) 
      */
     Bureau(int nbPlace, Personnel occupant1, Personnel occupant2, Personnel occupant3) {
 
@@ -117,11 +120,15 @@ public class Bureau {
 
 //---- SETTERS ----
     /**
+     * La méthode vérifie que la valeur envoyée soit légale [1;3], sinon corrige
+     * puis assigne à att : nbPlace
      * @param nbPlace minimum 1 place, maximum 3 places (int)
      */
     public final void setNbPlace(int nbPlace) {
 
         if (nbPlace < 1) {
+            
+            //Vérification inutile pour l'instant, feature à venir (si assez de temps)
             if (!Utils.isNull(occupants[0])){
                 
                 if (!Utils.isNull(occupants[0])){
@@ -140,9 +147,149 @@ public class Bureau {
 
     }
 
+
+
+//---- GETTERS ----
+    
     /**
-     *
-     * @param occupant référence vers le Personnel à ajouter au bureau
+     * Getter du nb de places du bureau
+     * @return Le nb de places du bureau (int)
+     */
+    public int getNbPlace() {
+
+        return nbPlace;
+    }
+
+    /**
+     * Getter du numero du bureau
+     * @return Le numero du bureau (int)
+     */
+    public int getNumero() {
+
+        return numero;
+    }
+    
+    /**
+     * Méthode qui retourne la taille de la lisate bureaux <br>
+     * Méthode qui a surtout vocation à être utilisée par l'application
+     * @return taille de la liste bureaux (int)
+     */
+    public static int getSizeBureaux(){
+        
+        return bureaux.size();
+    } 
+
+    /** 
+     * Méthode utilisée par toString() pout récupérer plus facilement la liste des occupants<br>
+     * Elle peut aussi être utilisée pour print directement les occupants d'un bureau
+     * @return "Occupant(s) du bureau {numero du bureau} : " + liste des occupants du bureau (String)
+     * @see Bureau#toString() 
+     */
+    public String getStringOccupants() {
+
+        String stringOccupants = "Occupant(s) du bureau " + getNumero() + " : \n";
+        for (int i = 0; i < nbPlace; i++) {
+
+            if (occupants[i] != null) {
+                stringOccupants += occupants[i].getNomPrenom() + "\n";
+            }
+        }
+
+        return stringOccupants;
+    }
+    
+    
+
+//---- AFFICHEURS ----
+    
+    /* Méthode obsolète depuis l'introduction de getStringOccupants()
+    public void afficheOccupants() {
+
+        System.out.println(getStringOccupants());
+    }
+    */
+    
+    /**
+     * Méthode toString() redéfinie depuis Objet <br>
+     * Utilise la méthode getStringOccupants() pour récupérer facilement la liste des occupants <br>
+     * Méthode utilisée par afficheBureaux() pour afficher plus facilement la liste de toutes les informations de tous les bureaux <br>
+     * Méthode qui a surtout vocation à être utilisée par l'application
+     * @return Toutes les informations du bureau (String)
+     * @see Bureau#getStringOccupants() 
+     * @see Bureau#afficheBureaux() 
+     */
+    @Override
+    public String toString() {
+
+        return "Numero du bureau : " + numero + "\nNombre de place(s) : " + nbPlace + "\n" + getStringOccupants();
+    }
+    
+    /**
+     * Méthode qui affiche toutes les infos de tous les bureaux <br>
+     * Utilise la méthode toString() pour récupérer plus facilement toutes les infos de chacun des bureaux <br>
+     * Méthode qui a surtout vocation à être utilisée par l'application
+     * @see Bureau#toString() 
+     */
+    public static void afficheBureaux() {
+
+        int size = bureaux.size();
+        for (int i = 0; i < size; i++) {
+            System.out.println(bureaux.get(i).toString());
+        }
+
+    }
+
+    
+
+//---- METHODES ---- 
+    /**
+     * Méthode appelée uniquement par les constructeurs qui incrémente le compteur static comptNum,
+     * compteur qui permet de définir le numéro du bureau à sa création
+     */
+    private void incrCompt() {
+        comptNum++;
+    }
+
+    /**
+     * Méthode appelée uniquement par les constructeurs pour ajouter le bureau nouvellement créé
+     * à l'ArrayList static bureaux contenant la liste des bureaux
+     * @param B référence vers le bureau à ajouté à la liste
+     */
+    private void incrTab() {
+        bureaux.add(this);
+    }
+
+    /**
+     * Methode equals() redéfinie depuis Object <br>
+     * Le code pourrait être plus simple car par définition (et de la manière dont Bureau et Personnel sont implémentés),
+     * un bureau ne peut être égal à un autre bureau que s'ils sont le même bureau.<br>
+     * Toutefois en cas de changements futurs il vaut mieux garder le code dans son intégralité
+     * @param o référence de type objet
+     * @return true si c'est le même bureau, false sinon
+     */
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o) {
+            return true;
+        }
+        if (this == null) {
+            return false;
+        }
+        if (this.getClass() != o.getClass()) {
+            return false;
+        }
+        Bureau b = (Bureau) o;
+        return this.nbPlace == b.nbPlace && this.numero == b.nbPlace && this.occupants == b.occupants;
+    }
+    
+        /**
+     * Méthode qui assigne le Personnel passé en argument au bureau en le rangeant 
+     * dans la première place disponible du tab Personnel[3] occupants du bureau <br>
+     * Puis appelle le setSonBureau() du Personnel pour assigner la ref du bureau 
+     * @see Personnel#setSonBureau(Personne.Bureau) 
+     * @param occupant référence vers le Personnel à ajouter au bureau (ref. Personnel)
+     * @return true si l'assignation a fonctionné, false sinon
      */
     public final boolean setOccupant(Personnel occupant) {
         
@@ -166,11 +313,19 @@ public class Bureau {
     }
 
     /**
-     *
-     * @param occupant reference de type Personnel duquel il faut changer le
-     * bureau
-     * @param newBureau reference de type Bureau vers lequel il faut déplacer le
-     * Personnel
+     * Récupère le Personnel dans le tab Personnel[3] occupants du bureau courant <br>
+     * Appelle setSonBureau() du Personnel avec en arg. null (pour pouvoir faire la réassignation) <br>
+     * Appelle ensuite setOccupant du newBureau, si l'assignation réussie :<br>
+     *  - Apelle le setSonBureau() du Personnel avec en arg. newBureau<br>
+     *  - Delete sa référence du tab Personnel[3] occypants du bureau courant<br>
+     * Sinon :<br>
+     *  - Appelle setSonBureau() du Personnel avec en arg. le bureau courant<br>
+     *  - Print un message d'erreur<br>
+     * Retire le Personnel du tab Personnel[3] occupants du bureau courant<br>
+     * @param occupant Personnel duquel il faut changer le bureau (ref. Personnel)
+     * @param newBureau Bureau vers lequel il faut déplacer le Personnel (ref. Bureau)
+     * @see Bureau#setOccupant(Personne.Personnel) 
+     * @see Personnel#setSonBureau(Personne.Bureau)
      */
     public void envoieVersNewBureau(Personnel occupant, Bureau newBureau) {
         
@@ -184,92 +339,20 @@ public class Bureau {
                     occupants[i] = null;
                     reassigne = true;
                 }
+                else occupants[i].setSonBureau(this);
             }
 
         }
         if (!reassigne) System.out.println("ERREUR : Le bureau " + newBureau.getNumero() + " est plein");
     }
-
-//---- GETTERS ----
-    public int getNbPlace() {
-
-        return nbPlace;
-    }
-
-    public int getNumero() {
-
-        return numero;
-    }
-
-    public String getStringOccupants() {
-
-        String stringOccupants = "Occupant(s) du bureau " + getNumero() + " : \n";
-        for (int i = 0; i < nbPlace; i++) {
-
-            if (occupants[i] != null) {
-                stringOccupants += occupants[i].getNomPrenom() + "\n";
-            }
-        }
-
-        return stringOccupants;
-    }
-
-    //public 
-//---- AFFICHEURS ----
-    public void afficheOccupants() {
-
-        System.out.println(getStringOccupants());
-    }
-
-    public static void afficheBureaux() {
-
-        int size = bureaux.size();
-        for (int i = 0; i < size; i++) {
-            System.out.println(bureaux.get(i).toString());
-        }
-
-    }
-
-    @Override
-    public String toString() {
-
-        return "Numero du bureau : " + numero + "\nNombre de place(s) : " + nbPlace + "\n" + getStringOccupants();
-    }
-
-//---- METHODES ---- 
-    private void incrCompt() {
-
-        comptNum++;
-    }
-
     /**
-     *
-     * @param B référence vers le bureau à ajouté à la liste
+     * Méthode permettant de récupérer la position d'un bureau dans la liste bureaux grâce à son numéro<br>
+     * Méthode utilisée par retourBureauNum()<br>
+     * Méthode qui a surtout vocation à être utilisée par l'application
+     * @param NumBureau numéro du bureau dont on veut récupérer la position dans la liste (int)
+     * @return l'indice du bureau dont le numéro a été passé en argument (int)
+     * @see Bureau#retourBureauNum(int) 
      */
-    private void incrTab() {
-        bureaux.add(this);
-    }
-
-    /**
-     * @param o référence de type objet
-     * @return vrai si c'est le même bureau, faux sinon
-     */
-    @Override
-    public boolean equals(Object o) {
-
-        if (this == o) {
-            return true;
-        }
-        if (this == null) {
-            return false;
-        }
-        if (this.getClass() != o.getClass()) {
-            return false;
-        }
-        Bureau b = (Bureau) o;
-        return this.nbPlace == b.nbPlace && this.numero == b.nbPlace && this.occupants == b.occupants;
-    }
-    
     public static int recupIndiceBureaux(int NumBureau){
         int i=0;
         while (i<bureaux.size()){
@@ -280,13 +363,26 @@ public class Bureau {
         return -1;
     }
     
+    /**
+     * Méthode permettant de récupérer la référence d'un bureau grâce à son numéro<br>
+     * Utilise la méthode recupIndiceBureaux() pour savoir à quel indice de la liste
+     * bureaux aller chercher la référence du bureau dont le numero a été passé en arg.<br>
+     * Méthode qui a surtout vocation à être utilisée par l'application
+     * @param NumBureau numéro du bureau dont on veut récupérer la référence (int)
+     * @return référence du bureau dont le num a été fourni en argument (Bureau)
+     * @see Bureau#recupIndiceBureaux(int) 
+     */
      public static Bureau retourBureauNum (int NumBureau){
         return bureaux.get(Bureau.recupIndiceBureaux(NumBureau));
     }
     
 
-    /*Je ne pense pas qu'on va utiliser le hashcode, mais on l'a au cas où et
-    ça fait disparaitre le warning */
+     /**
+      * Méthode hasCode() redéfinie depuis Object <br>
+      * Je ne pense pas qu'on va utiliser le hashcode, mais on l'a au cas où et
+    ça fait disparaitre le warning
+      * @return 
+      */
     @Override
     public int hashCode() {
         int hash = 5;
