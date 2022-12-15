@@ -473,7 +473,7 @@ public class Bureau implements Serializable {
      */
     public static void chargerLesDonnesBureau() {
         try {
-            FileInputStream fileIn = new FileInputStream("../../listeBureau.txt");
+            FileInputStream fileIn = new FileInputStream("./listeBureau.txt");
             ObjectInputStream ois = new ObjectInputStream(fileIn);
             bureaux = (ArrayList) ois.readObject();
             ois.close();

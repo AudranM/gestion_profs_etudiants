@@ -235,7 +235,7 @@ public abstract class Personne implements Serializable {
      */
     public static void chargerLesDonnesRegistre() {
         try {
-            FileInputStream fileIn = new FileInputStream("../../registre.txt");
+            FileInputStream fileIn = new FileInputStream("./registre.txt");
             ObjectInputStream ois = new ObjectInputStream(fileIn);
             registre = (ArrayList) ois.readObject();
             ois.close();

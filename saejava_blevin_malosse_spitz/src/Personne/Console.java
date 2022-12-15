@@ -36,7 +36,7 @@ public class Console {
      */
     public static void sauvegarderRegistre() {
         try {
-            FileOutputStream fileOut = new FileOutputStream("../../registre.txt");
+            FileOutputStream fileOut = new FileOutputStream("./registre.txt");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(getRegistre());
             out.close();
@@ -55,7 +55,7 @@ public class Console {
      */
     public static void sauvegarderLesbureaux() {
         try {
-            FileOutputStream fileOut = new FileOutputStream("../../listeBureau.txt");
+            FileOutputStream fileOut = new FileOutputStream("./listeBureau.txt");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(getBureaux());
             out.close();
@@ -149,7 +149,7 @@ public class Console {
      */
     public static void recuperationDuSalaireAnnuel() {
         int numPersonne = indiquerLeNumeroDeLaPersonne();
-        ((Personnel) retourPersonneNum(numPersonne)).defSalaireAnnuel();
+        System.out.println("Le salarie "+retourPersonneNum(numPersonne).getNom()+" gagne :" +((Personnel) retourPersonneNum(numPersonne)).defSalaireAnnuel()+"euros");
 
     }
 
@@ -159,7 +159,8 @@ public class Console {
      */
     public static void recuperationDuSalaireMensuel() {
         int numPersonne = indiquerLeNumeroDeLaPersonne();
-        ((Personnel) retourPersonneNum(numPersonne)).getSalaireMensuel();
+        
+       System.out.println("Le salarie "+retourPersonneNum(numPersonne).getNom()+" gagne :" +((Personnel) retourPersonneNum(numPersonne)).getSalaireMensuel()+"euros");
     }
 
     /**
