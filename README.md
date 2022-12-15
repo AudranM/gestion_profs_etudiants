@@ -21,3 +21,14 @@
 
     Sur la branche Audran il y a un début de classe Salaire, créée pour décharger la classe Personnel qui gère trop de méthodes et d'attributs, mais nous n'avons pas réussi pas à la réaliser correctement et à en faire quelque chose d'utilisable proprement. L'objectif était d'avoir une interface ISalaire avec une classe par type de salaire pour simplifier la gestion des salaires. Malheureusement la notion d"Interface Segregation Protocol" ne nous a été présentée et expliquée en cours de qualité de développement que le jour du rendu. Ce qui nous a rendu tout de suite évident la manière de procéder pour réaliser ce que nous souhaitions, mais nous n'avons pût le faire faute de temps.
 
+
+Encapsulation des données : 
+
+    Il était prévu de passer toutes les méthodes des classes en protected. L'application a été conçu de sorte à isoler la classe applicative dans un package séparé pour ainsi respecter l'encapsulation des données.
+    Seule la classe Console devait rester publique et la classe Application importer la classe Console. 
+
+JavaDoc : 
+
+    Nous n'avons pas eu le temps d'écrire toute la JavaDoc du projet
+
+NB : Yodwaae est le compte gitlab personnel de Lucas SPITZ DREVET
