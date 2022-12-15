@@ -39,6 +39,9 @@ public class Application {
         System.out.println("[7] : Gestion des bureaux");
         System.out.println("[8] : Gestion des salaires");
         System.out.println("[9] : Voir tout le registre");
+        System.out.println("[10]: Sauvegarder");
+        System.out.println("[11]: Indiquer la prime annuel");
+        System.out.println("[12]: Charger les donnees sauvegarder");
         choix = Clavier.lireInt();
 
         switch (choix) {
@@ -74,6 +77,20 @@ public class Application {
                 break;
             case 9:
                 consoleAffichageSimpleRegistre();
+                menu();
+                break;
+            case 10:
+                sauvegarderRegistre();
+                sauvegarderLesbureaux();
+                menu();
+                break;
+            case 11:
+                primeAnnuel();
+                menu();
+                break;
+            case 12:
+                Personne.chargerLesDonnesRegistre();
+                Bureau.chargerLesDonnesBureau();
                 menu();
                 break;
             default:
@@ -535,19 +552,6 @@ public class Application {
                 break;
 
         }
-    }
-
-    /**
-     * Menu de demarage de l'application
-     *
-     * @see Console#consoleSetPrimeAnnuelle()
-     */
-    public static void debut() {
-        System.out.println("Bonjour, Bienvenue sur le prgramme de gestion de l'IUT.");
-        System.out.println("Pour commencer merci d'indiquer la prime Annuel");
-        System.out.println("----------------------------------------------------------");
-        double prime = Clavier.lireDouble();
-        consoleSetPrimeAnnuelle(prime);
     }
 
 }

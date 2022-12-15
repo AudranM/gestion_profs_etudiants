@@ -9,11 +9,65 @@ import static Personne.Personne.*;
 import static Personne.Bureau.*;
 import static Personne.Personnel.setPrimeAnnuelle;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 /**
  *
  * @author fabio
  */
 public class Console {
+
+    /**
+     * Function qui demande à utilisateur d'indiquer la prime Annuel
+     *
+     * @see Console#consoleSetPrimeAnnuelle()
+     */
+    public static void primeAnnuel() {
+        System.out.println("Indiquer la prime Annuel");
+        double prime = Clavier.lireDouble();
+        consoleSetPrimeAnnuelle(prime);
+    }
+
+    /**
+     * Function qui sauvegarde le registre
+     */
+    public static void sauvegarderRegistre() {
+        try {
+            FileOutputStream fileOut = new FileOutputStream("C:\\registre.txt");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(getRegistre());
+            out.close();
+            fileOut.close();
+            System.out.println("\nSauvegarde du registre terminee avec succes...\n");
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Function qui sauvegarde les bureaux
+     */
+    public static void sauvegarderLesbureaux() {
+        try {
+            FileOutputStream fileOut = new FileOutputStream("C:\\listeBureau.txt");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(getBureaux());
+            out.close();
+            fileOut.close();
+            System.out.println("\nSauvegarde des bureaux terminee avec succes...\n");
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Methode pour demander à l'utilisateur le numero du bureau <br>
@@ -32,7 +86,7 @@ public class Console {
                 reponse = reponse.toLowerCase();
                 if (reponse.equals("oui")) {
                     afficheTousLesBureauxEtInfos();
-                }
+                }else{ System.out.println("\nRetour au menu principale"); menu();}
             } else {
                 return numBureau;
             }
@@ -57,7 +111,7 @@ public class Console {
                 reponse = reponse.toLowerCase();
                 if (reponse.equals("oui")) {
                     affichageSimpleRegistre();
-                }
+                }else{ System.out.println("\nRetour au menu principale"); menu();}
             } else {
                 return numPersonne;
             }
@@ -65,13 +119,11 @@ public class Console {
         return numPersonne;
     }
 
-    public static void supprimerUnBureau(){
-    int numBureau = indiquerLeNumeroDuBureau();
-    retourBureauNum(numBureau).supprimeBureau();
+    public static void supprimerUnBureau() {
+        int numBureau = indiquerLeNumeroDuBureau();
+        retourBureauNum(numBureau).supprimeBureau();
     }
-    
-    
-    
+
     /**
      * Methode pour changer de bureau un personnel <br>
      * Demande le numero de la personne, le bureau actuel et le bureau futur
@@ -478,12 +530,13 @@ public class Console {
         int nbHeure = Clavier.lireInt();
         Personne Personne = new PersonnelEnseignantVacataire(nom, prenom);
     }
-    
-       /**
+
+    /**
      * Méthode pour afficher le registre depuis l'application <br>
-     * @see Personne#affichageSimpleRegistre() 
+     *
+     * @see Personne#affichageSimpleRegistre()
      */
-public static void consoleAffichageSimpleRegistre(){
-affichageSimpleRegistre();
-}
+    public static void consoleAffichageSimpleRegistre() {
+        affichageSimpleRegistre();
+    }
 }
