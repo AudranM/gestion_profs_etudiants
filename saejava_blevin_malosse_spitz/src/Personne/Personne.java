@@ -212,9 +212,9 @@ public abstract class Personne implements Serializable {
         int i;
             System.out.println( " ID Personne  |    Nom         Prenom     |    Type de Personne");
         for (i=0; i<registre.size(); i++){
-            System.out.print("\n         " + (registre.get(i)).getNumPersonne() + "      ");
+            System.out.print("\n      " + (registre.get(i)).getNumPersonne() + "      ");
             System.out.print("       " + (registre.get(i)).getNomPrenom()+ "      ");
-            System.out.print("                 " + (registre.get(i)).getClass().getName()+ "  ");
+            System.out.print("             " + (registre.get(i)).getClass().getName()+ "  ");
             
         }
     }
