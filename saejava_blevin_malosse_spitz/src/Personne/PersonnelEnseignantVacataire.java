@@ -9,16 +9,13 @@ package Personne;
  * @author audranmalosse
  */
 public class PersonnelEnseignantVacataire extends PersonnelEnseignant{
-    private int nbHeure;
     
-    public PersonnelEnseignantVacataire(String Nom, String Prenom, int nbHeure){
-        super(Nom, Prenom);
-         this.nbHeure = nbHeure;
-        }
     public PersonnelEnseignantVacataire(String Nom, String Prenom){
-         this(Nom, Prenom, 0);
+        super(Nom, Prenom);
+        super.setEstVacataire(true);
         }
+    
     public PersonnelEnseignantVacataire(){
-        this("INCONNU", "INCONNU", 0);
+        this("INCONNU", "INCONNU");
         }
 }

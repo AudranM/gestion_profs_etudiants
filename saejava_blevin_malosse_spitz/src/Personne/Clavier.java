@@ -1,6 +1,7 @@
 package Personne;
 
 // classe fournissant des fonctions de lecture au clavier -
+import static Personne.Application.menu;
 import java.io.* ;
 public class Clavier
 { public static String lireString ()   // lecture d'une chaine
@@ -34,8 +35,8 @@ public class Clavier
       x = Double.parseDouble(ligne_lue) ;
     }
     catch (NumberFormatException err)
-    { System.out.println ("*** Erreur de donnee ***") ;
-      System.exit(0) ;
+    { System.out.println ("*** Erreur de donnee retour menu pricipale ***") ;
+      menu();
     }
     return x ;
   }
@@ -46,8 +47,8 @@ public class Clavier
       n = Integer.parseInt(ligne_lue) ;
       }
     catch (NumberFormatException err)
-    { System.out.println ("*** Erreur de donnee ***") ;
-      System.exit(0) ;
+    { System.out.println ("*** Erreur de donnee retour menu pricipale ***") ;
+       menu();
     }
     return n ;
   }

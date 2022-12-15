@@ -11,15 +11,32 @@ package Personne;
 public class PersonnelAdministratif extends Personnel {
     
     
-    /**Constructeur qui donne la possibilitée d'ajouter la disponibilitée de la prime*/
+
+    /**
+     * Constructeur prenant en arguments :
+     * @param Nom, Nom du Personnel Administratif (abrégé PA) (String)
+     * @param Prenom, Prenom du PA (String)
+     * @param SalaireFixe, valeur du salaire fxe du PA (double)
+     * @see Personnel#Personnel(String Nom, String Prenom)
+     */
     public PersonnelAdministratif (String Nom, String Prenom, Double SalaireFixe) {
         super(Nom,Prenom,SalaireFixe);
         super.setDroitPrime(true);
     }
+    /**
+     * Constructeur prenant en arguments:
+     * @param Nom, Nom du Personnel Administratif (abrégé PA) (String)
+     * @param Prenom, Prenom du PA (String)
+     * @see PersonnelAdministratif#PersonnelAdministratif(String Nom, String Prenom, Double SalaireFixe)
+     */
     public PersonnelAdministratif (String Nom, String Prenom) {
-        super(Nom,Prenom, 0);
+        this(Nom,Prenom, 0.);
     }
+    /**
+     * Constructeur par défaut
+     * @see PersonnelAdministratif#PersonnelAdministratif(String Nom, String Prenom, Double SalaireFixe)
+     */
     public PersonnelAdministratif () {
-        super("inconnu","inconnu", 0);
+        this("INCONNU","INCONNU", 0.);
     }
 }
