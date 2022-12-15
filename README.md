@@ -29,6 +29,6 @@ Encapsulation des données :
 
 JavaDoc : 
 
-    Nous n'avons pas eu le temps d'écrire toute la JavaDoc du projet
+    Nous n'avons pas eu le temps d'écrire toute la JavaDoc du projet. La JavaDoc générée n'a été push directement que sur la branche Lucas pour éviter que la suppression du dist du .gitignore ne crée quelconques problèmes/erreur aussi tard avant le rendu. Elle a aussi été ajouté au main en copiant/collant le dossier dans le projet depuis la branche Lucas.
 
 NB : Yodwaae est le compte gitlab personnel de Lucas SPITZ DREVET
