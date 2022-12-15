@@ -36,7 +36,7 @@ public class Console {
      */
     public static void sauvegarderRegistre() {
         try {
-            FileOutputStream fileOut = new FileOutputStream("C:\\registre.txt");
+            FileOutputStream fileOut = new FileOutputStream("../../registre.txt");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(getRegistre());
             out.close();
@@ -55,7 +55,7 @@ public class Console {
      */
     public static void sauvegarderLesbureaux() {
         try {
-            FileOutputStream fileOut = new FileOutputStream("C:\\listeBureau.txt");
+            FileOutputStream fileOut = new FileOutputStream("../../listeBureau.txt");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(getBureaux());
             out.close();
