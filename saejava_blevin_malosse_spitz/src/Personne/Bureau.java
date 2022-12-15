@@ -4,6 +4,11 @@
  */
 package Personne;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -11,7 +16,7 @@ import java.util.Arrays;
  *
  * @author lucasspitz
  */
-public class Bureau {
+public class Bureau implements Serializable{
 
     /**
      * Attributs statics
@@ -157,6 +162,13 @@ public class Bureau {
     public int getNumero() {
 
         return numero;
+    }
+        /**
+     * Getter de ArrayList des bureau
+     * @return Le numero du ArrayListe Bureau
+     */
+        public static ArrayList<Bureau> getBureaux() {
+        return bureaux;
     }
     
     /**
@@ -430,4 +442,24 @@ public class Bureau {
         return hash;
     }
 
+    
+        /**
+     * Lit les donnees dans le registre et les ajoute a ArrayList(Personne)
+     */
+    public static void chargerLesDonnesBureau() {
+        try {
+            FileInputStream fileIn = new FileInputStream("C:\\listeBureau.txt");
+            ObjectInputStream ois = new ObjectInputStream(fileIn);
+            bureaux = (ArrayList) ois.readObject();
+            ois.close();
+            fileIn.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    
 }
