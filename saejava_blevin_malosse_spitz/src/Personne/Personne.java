@@ -4,11 +4,16 @@
  */
 package Personne;
 import java.util.ArrayList; 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 /**
  *
  * @author audranmalosse
  */
-public abstract class Personne {
+public abstract class Personne implements Serializable {
 
     // attributs 
     private final int numPersonne;
@@ -213,4 +218,35 @@ public abstract class Personne {
             
         }
     }
+    
+     /**
+     * Getter de ArrayList Personne
+     * @return L'ArreyList de Personne
+     */
+    public static ArrayList<Personne> getRegistre() {
+        return registre;
+    }
+
+
+
+
+    /**
+     * Lit les donnees dans le registre et les ajoute a ArrayList(Personne)
+     */
+    public static void chargerLesDonnesRegistre() {
+        try {
+            FileInputStream fileIn = new FileInputStream("C:\\registre.txt");
+            ObjectInputStream ois = new ObjectInputStream(fileIn);
+            registre = (ArrayList) ois.readObject();
+            ois.close();
+            fileIn.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
